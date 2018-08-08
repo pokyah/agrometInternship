@@ -1,0 +1,7 @@
+
+
+* ML = machine learning
+* ANN = Artificial Neural Networ
+* CRA-W = Centre de Recherches Agronomiques Wallon
+
+

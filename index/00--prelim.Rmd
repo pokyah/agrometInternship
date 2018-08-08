@@ -1,0 +1,21 @@
+# Preliminary Content {-}
+
+## Acknowledgements {-}
+
+I want to thank myself
+
+## Abbreviations {-}
+
+agr = agromet
+
+## Preface {-}
+
+I'm a prefacing preface
+
+## Dedication {-}
+
+This song is dedicated to my fans. 
+
+## Glossary {-}
+
+`r if(!knitr:::is_latex_output()) '## Abstract {-}'`
