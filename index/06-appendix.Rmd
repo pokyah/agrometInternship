@@ -1,0 +1,54 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Annex {-}'` 
+
+<!--
+If you feel it necessary to include an appendix, it goes here.
+-->
+
+# Annex 1
+
+Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
+
+# Annex 2
+
+Example of outputs with different methods, 2018-03-07 14:00:00
+
+```{r maps, echo=FALSE, fig.align='center', out.width="100%"}
+include_graphics(path = "figure/2018-03-07_14.png")
+```
+
+# Additional resources
+
+- Ubuntu GNOME : [https://ubuntugnome.org/](https://ubuntugnome.org/)
+
+- ANSIBLE : [https://www.ansible.com/](https://www.ansible.com/)
+
+- SSH : [https://www.ssh.com/](https://www.ssh.com/)
+
+- GitHub : [https://github.com/](https://github.com/)
+
+- API : [https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
+
+- Docker : [https://www.docker.com/what-docker](https://www.docker.com/what-docker)
+
+- Copernicus : [https://land.copernicus.eu/pan-european/corine-land-cover/view](https://land.copernicus.eu/pan-european/corine-land-cover/view)
+
+- Belgian Geoportal : [https://www.geo.be/#!/catalog/details/bcd19aa9-c320-4116-971b-6e4376137f13?l=en](https://www.geo.be/#!/catalog/details/bcd19aa9-c320-4116-971b-6e4376137f13?l=en)
+
+- NASA's SRTM : [https://lta.cr.usgs.gov/SRTM](https://lta.cr.usgs.gov/SRTM)
+
+- EUMETSAT : [https://landsaf.ipma.pt/en/products/longwave-shortwave-radiation/dssf/](https://landsaf.ipma.pt/en/products/longwave-shortwave-radiation/dssf/)
+
+- Machine Learning Mastery Blog : [https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/](https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/)
+
+- Machine Learning in R : [http://mlr-org.github.io/mlr/index.html](http://mlr-org.github.io/mlr/index.html)
+
+
+# Details of my work
+
+- All my codes are available on my Github account : [https://github.com/ldavadan](https://github.com/ldavadan)
+
+- My personal blog, made with Blogdown : [ldavadan.github.io](ldavadan.github.io)
+
+- Contribution to "Crop and Grassland conditions in early August" report : [http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018](http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018)

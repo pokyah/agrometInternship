@@ -1,23 +1,23 @@
 ---
-author: 'Loïc Davadan'
+author: '**Loïc Davadan**'
 date: |
-  `r format(Sys.time(), "%d %B, %Y")`
+  21/05/2018 --- 20/08/2018
 school: 'Bordeaux Sciences Agro'
 institution: 'Centre de Recherches Agronomiques Wallon (CRA-W)'
-address: 'Rue de Liroux 9, 5930 Gembloux, Belgique'
-advisor: 'Thomas Goossens'
-supervisor: 'Jean-Pierre Da Costa'
+address: 'Rue de Liroux 9, 5030 Gembloux, Belgique'
+advisor: '*Internship supervisor* : Thomas Goossens'
+supervisor: '*Supervisor* : Jean-Pierre Da Costa'
 # Delete line 6 if you only have one advisor
 department: 'U11'
 # degree: 'Bachelor of Arts'
 title: 'Internship report'
-subtitle: 'Agromet project : Investigating spatial interpolation of temperature using Multiple Linear Regression'
+subtitle: 'AGROMET project : Investigating spatial interpolation of temperature using Multiple Linear Regression'
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 output: 
-#  thesisdown::thesis_pdf: default
-#  thesisdown::thesis_gitbook: default
-  thesisdown::thesis_word: default
+ thesisdown::thesis_pdf: default
+#  thesisdown::thesis_gitbook: default 
+# thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content here or
 # use code similar to line 20 for the files.  If you are producing in a different
@@ -84,22 +84,11 @@ on chapters.
 
 # Introduction {.unnumbered}
 
-Welcome to the _R Markdown_ thesis template. This template is based on (and in many places copied directly from) the Reed College LaTeX template, but hopefully it will provide a nicer interface for those that have never used TeX or LaTeX before.  Using _R Markdown_ will also allow you to easily keep track of your analyses in **R** chunks of code, with the resulting plots and output included as well.  The hope is this _R Markdown_ template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.
+Use of pesticides and other crop protection products is a topical issue in an environmental and societal context. These products are increasingly criticized for their risks and impacts on human health and environment. Crop monitoring models are developed and their efficiency is well demonstrated. Acting at the right time in plots is inscreasingly possible thanks to these models. In Belgium, the Walloon agricultural resarch centre (CRA-W) is a research centre where a lot of issues are explored to bring solutions. 
 
-Hopefully, you won't have much of a learning period to go through and you will reap the benefits of a nicely formatted thesis.  The use of LaTeX in combination with _Markdown_ is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. While you may have never had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.  After working with _Markdown_ and **R** together for a few weeks, we are confident this will be your reporting style of choice going forward.
+From May 22nd to August 20th, I did an internship in the (CRA-W). I worked on the AGROMET project which is a project about agrometeorology where the aim is to provide a near real-time hourly gridded datasets of weather parameters at the resolution of 1 km² for the whole region of Wallonia characterized by a quality indicator. This project is led by the Farming Systems, Territory and Information Technologies Unit.
 
-<!-- 
-If you're still on the fence about using _R Markdown_, check out the resource for newbies available at <https://ismayc.github.io/rbasics-book/> or email us at <data@reed.edu>. 
--->
+The internship has for objective to investigate a spatial interpolation of the temperature using multiple linar regression with the best combination of explanatory variables. 
 
-**Why use it?**
+First, the report will present the CRA-W, its organisation, the Unit where I worked and the project. Then, my workflow will be detailed in two parts : the data acquisition and the data analysis through the benchmark. Finally, the results will be interprated and discussed.
 
-_R Markdown_ creates a simple and straightforward way to interface with the beauty of LaTeX.  Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs. In addition to creating a user friendly interface to LaTeX, _R Markdown_ also allows you to read in your data, to analyze it and to visualize it using **R** functions, and also to provide the documentation and commentary on the results of your project.  Further, it allows for **R** results to be passed inline to the commentary of your results.  You'll see more on this later.  
-
-<!-- 
-Having your code and commentary all together in one place has a plethora of benefits!
--->
-
-**Who should use it?**
-
-Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about the final appearance of their document should use _R Markdown_. Of particular use should be anyone in the sciences, but the user-friendly nature of _Markdown_ and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should make it of great benefit to nearly anyone writing a thesis project.

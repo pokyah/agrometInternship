@@ -1,7 +1,22 @@
+- API : Application Programming Interface
 
+- ANN : Artificial Neural Networks
 
-* ML = machine learning
-* ANN = Artificial Neural Networ
-* CRA-W = Centre de Recherches Agronomiques Wallon
+- CRA-W : Walloon agricultural research center
 
+- CRS : Coordinate Reference System
+
+- JSON : JavaScript Object Notation
+
+- MAE : Mean Absolute Error
+
+- RMI : Royal Meteorological Institute
+
+- RMSE : Root Mean Square Error
+
+- OS : Operating System
+
+- SSH : Secure Shell
+
+- WGS84 : Word Geodetic System 1984
 
