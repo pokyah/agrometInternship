@@ -151,7 +151,7 @@ This figures show the output based on a model depending on ::todo::, the equatio
 These maps show whether the models are relevant. The _Annex 2_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the folowing :
 
 \[
-T(°C) = 12 + 0.1 \times Elevation + 0.1 \times Longitude + 0.1 \times Latitude
+T(°C) = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
 \]
 ::todo:: interpretation
 
