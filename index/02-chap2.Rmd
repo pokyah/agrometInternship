@@ -60,11 +60,11 @@ CORINE Land Cover is divided in 47 different land covers. 26 of them are in Wall
 
 After a long data preparation with transformation of CRS from WGS84 to Belgian Lambert 2008 and conversion in different forms of Spatial objects (Vector and Raster), data were completely manageable.
 
-Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clc_perc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
+Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
 
 
-```{r clc_perc, echo=FALSE, message=FALSE}
-knitr::kable(x = head(cover_rate.grid.df), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
+```{r clcperc, echo=FALSE}
+knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
   row_spec(0, bold = TRUE)
 ```
 

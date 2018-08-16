@@ -377,6 +377,22 @@ walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These
 stations provide measures for ways to fight crop diseases like late
 blight and wheat septoria.
 
+Each PAMESEB station has 5 basic sensors :
+\begin{itemize}
+\tightlist
+\item
+  Temperature sensor
+\item
+  Relative humidity sensor
+\item
+  Solar sensor
+\item
+  Wind sensor
+\item
+  Rain gauge
+\end{itemize}
+Stations have a local acquisition unit for hourly data recording.
+
 \section{The AGROMET project}\label{the-agromet-project}
 
 \subsection{Context}\label{context}
@@ -618,14 +634,12 @@ objects (Vector and Raster), data were completely manageable.
 Finally, data are recovered at stations positions with buffers. These
 buffers have a radius of 100 meters for physical stations and 500 meters
 for virtual stations (because each station covers 1 km²). The Table
-@ref(tab:clc\_perc) below shows the structure of the data frame where
-each station identified by an ID has the percentage of cover for each
-class.
+\ref{tab:clcperc} below shows the structure of the data frame where each
+station identified by an ID has the percentage of cover for each class.
+\begin{table}
 
-\textbackslash{}begin\{table\}
-
-\textbackslash{}caption\{(\#tab:clc\_perc)Distribution (\%) of land
-covers around physical stations\} \centering
+\caption{\label{tab:clcperc}Distribution of land covers around physical stations}
+\centering
 \begin{tabular}[t]{rrrrr}
 \toprule
 \textbf{sid} & \textbf{crops} & \textbf{artificial} & \textbf{forest} & \textbf{herbaceous}\\
@@ -638,8 +652,7 @@ covers around physical stations\} \centering
 13 & 89.50912 & 0.000000 & 10.44519 & 0.00000\\
 \bottomrule
 \end{tabular}
-\textbackslash{}end\{table\}
-
+\end{table}
 Buffers of 500 meters radius and grid cells of 1km² were compared but
 buffers were chosen because they have more relevance when they are
 compared to physical stations where only buffers were computed.
@@ -675,6 +688,7 @@ Data are available from 2015-11-11. As a consequence, we can not build
 models from data before this date.
 
 In parallel with that, PAMESEB stations also measure solar irradiance.
+But only 27 stations are useable.
 
 \subsubsection{Temperature forecasts}\label{temperature-forecasts}
 
@@ -1020,12 +1034,78 @@ temperature, with or without solar irradiance as mandatory variable have
 a similar error. However, they are more interesting because the equation
 is dynamic throughout hours and, in this way, the model is adapted to
 the evaluated hour.
+\begin{figure}
 
+{\centering \includegraphics[width=0.9\linewidth]{figure/meanerror} 
+
+}
+
+\caption{Errors (RMSE and MAE) of methods}\label{fig:meanerror}
+\end{figure}
 Errors are between 0.72 and 0.91 for MAE and between 0.93 and 1.20 for
 RMSE. These errors should be near zero. Both of MAE and RMSE are
 expressed in degrees such as temperature. An error of 1 degree is
-relatively important and to be taken into consideration.
+relatively important and has to be taken into consideration.
 
+Performances of methods can be compared computing their rank for each
+hour. The Figure \ref{fig:barchart} compares the three bests methods :
+\begin{itemize}
+\tightlist
+\item
+  the 2 variables with the best linear correlation with temperature
+\item
+  longitude, latitude and elevation
+\item
+  solar irradiance and the 2 variables with the best linear correlation
+  with temperature
+\end{itemize}
+This barchart corroborates the precedent graph. The method based on
+coordinates and elevation is widely better than the two others which are
+more similar but with a relevant difference.
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{figure/barchart} 
+
+}
+
+\caption{Comparison of methods by rank}\label{fig:barchart}
+\end{figure}
+For each hour, the equation of the model is computed. They can be
+extracted from the benchmark. The Table \ref{tab:models} shows the
+structure of the equations in the case where explanatory variables can
+be different from one hour to another (lm.2bestsVar). The table also
+shows what are the bests variables and display the related error.
+\begin{table}
+
+\caption{\label{tab:models}Models with their equations}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{l|l|l|l|l|r|r}
+\hline
+\textbf{ } & \textbf{Datetime} & \textbf{Equation} & \textbf{BestVar1} & \textbf{BestVar2} & \textbf{RMSE} & \textbf{MAE}\\
+\hline
+16135 & 2017-09-13 06:00:00 & T = 14.656695 + -0.008887.altitude + 1e-06.X & altitude & X & 0.5674956 & 0.4107285\\
+\hline
+16136 & 2017-09-13 07:00:00 & T = 14.722147 + -0.00574.altitude + 0.012719.ens & altitude & ens & 0.6122121 & 0.4529545\\
+\hline
+16137 & 2017-09-13 08:00:00 & T = 15.676696 + -0.004304.altitude + -0.011732.herbaceous & altitude & herbaceous & 0.9375293 & 0.7287999\\
+\hline
+16138 & 2017-09-13 09:00:00 & T = 13.701668 + -0.012835.herbaceous + 0.00415.ens & herbaceous & ens & 1.2198397 & 0.9671947\\
+\hline
+16139 & 2017-09-13 10:00:00 & T = 14.987154 + -0.001473.altitude + -0.009431.herbaceous & altitude & herbaceous & 1.0206276 & 0.8224733\\
+\hline
+16140 & 2017-09-13 11:00:00 & T = 14.131936 + -0.003737.altitude + 0.005707.ens & altitude & ens & 0.8312792 & 0.5979420\\
+\hline
+16141 & 2017-09-13 12:00:00 & T = 11.852128 + -0.002653.altitude + 0.012421.ens & altitude & ens & 0.9727891 & 0.7488237\\
+\hline
+16142 & 2017-09-13 13:00:00 & T = 22.557946 + 0.003638.ens + -1.4e-05.Y & ens & Y & 1.2605875 & 0.9444467\\
+\hline
+16143 & 2017-09-13 14:00:00 & T = 15.441184 + 0.000484.altitude + -0.015099.herbaceous & altitude & herbaceous & 1.0796645 & 0.8760026\\
+\hline
+16144 & 2017-09-13 15:00:00 & T = 10.730857 + -0.003947.altitude + 9e-06.Y & altitude & Y & 0.9526830 & 0.7777128\\
+\hline
+\end{tabular}}
+\end{table}
 \subsection{Vizualisation}\label{vizualisation}
 
 These models can be observed on maps. For that purpose, functions
@@ -1041,10 +1121,34 @@ according to the error. A large standard error is related to an opacity
 and vice-versa.
 
 The Figure \ref{fig:map} shows an output for one hour based on the
-method ::todo::.
+method ::todo::. To build this map, some objects are needed : an object
+containing data (temperature and standard error) for the grid and a
+spatial vector object containing boundaries of Wallonia, but also the
+name of the variable to display. Then, some conditions can be chosen,
+like the display of the layer containing error, the display of the
+legend for error, the way to build the legend and its classes. Some
+arguments enable to customize the map with titles and comments. The
+function is thus reusable for other usages. For example, the function
+builds maps spatializing hydric deficit in Wallonia.
+
+This figures show the output based on a model depending on ::todo::, the
+equation is the following one :
+
+{[}
+
+{]}
 
 These maps show whether the models are relevant. The \emph{Annex 2}
-shows maps made with all methods for one hour. ::todo:: interpretation
+shows maps made with all methods for one hour. These maps show
+differences in the relevance of each model. For example, the model
+depending on longitude and latitude is very simplistic compared to the
+others. The other models are more similar but show that some of them are
+more reliable because the error is smaller. The better model is the
+second one on the first row. It is corresponding to the the model
+depending on longitude, latitude and elevation. For this hour, the model
+is the folowing : \[
+T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
+\] ::todo:: interpretation
 
 ::todo:: add example equations models tab
 
@@ -1106,20 +1210,15 @@ different, and that will have to be mentioned.
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-If we don't want Conclusion to have a chapter number next to it, we can
-add the \texttt{\{-\}} attribute.
-
-\textbf{More info}
-
-And here's some other random info: the first paragraph after a chapter
-title or section head \emph{shouldn't be} indented, because indents are
-to tell the reader that you're starting a new paragraph. Since that's
-obvious after a chapter or section title, proper typesetting doesn't add
-an indent there.
+::todo::
 
 \appendix
 
-\chapter{Annex 1}\label{annex-1}
+\chapter{Annex 1 : Resources on
+AGROMET}\label{annex-1-resources-on-agromet}
+
+Technical details about PAMESEB stations :
+\url{https://www.pameseb.be/meteo_intro/infos_techniques.html}
 
 Spatialization methodology available here :
 \url{https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg}
