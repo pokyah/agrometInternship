@@ -12,7 +12,20 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 Presentation CRA-W
 Presentation U11
+
 Presentation PAMESEB (29 stations, 27 pour ens)
+
+PAMESEB is a non-profit organisation which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria.
+
+Each PAMESEB station has 5 basic sensors :
+
+- Temperature sensor
+- Relative humidity sensor
+- Solar sensor
+- Wind sensor
+- Rain gauge
+
+Stations have a local acquisition unit for hourly data recording.
 
 ## The AGROMET project
 
