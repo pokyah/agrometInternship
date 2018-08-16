@@ -6,7 +6,9 @@
 If you feel it necessary to include an appendix, it goes here.
 -->
 
-# Annex 1
+# Annex 1 : Resources on AGROMET
+
+Technical details about PAMESEB stations : [https://www.pameseb.be/meteo_intro/infos_techniques.html](https://www.pameseb.be/meteo_intro/infos_techniques.html)
 
 Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
 

@@ -80,7 +80,7 @@
 \title{Internship report}
 \author{\textbf{Loïc Davadan}}
 % The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{21/05/2018 -- 20/08/2018}
+\date{21/05/2018 --- 20/08/2018}
 \division{}
 \advisor{\emph{Internship supervisor} : Thomas Goossens}
 \supervisor{\emph{Supervisor} : Jean-Pierre Da Costa}
@@ -367,8 +367,15 @@ CRA-W}\label{presentation}
 Technologies
 Unit}\label{cra-w-and-farming-systems-territory-and-information-technologies-unit}
 
-Presentation CRA-W Presentation U11 Presentation PAMESEB (29 stations,
-27 pour ens)
+Presentation CRA-W Presentation U11
+
+Presentation PAMESEB (29 stations, 27 pour ens)
+
+PAMESEB is a non-profit organisation which aims to promote
+agrometeorology by taking climatic conditions into account in the
+walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These
+stations provide measures for ways to fight crop diseases like late
+blight and wheat septoria.
 
 \section{The AGROMET project}\label{the-agromet-project}
 
@@ -610,30 +617,26 @@ objects (Vector and Raster), data were completely manageable.
 
 Finally, data are recovered at stations positions with buffers. These
 buffers have a radius of 100 meters for physical stations and 500 meters
-for virtual stations (because each station covers 1 km²). The Figure
-\ref{tab:clc} below shows the structure of the data frame where each
-station identified by an ID has the percentage of cover for each class.
+for virtual stations (because each station covers 1 km²). The Table
+@ref(tab:clc\_perc) below shows the structure of the data frame where
+each station identified by an ID has the percentage of cover for each
+class.
 
 \textbackslash{}begin\{table\}
 
-\textbackslash{}caption\{\label{tab:clc}Distribution (\%) of land covers
-around physical stations\} \centering
-\begin{tabular}[t]{r|r|r|r|r}
-\hline
+\textbackslash{}caption\{(\#tab:clc\_perc)Distribution (\%) of land
+covers around physical stations\} \centering
+\begin{tabular}[t]{rrrrr}
+\toprule
 \textbf{sid} & \textbf{crops} & \textbf{artificial} & \textbf{forest} & \textbf{herbaceous}\\
-\hline
+\midrule
 1 & 63.85818 & 4.265755 & 0.00000 & 31.83038\\
-\hline
 4 & 64.11932 & 35.834990 & 0.00000 & 0.00000\\
-\hline
 7 & 75.28137 & 0.000000 & 0.00000 & 24.67295\\
-\hline
 9 & 99.95431 & 0.000000 & 0.00000 & 0.00000\\
-\hline
 10 & 69.91902 & 0.000000 & 30.03530 & 0.00000\\
-\hline
 13 & 89.50912 & 0.000000 & 10.44519 & 0.00000\\
-\hline
+\bottomrule
 \end{tabular}
 \textbackslash{}end\{table\}
 
@@ -712,11 +715,11 @@ once.
 \end{figure}
 In the case of the project, the nested data frame contains one row for
 each hour which has a data frame containing data from each station at
-this time. In the Figure \ref{tab:ndf}, there is a preview of the data
+this time. In the Table \ref{tab:ndf}, there is a preview of the data
 frame contained into each row.
 \begin{table}
 
-\caption{\label{tab:ndf}Structure of a nested data frame}
+\caption{\label{tab:ndf}Example of nested data frame in a row corresponding to 2016-05-19 15:00:00}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}[t]{r|r|r|r|r|r|r|r|r|r|r|r}
