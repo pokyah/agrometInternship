@@ -39,10 +39,10 @@ The first step consists of grouping data. Static and dynamic variables are group
 include_graphics(path = "figure/purrr_nest.png")
 ```
 
-In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Figure \@ref(tab:ndf), there is a preview of the data frame contained into each row.
+In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Table \@ref(tab:ndf), there is a preview of the data frame contained into each row.
 
 ```{r ndf, echo=FALSE, message=FALSE}
-knitr::kable(head(data.n.sample), caption = "Structure of a nested data frame") %>%
+knitr::kable(head(data.n.sample), caption = "Example of nested data frame in a row corresponding to 2016-05-19 15:00:00") %>%
   kable_styling(latex_options = "scale_down") %>%
   row_spec(0, bold = TRUE)
 ```

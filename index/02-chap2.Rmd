@@ -26,13 +26,6 @@ load("./data/env_report.RData")
 
 # Data acquisition and explanatory variables {#data-explvar}
 
-<!-- Required to number equations in HTML files
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script> -->
-
 Variables have to be identified to build models. To do that, we need response variables, i.e. variables to predict, and explanatory variables, i.e. variables on which response variables depend.
 
 ## Interest variables
@@ -67,11 +60,11 @@ CORINE Land Cover is divided in 47 different land covers. 26 of them are in Wall
 
 After a long data preparation with transformation of CRS from WGS84 to Belgian Lambert 2008 and conversion in different forms of Spatial objects (Vector and Raster), data were completely manageable.
 
-Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Figure \@ref(tab:clc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
+Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clc_perc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
 
 
-```{r clc, echo=FALSE, message=FALSE}
-knitr::kable(head(cover_rate.grid.df), caption = "Distribution (%) of land covers around physical stations") %>%
+```{r clc_perc, echo=FALSE, message=FALSE}
+knitr::kable(x = head(cover_rate.grid.df), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
   row_spec(0, bold = TRUE)
 ```
 
@@ -95,7 +88,7 @@ Data are recovered from **EUMETSAT**, the European Organisation for the Exploita
 
 Data are available from 2015-11-11. As a consequence, we can not build models from data before this date.
 
-In parallel with that, PAMESEB stations also measure solar irradiance.
+In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable.
 
 #### Temperature forecasts
 
