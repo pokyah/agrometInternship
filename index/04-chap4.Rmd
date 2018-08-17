@@ -113,9 +113,7 @@ Errors are between 0.72 and 0.91 for MAE and between 0.93 and 1.20 for RMSE. The
 Performances of methods can be compared computing their rank for each hour. The Figure \@ref(fig:barchart) compares five of the bests methods :
 
 - the 2 variables with the best linear correlation with temperature
-- the 3 variables with the best linear correlation with temperature
 - longitude, latitude and elevation
-- solar irradiance and the variable with the best linear correlation with temperature
 - solar irradiance and the 2 variables with the best linear correlation with temperature
 
 This barchart corroborates the precedent graph. The method based on coordinates and elevation is widely better than the two others which are more similar but with a relevant difference.
