@@ -30,7 +30,7 @@ Variables have to be identified to build models. To do that, we need response va
 
 ## Interest variables
 
-The AGROMET project will provide information about weather parameters which are important for some crop diseases. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from a Dutch company. The others are measured by weather stations from PAMESEB network, data are stored on an API. This API is an intermediary software where we can make requests to get some data. Data extracted from the API need to be transformed to be more manipulable. My mentor wrote functions to transform these data. For example, convert measures from character to numeric.
+The AGROMET project will provide information about weather parameters which are important for some crop diseases. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from a Dutch company. The others are measured by weather stations from PAMESEB network, data are stored on an API. This API is an intermediary software where we can make requests to get some data. Data extracted from the API need to be transformed to be more manipulable. Functions were wrote to transform these data. For example, convert measures from character to numeric.
 
 ## Explanatory variables
 

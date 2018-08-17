@@ -41,7 +41,7 @@ Every computation is done for each hour. As a consequence, the combination of ex
 
 Performances were measured with a Leave-One-Out cross-validation resampling strategy.
 
-The benchmark took 30 hours, i.e. 3 hours per method. Computations are very long and results are very large. Each method represents 1 Gigabyte of data.
+The benchmark took about 30 hours, i.e. 3 hours per method. Computations are very long and results are very large. Each method represents more than 1 Gigabyte of data.
 
 ------------------------------------------------------------------------------------------------------------------
   Statistical Method   ID                                   Explanatory Variables
@@ -52,15 +52,15 @@ Regression
 Multiple Linear         _lm.Long.Lat.Elev_            Longitude & Latitude & Elevation
 Regression
 
-Multiple Linear         _lm.SolIrr+1bestVar_        Solar Irradiance & best variable 
+Multiple Linear         _lm.SolIrr+1bestVar_          Solar Irradiance & best variable 
 Regression                                          based on an hourly linear correlation 
                                                     computation 
                                                      
-Multiple Linear         _lm.SolIrr+2bestsVar_       Solar Irradiance & 2 bests variables
+Multiple Linear         _lm.SolIrr+2bestsVar_         Solar Irradiance & 2 bests variables
 Regression                                          based on an hourly linear correlation 
                                                     computation 
                                                      
-Multiple Linear         _lm.SolIrr+3bestsVar_       Solar Irradiance & 3 bests variables 
+Multiple Linear         _lm.SolIrr+3bestsVar_         Solar Irradiance & 3 bests variables 
 Regression                                          based on an hourly linear correlation 
                                                     computation 
                                                      
@@ -90,7 +90,7 @@ MAE measures the average magnitude of the errors in a set of predictions, withou
 MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y_{j}} \rvert}
 \]
 
-RMSE is a quadratic scoring rule that also measures the average magnitude of the error. It’s the square root of the average of squared differences between prediction and actual observation.
+RMSE is a quadratic scoring rule that also measures the average magnitude of the error. It is the square root of the average of squared differences between prediction and actual observation.
 
 \[
 RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y_{j}} )^2}}
@@ -110,10 +110,12 @@ include_graphics(path = "figure/meanerror.png")
 
 Errors are between 0.72 and 0.91 for MAE and between 0.93 and 1.20 for RMSE. These errors should be near zero. Both of MAE and RMSE are expressed in degrees such as temperature. An error of 1 degree is relatively important and has to be taken into consideration.
 
-Performances of methods can be compared computing their rank for each hour. The Figure \@ref(fig:barchart) compares the three bests methods :
+Performances of methods can be compared computing their rank for each hour. The Figure \@ref(fig:barchart) compares five of the bests methods :
 
 - the 2 variables with the best linear correlation with temperature
+- the 3 variables with the best linear correlation with temperature
 - longitude, latitude and elevation
+- solar irradiance and the variable with the best linear correlation with temperature
 - solar irradiance and the 2 variables with the best linear correlation with temperature
 
 This barchart corroborates the precedent graph. The method based on coordinates and elevation is widely better than the two others which are more similar but with a relevant difference.

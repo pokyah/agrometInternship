@@ -6,11 +6,18 @@
 If you feel it necessary to include an appendix, it goes here.
 -->
 
-# Annex 1 : Resources on AGROMET
+# Resources on AGROMET and my work
 
-Technical details about PAMESEB stations : [https://www.pameseb.be/meteo_intro/infos_techniques.html](https://www.pameseb.be/meteo_intro/infos_techniques.html)
+- Technical details about PAMESEB stations : [https://www.pameseb.be/meteo_intro/infos_techniques.html](https://www.pameseb.be/meteo_intro/infos_techniques.html)
 
-Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
+- Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
+
+- All my codes are available on my Github account : [https://github.com/ldavadan](https://github.com/ldavadan)
+
+- My personal blog, made with Blogdown : [ldavadan.github.io](ldavadan.github.io)
+
+- Contribution to "Crop and Grassland conditions in early August" report : [http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018](http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018)
+
 
 # Annex 2
 
