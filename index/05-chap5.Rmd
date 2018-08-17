@@ -126,7 +126,7 @@ The Figure \@ref(fig:map) shows an output for one hour based on the method ::tod
 This figure shows the output based on a model depending on ::todo::, the equation is the following one :
 
 \[
-
+T = 15.59716 + -0.00629 \times Elevation + -0.00197 \times Herbaceous + 0.00206 \times SolarIrradiance
 \]
 
 ```{r map, echo=FALSE, fig.cap="Example of an output for one hour (date)"}
