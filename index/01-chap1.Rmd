@@ -88,30 +88,10 @@ The Figure \@ref(fig:agromet) shows the architecture of the future platform and 
 
 To predict meteorological variables, several statistical method will be tested. The identified methods at this time are multiple linear regression, ANN and several kriging methods.
 
-Two objectives were clearly defined for my internship. I operated in the data acquisition and data analysis steps with the aim of predicting temperature using multiple linear regression.
+Two objectives were clearly defined for my internship. I operated in the data acquisition and data analysis steps with the aim of predicting **temperature** using **Multiple linear Regression**.
 
 First, I have collected data which can be explanatory variables for temperature and organised them to be integrated in the analysis and benchmark.
 
 Then, I ran a benchmark experiment where different desired regression learning algorithms are applied to various regression tasks (i.e. datasets with different combinations of explanatory variables and the target weather parameter) with the aim to compare and rank the combinations of algorithm and used explanatory variables using a cross validation resampling strategy that provides the desired performance metrics. And then, I aggregated, by calculating the mean, all the hourly performance measures to choose the method that globally performs the best. For each desired hourly dataset, I applied the choosen method to build a model to make spatial predictions. The predictions and their uncertainty have been vizualized using maps. Finally, I had to make the predictions available on the platform together with its uncertainty indicator.
 
 For a matter of time, this benchmark is run on two large years (from 2015-11-11 to 2018-06-30) because some data were not available before this period.
-
-### Preparing the working environment
-
-Working in development field often imposes to be methodic. That's why preparing the working environment is very important.
-
-First, I have installed **Ubuntu GNOME**, a distribution of Linux on my laptop. Indeed, this OS is prefered by developers and open-source addicts thanks to the high contribution to improve distributions. Linux distributions are safer than Windows due to that and it is very easy to automatise a lot of commands. This installation was done thanks to a USB drive with a boot of Ubuntu GNOME.
-
-Once I had Ubuntu installed on my laptop, I used an **ANSIBLE script** to install all the applications I need automatically. Moreover, this script handles the updates of these applications. That is a very useful way to earn some time.
-
-Accessing to servers has to be secured. That's why every developer should have a **SSH** key. This key or token is unique and enable people to access to servers. It is useful to access to Git repositories for example.
-
-**GitHub** is a hosting service for version control. Its utilisation is very common for developers because their codes are online, the access is public and GitHub enable to handle versions of files. It makes easier the collaborative work on a same code and enable to use codes of other users.
-
-For my internship, I need to work with my mentor to code. GitHub is the best solution to that. I created a folder in my laptop to clone all the repositories I need for my work. Then, I have a copy that I can modify and I can send my modifications on GitHub. To clone these repositories, my SSH key was useful.
-
-The AGROMET project for whom I worked has an **API** to store meteorological data from all the stations. An account has been created for my internship. Then, I can get data from the API to test my codes. These data have JSON or GeoJSON format, a open-standard file format derived from JavaScript which is easy for machines to parse and generate and easy to read and write for humans.
-
-**Docker** is a software for containerize platforms. This container approach has many advantages compares to the use of virtual machines : lightweight, quick and modular.
-
-There are two main reasons to use R in conjunction with Docker. First, it allows you to quickly and easily share your work whatever the OS and R configuration of your collaborators. Second, it allows you to work in an isolated environment. This means that you will never pollute your OS and e.g. run in time-consuming re-installation procedures due to broken configuration. In case of OS crash, simply relaunch your Docker R container with a single command and you are ready to work.

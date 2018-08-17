@@ -1,102 +1,38 @@
-```{r include_packages_ch2, include = FALSE}
-# This chunk ensures that the thesisdown package is
-# installed and loaded. This thesisdown package includes
-# the template files for the thesis and also two functions
-# used for labeling and referencing
-library(devtools)
-library(tidyverse)
-devtools::install_github("ismayc/thesisdown")
-library(thesisdown)
-library(mlr)
-library(sf)
-library(purrr)
-library(sp)
-library(raster)
-devtools::install_github("pokyah/geoTools")
-library(geoTools)
-devtools::install_github("pokyah/agrometAPI")
-library(agrometAPI)
-devtools::install_github("haozhu233/kableExtra")
-library(kableExtra)
+<!--
+The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
+-->
 
-source("~/Documents/code/agrometeoR-mlr/R/file_management.R")
-source_files_recursively.fun("~/Documents/code/agrometeoR-mlr/R")
-load("./data/env_report.RData")
-```
+# Working environment {#workenv}
 
-# Data acquisition and explanatory variables {#data-explvar}
+## Applications and tools
 
-Variables have to be identified to build models. To do that, we need response variables, i.e. variables to predict, and explanatory variables, i.e. variables on which response variables depend.
+Working in development field often imposes to be methodic. That's why preparing the working environment is very important.
 
-## Interest variables
+First, I have installed **Ubuntu GNOME**, a distribution of Linux on my laptop. Indeed, this OS is prefered by developers and open-source addicts thanks to the high contribution to improve distributions. Linux distributions are safer than Windows due to that and it is very easy to automatise a lot of commands. This installation was done thanks to a USB drive with a boot of Ubuntu GNOME.
 
-The AGROMET project will provide information about weather parameters which are important for some crop diseases. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from a Dutch company. The others are measured by weather stations from PAMESEB network, data are stored on an API. This API is an intermediary software where we can make requests to get some data. Data extracted from the API need to be transformed to be more manipulable. Functions were wrote to transform these data. For example, convert measures from character to numeric.
+Once I had Ubuntu installed on my laptop, I used an **ANSIBLE script** to install all the applications I need automatically. Moreover, this script handles the updates of these applications. That is a very useful way to earn some time.
 
-## Explanatory variables
+Accessing to servers has to be secured. That's why every developer should have a **SSH** key. This key or token is unique and enable people to access to servers. It is useful to access to Git repositories for example.
 
-A little reminder : I will use multiple linear regression. That means I want to find an equation where a response variable can be modeled from two or more variables. The equation will have the form : $Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n$ where $Y$ is the response variable and $X_n$ your $n$ explanatory variables related to their estimated parameter $b_n$.
+**GitHub** is a hosting service for version control. Its utilisation is very common for developers because their codes are online, the access is public and GitHub enable to handle versions of files. It makes easier the collaborative work on a same code and enable to use codes of other users.
 
-These explanatory variables have been identified from academic papers (Zeuner 2007, Janssen 2011). Two types of explanatory variables can be discriminate : static variables and dynamic variables.
+For my internship, I need to work with my mentor to code. GitHub is the best solution to that. I created a folder in my laptop to clone all the repositories I need for my work. Then, I have a copy that I can modify and I can send my modifications on GitHub. To clone these repositories, my SSH key was useful.
 
-### Static variables
+The AGROMET project for whom I worked has an **API** to store meteorological data from all the stations. An account has been created for my internship. Then, I can get data from the API to test my codes. These data have JSON or GeoJSON format, a open-standard file format derived from JavaScript which is easy for machines to parse and generate and easy to read and write for humans.
 
-#### Land cover
+**Docker** is a software for containerize platforms. This container approach has many advantages compares to the use of virtual machines : lightweight, quick and modular.
 
-All PAMESEB weather stations are sited in agricultural or herbaceous areas. That is a way to reduce errors about measures. However, the environment of each station can be different and can have an impact on measures. For example, a station could have a different behaviour if a forest is near its area or if an artificial surface (road, construction) is near it. 
+There are two main reasons to use R in conjunction with Docker. First, it allows you to quickly and easily share your work whatever the OS and R configuration of your collaborators. Second, it allows you to work in an isolated environment. This means that you will never pollute your OS and e.g. run in time-consuming re-installation procedures due to broken configuration. In case of OS crash, simply relaunch your Docker R container with a single command and you are ready to work.
 
-CORINE land cover is an inventory updated every 6 years by **Copernicus**, the European Union's Earth Observation Programme. These data can also be found on the **Belgian geo-portal**. CORINE Land Cover has been already used to make a spatial interpolation of air pollution (Janssen _et al._ 2011).
+## Reproducible science
 
-CORINE Land Cover is divided in 47 different land covers. 26 of them are in Wallonia. However, 26 land covers is too much to be integrated as explanatory variables. These land covers have been grouped in 5 classes we juged relevant :
+The AGROMET project is a public one. That means that the CRA-W and all people involved have to be transparent about the work and the results. That will give to the project more credibility and more reliability.
 
-- __Agricultural areas__ : areas where crops can be tall
+Transparency is promoted thanks to open science. That means the content and the results of the project will be accessible to others. Indeed, transparency is superior to trust and is an ideal (Munafo, 2017).
 
-- __Herbaceous vegetation__ : cleared areas like pastures and grasslands
+In the case of the project, development represents its major part. Today, open science is widely used and tools have been developed for that. That insures to all codes written for the project to be available. As a consequence, anyone will be able to check the code and inspect it. Then, some people can improve codes and increase efficiency of work.
 
-- __Artificial areas__ : roads, rails and constructions where anthropogenic material can impact temperature
-
-- __Forest__ : large areas providing shadow and cold
-
-- __Water bodies__ : areas like river, lake, wetlands and bogs. Finally, this class has been removed because of the fact that no stations are located near a water body
-
-After a long data preparation with transformation of CRS from WGS84 to Belgian Lambert 2008 and conversion in different forms of Spatial objects (Vector and Raster), data were completely manageable.
-
-Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
-
-
-```{r clcperc, echo=FALSE}
-knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
-  row_spec(0, bold = TRUE)
-```
-
-
-Buffers of 500 meters radius and grid cells of 1km² were compared but buffers were chosen because they have more relevance when they are compared to physical stations where only buffers were computed.
-
-#### Digital Terrain Model
-
-In the same way as land cover, the terrain model could have an impact on temperature of the environment. These variables have been integrated in the models made by Zeuner _et al._ (2007) and the relevance has been demonstrated several times.
-
-Elevation data have been recovered for Wallonia from **NASA's SRTM** providing a high-resolution (90 meters) topographic data. Then, slope, aspect and roughess of terrain have been calculated with spatial libraries from R. These data are very large and data processing is very long because resolution is high.
-
-
-### Dynamic Variables
-
-#### Solar irradiance
-
-In the same way as temperature is a dynamic variable, explanatory variables can be dynamic. In the case of temperature, we can be interested in solar irradiance. Indeed, solar irradiance has an impact on climate changes (Dewitte _et al._ 2004).
-
-Data are recovered from **EUMETSAT**, the European Organisation for the Exploitation of Meteorological Satellites. They are produced every 30 minutes and expressed in W/m². These data are aggregated in hourly data and they are stored on a API of AGROMET.
-
-Data are available from 2015-11-11. As a consequence, we can not build models from data before this date.
-
-In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable.
-
-#### Temperature forecasts
-
-The AGROMET project is supported by RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms. These data will be integrated as explanatory variables to build models.
-
-At the time of my internship, these data were not available.
-
-
+Moreover, this transparency insures that the models built will be completely explicit for people who will use them. That is a proof of the quality of models.
 
 
 

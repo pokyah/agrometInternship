@@ -222,7 +222,13 @@ This is the content of my acknowledgements
 }
 
 \Preface{
+This document is my internship report for Bordeaux Sciences Agro as part
+of my formation in ``Numérique pour l'Agriculture'' and my 3-month
+internship in the CRA-W.
 
+~
+
+It was completely written with RMarkdown and \LaTeX.
 }
 
 % End of CII addition
@@ -255,7 +261,15 @@ This is the content of my acknowledgements
   \begin{acknowledgements}
     This is the content of my acknowledgements
   \end{acknowledgements}
-
+  \begin{preface}
+    This document is my internship report for Bordeaux Sciences Agro as part
+    of my formation in ``Numérique pour l'Agriculture'' and my 3-month
+    internship in the CRA-W.
+    
+    ~
+    
+    It was completely written with RMarkdown and \LaTeX.
+  \end{preface}
   \begin{abstract}
     The European directive 2009/128/CE imposes member-states to set up tools
     that allow for a more rational use of crop protection products. Among
@@ -557,7 +571,7 @@ regression, ANN and several kriging methods.
 
 Two objectives were clearly defined for my internship. I operated in the
 data acquisition and data analysis steps with the aim of predicting
-temperature using multiple linear regression.
+\textbf{temperature} using \textbf{Multiple linear Regression}.
 
 First, I have collected data which can be explanatory variables for
 temperature and organised them to be integrated in the analysis and
@@ -581,8 +595,9 @@ For a matter of time, this benchmark is run on two large years (from
 2015-11-11 to 2018-06-30) because some data were not available before
 this period.
 
-\subsection{Preparing the working
-environment}\label{preparing-the-working-environment}
+\chapter{Working environment}\label{workenv}
+
+\section{Applications and tools}\label{applications-and-tools}
 
 Working in development field often imposes to be methodic. That's why
 preparing the working environment is very important.
@@ -635,7 +650,27 @@ and e.g.~run in time-consuming re-installation procedures due to broken
 configuration. In case of OS crash, simply relaunch your Docker R
 container with a single command and you are ready to work.
 
-\chapter{Data acquisition and explanatory variables}\label{data-explvar}
+\section{Reproducible science}\label{reproducible-science}
+
+The AGROMET project is a public one. That means that the CRA-W and all
+people involved have to be transparent about the work and the results.
+That will give to the project more credibility and more reliability.
+
+Transparency is promoted thanks to open science. That means the content
+and the results of the project will be accessible to others. Indeed,
+transparency is superior to trust and is an ideal (Munafo, 2017).
+
+In the case of the project, development represents its major part.
+Today, open science is widely used and tools have been developed for
+that. That insures to all codes written for the project to be available.
+As a consequence, anyone will be able to check the code and inspect it.
+Then, some people can improve codes and increase efficiency of work.
+
+Moreover, this transparency insures that the models built will be
+completely explicit for people who will use them. That is a proof of the
+quality of models.
+
+\chapter{Data acquisition and preparation}\label{data-acq}
 
 Variables have to be identified to build models. To do that, we need
 response variables, i.e.~variables to predict, and explanatory
@@ -775,14 +810,12 @@ variables to build models.
 
 At the time of my internship, these data were not available.
 
-\chapter{Data organisation and modeling}\label{data-model}
+\section{Data organisation}\label{data-organisation}
 
 Once all the data are available, an important task is to organize them
 to realise the modeling. This organisation needs to respond to a
 methodic approach. Indeed, to reduce computation time, structure of data
 have to be optimised.
-
-\section{Data organisation}\label{data-organisation}
 
 The objective is to build models for each hour and compute its related
 error.
@@ -830,15 +863,15 @@ frame contained into each row.
 \hline
 \end{tabular}}
 \end{table}
-\section{Modeling}\label{modeling}
+\chapter{Modeling with machine learning methods}\label{model}
 
 Once the dataset is ready, the next step is to model predictions of
 temperature. To do that, machine learning is used through R.
 
-\subsection{Principle of machine
+\section{Principle of machine
 learning}\label{principle-of-machine-learning}
 
-\subsubsection{Definition}\label{definition}
+\subsection{Definition}\label{definition}
 
 Machine learning is the idea that there are generic algorithms that can
 tell you something interesting about a set of data without you having to
@@ -851,7 +884,7 @@ learning or Artificial Intelligence that provides an ability to
 There are 2 types of machine learning : supervised and unsupervised
 learning.
 
-\subsubsection{Supervised Machine
+\subsection{Supervised Machine
 Learning}\label{supervised-machine-learning}
 
 In practice, most of machine learning uses supervised learning.
@@ -873,7 +906,7 @@ regression are supervised machine learning.
 This is the case of the AGROMET project where regression models are
 used.
 
-\subsubsection{Unsupervised machine
+\subsection{Unsupervised machine
 learning}\label{unsupervised-machine-learning}
 
 Although that is not the subject, unsupervised learning consists in
@@ -891,7 +924,7 @@ Obviously, the machine will not know that one group is corresponding to
 cat and the other to dog because we did not labelled them but the
 machine will be able to distinguish them like two separate entities.
 
-\subsection{Machine learning approach in the AGROMET
+\section{Machine learning approach in the AGROMET
 project}\label{machine-learning-approach-in-the-agromet-project}
 
 The objective is to predict weather parameters (temperature, relative
@@ -923,7 +956,7 @@ models will be the RMSE and MAE.
 
 The entire methodology is detailed in the \emph{Appendix A}.
 
-\subsection{Machine Learning in R}\label{machine-learning-in-r}
+\section{Machine Learning in R}\label{machine-learning-in-r}
 
 All of our work is done on RStudio. It is a very powerful open-source
 software for R. Moreover, a R package which provides the infrastructure
@@ -954,6 +987,7 @@ available before this date. Here, the dataset has 23089 hours.
 
 The learners were defined with filter methods, i.e.~the same statistical
 method was applied to different combinations of explanatory variables.
+For my internship, I only used \textbf{Multiple Linear Regression}.
 
 The Table \ref{tab:explvar} shows the different combinations used and
 compared.
@@ -1070,7 +1104,7 @@ predictions, without considering their direction. It is the average over
 the test sample of the absolute differences between prediction and
 actual observation where all individual differences have equal weight.
 \[
-MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y_{j}} \rvert}
+MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y}_{j} \rvert}
 \]
 
 RMSE is a quadratic scoring rule that also measures the average
@@ -1078,7 +1112,7 @@ magnitude of the error. It is the square root of the average of squared
 differences between prediction and actual observation.
 
 \[
-RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y_{j}} )^2}}
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y}_{j} )^2}}
 \]
 
 They both express average model prediction error in units of the
@@ -1089,6 +1123,7 @@ scores, which means lower values are better.
 Since the errors are squared before they are averaged, the RMSE gives a
 relatively high weight to large errors. This means the RMSE is more
 useful because large errors are particularly undesirable in the project.
+(Chai, 2014)
 
 From the 10 methods compared, MAE and RMSE are computed and compared.
 The results are shown in the Figure \ref{fig:meanerror}. In this case,
@@ -1388,6 +1423,10 @@ Environ. Monit.}, 1129--1135.
 Janssen, S., \& others. (2008). Spatial interpolation of air pollution
 measurements using corine land cover data. \emph{Atmospheric
 Environment, Volume 42, Issue 20}, 4884--4903.
+
+\hypertarget{ref-munafo2017}{}
+Munafo, M., \& others. (2017). A manifesto for reproducible science.
+\emph{Nature Human Behaviour Volume 1, Article Number: 0021}.
 
 \hypertarget{ref-racca2011}{}
 Racca, P., \& others. (2011). Decision support systems in agriculture :
