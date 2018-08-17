@@ -10,10 +10,33 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 ## CRA-W and Farming Systems, Territory and Information Technologies Unit
 
-Presentation CRA-W
-Presentation U11
+The CRA-W was founded in 1872 and depends on the Regional Goverment of Wallonia. It aims to maintain and develop the scientific excellence and societal usefulness and contributes to sustainable development of the agricultural industry in Wallonia in its economic, ecological and cultural dimension. 120 scientifics are working in the CRA-W on three sites (Gembloux, Libramont and Mussy-la-Ville) representing 300 ha of fields, greenhouses, laboratories and offices. The CRA-W is a place for scientific research but also to provide services in agricultural and agri-food sector keeping a perspective view on the development of agriculture.
 
-PAMESEB is a non-profit organisation which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria.
+The research is divided into 4 main fields where more than 100 projects are permanently in progress. : 
+
+- Precision agriculture
+- Precision livestock farming
+- Risk management
+- Understanding products
+
+The CRA-W is divided into 4 departments with 4 research units each :
+
+- Life sciences
+- Production et sectors
+- Valorisation of agricultural products
+- Agriculture and natural environment
+
+The last one has the Unit 11 corresponding to Farming Systems, Territory and Information Technologies Unit where I realized my internship. This Unit develops tools to meet society's new expectations and decision support systems to improve the technico-economic and environmental performance of farming systems. There are actually 28 projects in progress.
+
+The activities of the Unit are the mainly the following :
+
+- Adaptation of agrosystems to global change : definition of references
+- Adaptation of agrosystems to global change through bottom-up approaches
+- Support to the development of agrosystems in line with territory projects 
+- Decision support systems and information technologies for the management of multifunctional agriculture
+- Spatial information systems for the management of rural areas.
+
+PAMESEB is a non-profit organisation handle by the CRA-W which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording.
 
 Each PAMESEB station has 5 basic sensors :
 
@@ -23,7 +46,7 @@ Each PAMESEB station has 5 basic sensors :
 - Wind sensor
 - Rain gauge
 
-Stations have a local acquisition unit for hourly data recording.
+The PAMESEB network has an important place in the AGROMET project because it provides data for it.
 
 ## The AGROMET project
 

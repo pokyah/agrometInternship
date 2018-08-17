@@ -385,13 +385,72 @@ CRA-W}\label{presentation}
 Technologies
 Unit}\label{cra-w-and-farming-systems-territory-and-information-technologies-unit}
 
-Presentation CRA-W Presentation U11
+The CRA-W was founded in 1872 and depends on the Regional Goverment of
+Wallonia. It aims to maintain and develop the scientific excellence and
+societal usefulness and contributes to sustainable development of the
+agricultural industry in Wallonia in its economic, ecological and
+cultural dimension. 120 scientifics are working in the CRA-W on three
+sites (Gembloux, Libramont and Mussy-la-Ville) representing 300 ha of
+fields, greenhouses, laboratories and offices. The CRA-W is a place for
+scientific research but also to provide services in agricultural and
+agri-food sector keeping a perspective view on the development of
+agriculture.
 
-PAMESEB is a non-profit organisation which aims to promote
-agrometeorology by taking climatic conditions into account in the
-walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These
-stations provide measures for ways to fight crop diseases like late
-blight and wheat septoria.
+The research is divided into 4 main fields where more than 100 projects
+are permanently in progress. :
+\begin{itemize}
+\tightlist
+\item
+  Precision agriculture
+\item
+  Precision livestock farming
+\item
+  Risk management
+\item
+  Understanding products
+\end{itemize}
+The CRA-W is divided into 4 departments with 4 research units each :
+\begin{itemize}
+\tightlist
+\item
+  Life sciences
+\item
+  Production et sectors
+\item
+  Valorisation of agricultural products
+\item
+  Agriculture and natural environment
+\end{itemize}
+The last one has the Unit 11 corresponding to Farming Systems, Territory
+and Information Technologies Unit where I realized my internship. This
+Unit develops tools to meet society's new expectations and decision
+support systems to improve the technico-economic and environmental
+performance of farming systems. There are actually 28 projects in
+progress.
+
+The activities of the Unit are the mainly the following :
+\begin{itemize}
+\tightlist
+\item
+  Adaptation of agrosystems to global change : definition of references
+\item
+  Adaptation of agrosystems to global change through bottom-up
+  approaches
+\item
+  Support to the development of agrosystems in line with territory
+  projects
+\item
+  Decision support systems and information technologies for the
+  management of multifunctional agriculture
+\item
+  Spatial information systems for the management of rural areas.
+\end{itemize}
+PAMESEB is a non-profit organisation handle by the CRA-W which aims to
+promote agrometeorology by taking climatic conditions into account in
+the walloon agriculture. PAMESEB has 30 weather stations in Wallonia.
+These stations provide measures for ways to fight crop diseases like
+late blight and wheat septoria. Stations have a local acquisition unit
+for hourly data recording.
 
 Each PAMESEB station has 5 basic sensors :
 \begin{itemize}
@@ -407,7 +466,8 @@ Each PAMESEB station has 5 basic sensors :
 \item
   Rain gauge
 \end{itemize}
-Stations have a local acquisition unit for hourly data recording.
+The PAMESEB network has an important place in the AGROMET project
+because it provides data for it.
 
 \section{The AGROMET project}\label{the-agromet-project}
 
@@ -1070,12 +1130,7 @@ hour. The Figure \ref{fig:barchart} compares five of the bests methods :
 \item
   the 2 variables with the best linear correlation with temperature
 \item
-  the 3 variables with the best linear correlation with temperature
-\item
   longitude, latitude and elevation
-\item
-  solar irradiance and the variable with the best linear correlation
-  with temperature
 \item
   solar irradiance and the 2 variables with the best linear correlation
   with temperature
@@ -1159,7 +1214,7 @@ equation is the following one :
 
 {]}
 
-These maps show whether the models are relevant. The \emph{Annex 2}
+These maps show whether the models are relevant. The \emph{Appendix B}
 shows maps made with all methods for one hour. These maps show
 differences in the relevance of each model. For example, the model
 depending on longitude and latitude is very simplistic compared to the
@@ -1189,10 +1244,10 @@ at the right times.
 Results have some limits that have to be discussed. The first limit is
 the period used to build models. Indeed, models were built with data
 from 2 and a half years. This period could be too short to be relevant.
-Moreover, this period is not necessarily realistic of a mean period.
-According to RMI, 2015, 2017 and 2018 are hot and dry years compared to
-normal year, 2016 were a wet year and 2018. This is shown on the Figure
-\ref{fig:rmi}.
+Moreover, this period is not necessarily representative of a mean
+period. According to RMI, 2015, 2017 and 2018 are hot and dry years
+compared to normal year, 2016 were a wet year. This is shown on the
+Figure \ref{fig:rmi}.
 \begin{figure}
 
 {\centering \includegraphics[width=400px,height=300px]{figure/rmi_climate_data} 
@@ -1212,7 +1267,10 @@ making corrections is essential.
 Multiple linear regression is the only statistical method used to build
 models, but going forward, other methods will be compared like ANN and
 different kriging methods. The major constraint will be time computation
-which is relatively long.
+which is relatively long. There is a lot of possible combinations of
+explanatory variables to compare, choices must be done because of the
+time computation. These choices sometimes can be subjective and not
+based on scientific literature.
 
 Beyond these limits, other points can be discussed. For example, solar
 irradiance data are provided by EUMETSAT and by PAMESEB stations. These
@@ -1260,9 +1318,11 @@ work}\label{resources-on-agromet-and-my-work}
   report :
   \url{http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018}
 \end{itemize}
-\chapter{Annex 2}\label{annex-2}
+\chapter{Outputs with different
+methods}\label{outputs-with-different-methods}
 
-Example of outputs with different methods, 2018-03-07 14:00:00
+Methods from left to right and top to bottom follow the order presented
+in Table \ref{tab:explvar}. Models built for 2018-03-07 14:00:00.
 \begin{center}\includegraphics[width=1\linewidth]{figure/2018-03-07_14} \end{center}
 
 \chapter{Additional resources}\label{additional-resources}
@@ -1297,18 +1357,6 @@ Example of outputs with different methods, 2018-03-07 14:00:00
 \item
   Machine Learning in R : \url{http://mlr-org.github.io/mlr/index.html}
 \end{itemize}
-\chapter{Details of my work}\label{details-of-my-work}
-\begin{itemize}
-\item
-  All my codes are available on my Github account :
-  \url{https://github.com/ldavadan}
-\item
-  My personal blog, made with Blogdown : \url{ldavadan.github.io}
-\item
-  Contribution to ``Crop and Grassland conditions in early August''
-  report :
-  \url{http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018}
-\end{itemize}
 \backmatter
 
 \chapter*{References}\label{references}
@@ -1322,17 +1370,36 @@ Example of outputs with different methods, 2018-03-07 14:00:00
 \setlength{\parskip}{8pt}
 
 \hypertarget{refs}{}
-\hypertarget{ref-angel2000}{}
-Angel, E. (2000). \emph{Intere computer graphics : A top-down approach
-with opengl}. Boston, MA: Addison Wesley Longman.
+\hypertarget{ref-chai2014}{}
+Chai, T., \& Draxler, R. (2014). Root mean square error (rmse) or mean
+absolute error (mae)? -- Arguments against avoiding rmse in the
+literature. \emph{Geoscientific Model Development}, 1247--1250.
 
-\hypertarget{ref-angel2001}{}
-Angel, E. (2001a). \emph{Batch-file computer graphics : A bottom-up
-approach with quicktime}. Boston, MA: Wesley Addison Longman.
+\hypertarget{ref-dewitte2004}{}
+Dewitte, S., \& others. (2004). Measurement and uncertainty of the
+long-term total solar irradiance trend. \emph{Solar Physics}, 209--216.
 
-\hypertarget{ref-angel2002a}{}
-Angel, E. (2001b). \emph{Test second book by angel}. Boston, MA: Wesley
-Addison Longman.
+\hypertarget{ref-hooyberghs2006}{}
+Hooyberghs, J., \& others. (2006). Spatial interpolation of ambient
+ozone concentrations from sparse monitoring points in belgium. \emph{J.
+Environ. Monit.}, 1129--1135.
+
+\hypertarget{ref-janssen2008}{}
+Janssen, S., \& others. (2008). Spatial interpolation of air pollution
+measurements using corine land cover data. \emph{Atmospheric
+Environment, Volume 42, Issue 20}, 4884--4903.
+
+\hypertarget{ref-racca2011}{}
+Racca, P., \& others. (2011). Decision support systems in agriculture :
+Administration of meteorological data, use of geographic information
+systems (gis) and validation methods in crop protection warning service.
+\emph{Efficient Decision Support Systems - Practice and Challenges from
+Current to Future}, 331--354.
+
+\hypertarget{ref-zeuner2007}{}
+Zeuner, T., \& Kleinhenz, B. (2007). Use of geographic information
+systems in warning services for late blight. \emph{Bulletin OEPP/EPPO},
+327--334.
 
 % Index?
 

@@ -19,9 +19,9 @@ If you feel it necessary to include an appendix, it goes here.
 - Contribution to "Crop and Grassland conditions in early August" report : [http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018](http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018)
 
 
-# Annex 2
+# Outputs with different methods
 
-Example of outputs with different methods, 2018-03-07 14:00:00
+Methods from left to right and top to bottom follow the order presented in Table \@ref(tab:explvar). Models built for 2018-03-07 14:00:00.
 
 ```{r maps, echo=FALSE, fig.align='center', out.width="100%"}
 include_graphics(path = "figure/2018-03-07_14.png")
@@ -54,10 +54,3 @@ include_graphics(path = "figure/2018-03-07_14.png")
 - Machine Learning in R : [http://mlr-org.github.io/mlr/index.html](http://mlr-org.github.io/mlr/index.html)
 
 
-# Details of my work
-
-- All my codes are available on my Github account : [https://github.com/ldavadan](https://github.com/ldavadan)
-
-- My personal blog, made with Blogdown : [ldavadan.github.io](ldavadan.github.io)
-
-- Contribution to "Crop and Grassland conditions in early August" report : [http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018](http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018)

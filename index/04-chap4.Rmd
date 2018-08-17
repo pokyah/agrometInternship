@@ -148,7 +148,7 @@ This figure shows the output based on a model depending on ::todo::, the equatio
 
 ```
 
-These maps show whether the models are relevant. The _Annex 2_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the following :
+These maps show whether the models are relevant. The _Appendix B_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the following :
 \[
 T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
 \]
@@ -163,7 +163,7 @@ Longitude and latitude are expressed in meters because the CRS used is Belgian L
 
 As a reminder, the objective of the project is to provide weather predictions. These predictions will feed decision support tools to monitor crop diseases like potato late blight and to operate in fields at the right times.
 
-Results have some limits that have to be discussed. The first limit is the period used to build models. Indeed, models were built with data from 2 and a half years. This period could be too short to be relevant. Moreover, this period is not necessarily realistic of a mean period. According to RMI, 2015, 2017 and 2018 are hot and dry years compared to normal year, 2016 were a wet year and 2018. This is shown on the Figure \@ref(fig:rmi).
+Results have some limits that have to be discussed. The first limit is the period used to build models. Indeed, models were built with data from 2 and a half years. This period could be too short to be relevant. Moreover, this period is not necessarily representative of a mean period. According to RMI, 2015, 2017 and 2018 are hot and dry years compared to normal year, 2016 were a wet year. This is shown on the Figure \@ref(fig:rmi).
 
 ```{r rmi, echo=FALSE, fig.cap="Precipitations, temperatures and insolation, annual values", out.height="300px", out.width="400px", fig.align='center'}
 include_graphics(path = "figure/rmi_climate_data.png")
@@ -171,15 +171,10 @@ include_graphics(path = "figure/rmi_climate_data.png")
 
 Models were built with some explanatory variables but they may be insufficient. Adding new variables like temperature predictions from RMI could improve models. Only 27 stations are used to build these models, adding RMI stations network could be a solution to improve models too. However, weather stations from different networks have differences in their measures, checking interoperability is very important for that and making corrections is essential.
 
-Multiple linear regression is the only statistical method used to build models, but going forward, other methods will be compared like ANN and different kriging methods. The major constraint will be time computation which is relatively long.
+Multiple linear regression is the only statistical method used to build models, but going forward, other methods will be compared like ANN and different kriging methods. The major constraint will be time computation which is relatively long. There is a lot of possible combinations of explanatory variables to compare, choices must be done because of the time computation. These choices sometimes can be subjective and not based on scientific literature.
 
 Beyond these limits, other points can be discussed. For example, solar irradiance data are provided by EUMETSAT and by PAMESEB stations. These data have to be compared because both sources are used. Data from stations are used to build models, data from EUMETSAT for spatialization. The comparison shows a correlation around 0.95. As a consequence, there is nothing wrong with it.
 
 With the aim to provide data for agronomic utilisation, there is an interest to compare mean error observed in Wallonia and this error in agricultural areas to be sure of the accuracy of predictions. ::todo::
 
 Assuming that no other models will be better than those presented, there will be a question of transparency for the project. Indeed, as a public project within the scope of public agencies, the work that is done has to be transparent. In that way, models will be clearly presented. If one static model is chosen for predictions, this will be clear and transparent. But if the chosen method is a dynamic one, using computation every hour, the method used for each hour could be different, and that will have to be mentioned.
-
-
-
-
-
