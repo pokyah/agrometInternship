@@ -1002,97 +1002,37 @@ resampling strategy.
 The benchmark took about 30 hours, i.e.~3 hours per method. Computations
 are very long and results are very large. Each method represents more
 than 1 Gigabyte of data.
-\begin{longtable}[]{@{}clc@{}}
-\toprule
-\begin{minipage}[b]{0.18\columnwidth}\centering\strut
-Statistical Method\strut
-\end{minipage} & \begin{minipage}[b]{0.21\columnwidth}\raggedright\strut
-ID\strut
-\end{minipage} & \begin{minipage}[b]{0.52\columnwidth}\centering\strut
-Explanatory Variables\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.Long.Lat}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Longitude \& Latitude\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.Long.Lat.Elev}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Longitude \& Latitude \& Elevation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.SolIrr+1bestVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Solar Irradiance \& best variable based on an hourly linear correlation
-computation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.SolIrr+2bestsVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Solar Irradiance \& 2 bests variables based on an hourly linear
-correlation computation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.SolIrr+3bestsVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Solar Irradiance \& 3 bests variables based on an hourly linear
-correlation computation\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.2bestsVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-2 bests variables based on linear correlation computation for every
-hour\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.3bestsVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-3 bests variables based on linear correlation computation for every
-hour\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.4bestsVar}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-4 bests variables based on linear correlation computation for every
-hour\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.Vars.r\textgreater{}0,5}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Variables with a linear correlation greater than 0.5\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.18\columnwidth}\centering\strut
-Multiple Linear Regression\strut
-\end{minipage} & \begin{minipage}[t]{0.21\columnwidth}\raggedright\strut
-\emph{lm.Vars.r\textgreater{}0,3}\strut
-\end{minipage} & \begin{minipage}[t]{0.52\columnwidth}\centering\strut
-Variables with a linear correlation greater than 0.3\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
-Table : \label{tab:explvar} Combinations of explanatory variables used
+\begin{table}
 
+\caption{\label{tab:explvar}Combination of explanatory variables used}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{l|l|l}
+\hline
+\textbf{Statistical Method} & \textbf{ID} & \textbf{Explanatory variables}\\
+\hline
+Multiple Linear Regression & lm.Long.Lat & Longitude \& Latitude\\
+\hline
+Multiple Linear Regression & lm.Long.Lat.Elev & Longitude \& Latitude \& Elevation\\
+\hline
+Multiple Linear Regression & lm.SolIrr+1bestVar & Solar Irradiance \& best variable based on an hourly linear correlation computation\\
+\hline
+Multiple Linear Regression & lm.SolIrr+2bestsVar & Solar Irradiance \& 2 bests variables based on an hourly linear correlation computation\\
+\hline
+Multiple Linear Regression & lm.SolIrr+3bestsVar & Solar Irradiance \& 3 bests variables based on an hourly linear correlation computation\\
+\hline
+Multiple Linear Regression & lm.2bestsVar & 2 bests variables based on linear correlation computation for every hour\\
+\hline
+Multiple Linear Regression & lm.3bestsVar & 3 bests variables based on linear correlation computation for every hour\\
+\hline
+Multiple Linear Regression & lm.4bestsVar & 4 bests variables based on linear correlation computation for every hour\\
+\hline
+Multiple Linear Regression & lm.Vars.r>0,5 & Variables with a linear correlation greater than 0.5\\
+\hline
+Multiple Linear Regression & lm.Vars.r>0,3 & Variables with a linear correlation greater than 0.3\\
+\hline
+\end{tabular}}
+\end{table}
 \subsection{Comparison of methods}\label{comparison-of-methods}
 
 Once benchmark results are available, comparison of methods is possible.
@@ -1232,22 +1172,33 @@ according to the error. A large standard error is related to an opacity
 and vice-versa.
 
 The Figure \ref{fig:map} shows an output for one hour based on the
-method ::todo::. To build this map, some objects are needed : an object
-containing data (temperature and standard error) for the grid and a
-spatial vector object containing boundaries of Wallonia, but also the
-name of the variable to display. Then, some conditions can be chosen,
-like the display of the layer containing error, the display of the
-legend for error, the way to build the legend and its classes. Some
-arguments enable to customize the map with titles and comments. The
-function is thus reusable for other usages. For example, the function
-builds maps spatializing hydric deficit in Wallonia.
+method where explanatory variables are Solar irradiance and the 2
+variables with the best linear correlation with temperature. To build
+this map, some objects are needed : an object containing data
+(temperature and standard error) for the grid and a spatial vector
+object containing boundaries of Wallonia, but also the name of the
+variable to display. Then, some conditions can be chosen, like the
+display of the layer containing error, the display of the legend for
+error, the way to build the legend and its classes. Some arguments
+enable to customize the map with titles and comments. The function is
+thus reusable for other usages. For example, the function builds maps
+spatializing hydric deficit in Wallonia.
 
-This figure shows the output based on a model depending on ::todo::, the
-equation is the following one :
+The figure has 2 maps. The one on the left is the map with
+spatialization of temperature, the right one has the layer with error on
+the temperature layer. It is possible to see regions where errors are
+more important.
+\begin{figure}
+\includegraphics[width=1\linewidth]{figure/maperror} \caption{Example of an output for 2018-05-02 14:00:00 (left : without error ; right : with error)}\label{fig:map}
+\end{figure}
+This figure shows the output based on a model depending on the method
+where explanatory variables are Solar irradiance and the 2 variables
+with the best linear correlation with temperature, the equation of the
+model is the following one :
 
-{[}
-
-{]}
+\[
+T = 15.59716 + -0.00629 \times Elevation + -0.00197 \times Herbaceous + 0.00206 \times SolarIrradiance
+\]
 
 These maps show whether the models are relevant. The \emph{Appendix B}
 shows maps made with all methods for one hour. These maps show

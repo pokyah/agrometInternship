@@ -28,43 +28,15 @@ Performances were measured with a Leave-One-Out cross-validation resampling stra
 
 The benchmark took about 30 hours, i.e. 3 hours per method. Computations are very long and results are very large. Each method represents more than 1 Gigabyte of data.
 
-------------------------------------------------------------------------------------------------------------------
-  Statistical Method   ID                                   Explanatory Variables
----------------------  ------------------------  -----------------------------------------------------------------
-Multiple Linear         _lm.Long.Lat_                 Longitude & Latitude
-Regression
-
-Multiple Linear         _lm.Long.Lat.Elev_            Longitude & Latitude & Elevation
-Regression
-
-Multiple Linear         _lm.SolIrr+1bestVar_          Solar Irradiance & best variable 
-Regression                                          based on an hourly linear correlation 
-                                                    computation 
-                                                     
-Multiple Linear         _lm.SolIrr+2bestsVar_         Solar Irradiance & 2 bests variables
-Regression                                          based on an hourly linear correlation 
-                                                    computation 
-                                                     
-Multiple Linear         _lm.SolIrr+3bestsVar_         Solar Irradiance & 3 bests variables 
-Regression                                          based on an hourly linear correlation 
-                                                    computation 
-                                                     
-Multiple Linear         _lm.2bestsVar_                2 bests variables based on linear correlation 
-Regression                                          computation for every hour
-                                                     
-Multiple Linear         _lm.3bestsVar_               3 bests variables based on linear correlation 
-Regression                                          computation for every hour
-                                                     
-Multiple Linear         _lm.4bestsVar_                4 bests variables based on linear correlation 
-Regression                                          computation for every hour
-                                                     
-Multiple Linear         _lm.Vars.r>0,5_               Variables with a linear correlation greater than 0.5
-Regression
-
-Multiple Linear         _lm.Vars.r>0,3_               Variables with a linear correlation greater than 0.3
-Regression
-------------------------------------------------------------------------------------------------------------------
-Table : (\#tab:explvar) Combinations of explanatory variables used
+```{r explvar, echo=FALSE}
+explvar = data.frame(Statistical_Method = c("Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression", "Multiple Linear Regression"),
+                     ID = c("lm.Long.Lat", "lm.Long.Lat.Elev", "lm.SolIrr+1bestVar", "lm.SolIrr+2bestsVar", "lm.SolIrr+3bestsVar", "lm.2bestsVar", "lm.3bestsVar", "lm.4bestsVar", "lm.Vars.r>0,5", "lm.Vars.r>0,3"),
+                     Explanatory_Variables = c("Longitude & Latitude", "Longitude & Latitude & Elevation", "Solar Irradiance & best variable based on an hourly linear correlation computation", "Solar Irradiance & 2 bests variables based on an hourly linear correlation computation", "Solar Irradiance & 3 bests variables based on an hourly linear correlation computation", "2 bests variables based on linear correlation computation for every hour", "3 bests variables based on linear correlation computation for every hour", "4 bests variables based on linear correlation computation for every hour", "Variables with a linear correlation greater than 0.5", "Variables with a linear correlation greater than 0.3"))
+colnames(explvar) <- c("Statistical Method", "ID", "Explanatory variables")
+knitr::kable(explvar, caption = "Combination of explanatory variables used") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  row_spec(0, bold = TRUE)
+```
 
 ### Comparison of methods
 
@@ -121,17 +93,19 @@ These models can be observed on maps. For that purpose, functions building maps 
 
 Models built from physical stations data are applied to the 1 km² grid cells. Then, the temperature is mapped with a color palette similar to the one of RMI. Class breaks are based on quantiles of temperature values. Standard error is computed for each cell and it is shown on the map with a white layer which has different levels of transparency according to the error. A large standard error is related to an opacity and vice-versa.
 
-The Figure \@ref(fig:map) shows an output for one hour based on the method ::todo::. To build this map, some objects are needed : an object containing data (temperature and standard error) for the grid and a spatial vector object containing boundaries of Wallonia, but also the name of the variable to display. Then, some conditions can be chosen, like the display of the layer containing error, the display of the legend for error, the way to build the legend and its classes. Some arguments enable to customize the map with titles and comments. The function is thus reusable for other usages. For example, the function builds maps spatializing hydric deficit in Wallonia.
+The Figure \@ref(fig:map) shows an output for one hour based on the method where explanatory variables are Solar irradiance and the 2 variables with the best linear correlation with temperature. To build this map, some objects are needed : an object containing data (temperature and standard error) for the grid and a spatial vector object containing boundaries of Wallonia, but also the name of the variable to display. Then, some conditions can be chosen, like the display of the layer containing error, the display of the legend for error, the way to build the legend and its classes. Some arguments enable to customize the map with titles and comments. The function is thus reusable for other usages. For example, the function builds maps spatializing hydric deficit in Wallonia.
 
-This figure shows the output based on a model depending on ::todo::, the equation is the following one :
+The figure has 2 maps. The one on the left is the map with spatialization of temperature, the right one has the layer with error on the temperature layer. It is possible to see regions where errors are more important.
+
+```{r map, echo=FALSE, fig.cap="Example of an output for 2018-05-02 14:00:00 (left : without error ; right : with error)", out.width="100%"}
+include_graphics("figure/maperror.png")
+```
+
+This figure shows the output based on a model depending on the method where explanatory variables are Solar irradiance and the 2 variables with the best linear correlation with temperature, the equation of the model is the following one :
 
 \[
 T = 15.59716 + -0.00629 \times Elevation + -0.00197 \times Herbaceous + 0.00206 \times SolarIrradiance
 \]
-
-```{r map, echo=FALSE, fig.cap="Example of an output for one hour (date)"}
-
-```
 
 These maps show whether the models are relevant. The _Appendix B_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the following :
 \[
