@@ -1036,7 +1036,7 @@ is dynamic throughout hours and, in this way, the model is adapted to
 the evaluated hour.
 \begin{figure}
 
-{\centering \includegraphics[width=0.9\linewidth]{figure/meanerror} 
+{\centering \includegraphics[width=1\linewidth]{figure/meanerror} 
 
 }
 
@@ -1064,7 +1064,7 @@ coordinates and elevation is widely better than the two others which are
 more similar but with a relevant difference.
 \begin{figure}
 
-{\centering \includegraphics[width=0.9\linewidth]{figure/barchart} 
+{\centering \includegraphics[width=1\linewidth]{figure/barchart} 
 
 }
 
@@ -1131,7 +1131,7 @@ arguments enable to customize the map with titles and comments. The
 function is thus reusable for other usages. For example, the function
 builds maps spatializing hydric deficit in Wallonia.
 
-This figures show the output based on a model depending on ::todo::, the
+This figure shows the output based on a model depending on ::todo::, the
 equation is the following one :
 
 {[}
@@ -1146,9 +1146,15 @@ others. The other models are more similar but show that some of them are
 more reliable because the error is smaller. The better model is the
 second one on the first row. It is corresponding to the the model
 depending on longitude, latitude and elevation. For this hour, the model
-is the folowing : \[
+is the following : \[
 T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
-\] ::todo:: interpretation
+\]
+
+Longitude and latitude are expressed in meters because the CRS used is
+Belgian Lambert 2008. That is why their coefficients are about 1e-05.
+For information, values of the coordinates are about 6e06.
+
+::todo:: interpretation
 
 ::todo:: add example equations models tab
 

@@ -104,7 +104,7 @@ From the 10 methods compared, MAE and RMSE are computed and compared. The result
 
 On the three best methods, one is better than the others. That is the model built from an equation using longitude, latitude and altitude as explanatory variables. Tests realized on two months of data have already shown that altitude is a powerful explanatory variable. The two other methods are based on the computation of the linear correlations with temperature, with or without solar irradiance as mandatory variable have a similar error. However, they are more interesting because the equation is dynamic throughout hours and, in this way, the model is adapted to the evaluated hour.
 
-```{r meanerror, echo=FALSE, fig.cap="Errors (RMSE and MAE) of methods", out.width="90%", fig.align='center'}
+```{r meanerror, echo=FALSE, fig.cap="Errors (RMSE and MAE) of methods", out.width="100%", fig.align='center'}
 include_graphics(path = "figure/meanerror.png")
 ```
 
@@ -118,7 +118,7 @@ Performances of methods can be compared computing their rank for each hour. The 
 
 This barchart corroborates the precedent graph. The method based on coordinates and elevation is widely better than the two others which are more similar but with a relevant difference.
 
-```{r barchart, echo=FALSE, fig.cap="Comparison of methods by rank", out.width="90%", fig.align='center'}
+```{r barchart, echo=FALSE, fig.cap="Comparison of methods by rank", out.width="100%", fig.align='center'}
 include_graphics(path = "figure/barchart.png")
 ```
 
@@ -138,7 +138,7 @@ Models built from physical stations data are applied to the 1 km² grid cells. T
 
 The Figure \@ref(fig:map) shows an output for one hour based on the method ::todo::. To build this map, some objects are needed : an object containing data (temperature and standard error) for the grid and a spatial vector object containing boundaries of Wallonia, but also the name of the variable to display. Then, some conditions can be chosen, like the display of the layer containing error, the display of the legend for error, the way to build the legend and its classes. Some arguments enable to customize the map with titles and comments. The function is thus reusable for other usages. For example, the function builds maps spatializing hydric deficit in Wallonia.
 
-This figures show the output based on a model depending on ::todo::, the equation is the following one :
+This figure shows the output based on a model depending on ::todo::, the equation is the following one :
 
 \[
 
@@ -148,10 +148,13 @@ This figures show the output based on a model depending on ::todo::, the equatio
 
 ```
 
-These maps show whether the models are relevant. The _Annex 2_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the folowing :
+These maps show whether the models are relevant. The _Annex 2_ shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the following :
 \[
 T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
 \]
+
+Longitude and latitude are expressed in meters because the CRS used is Belgian Lambert 2008. That is why their coefficients are about 1e-05. For information, values of the coordinates are about 6e06.
+
 ::todo:: interpretation
 
 ::todo:: add example equations models tab
