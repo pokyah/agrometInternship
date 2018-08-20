@@ -489,17 +489,17 @@ Each PAMESEB station has 5 basic sensors :
 
 \subsection{Context}\label{context}
 
-The European directive 2009/128/CE ::todo:: imposes member-states to set
-up tools that allow for a more rational use of crop protection products.
-Among these tools, agricultural warning systems, based on crop
-monitoring models for the control of pests and diseases are widely
-adopted and have proved their efficiency. However, due to the difficulty
-to get meteorological data at high spatial resolution (at the parcel
-scale), they still are underused. The use of geostatistical tools
-(Kriging, Multiple Regressions, ANN, etc.) makes it possible to
-interpolate data provided by physical weather stations in such a way
-that a high spatial resolution network (mesh size of 1 km2) of virtual
-weather stations could be generated.
+The European directive 2009/128/CE imposes member-states to set up tools
+that allow for a more rational use of crop protection products. Among
+these tools, agricultural warning systems, based on crop monitoring
+models for the control of pests and diseases are widely adopted and have
+proved their efficiency. However, due to the difficulty to get
+meteorological data at high spatial resolution (at the parcel scale),
+they still are underused. The use of geostatistical tools (Kriging,
+Multiple Regressions, ANN, etc.) makes it possible to interpolate data
+provided by physical weather stations in such a way that a high spatial
+resolution network (mesh size of 1 km2) of virtual weather stations
+could be generated.
 
 That is the objective of the AGROMET project. Moreover, some CRA-W's
 units and other partners are interested in to build models against crop
@@ -971,18 +971,16 @@ to run machine learning is available. This package \textbf{mlr} is very
 complete to build models, make predictions and evaluate performances.
 
 Machine learning in R offers a common and simplified interface for all
-statistical methods implemented in the package.
-
-With this package, run a benchmark with several statistical methods can
-be done on data from a period. This benchmark returns a lot of
-informations.
+statistical methods implemented in the package. With this package, run a
+benchmark with several statistical methods can be done on data from a
+period. This benchmark returns a lot of informations.
 
 It is possible to compare statistical methods through measures of error
 like RMSE or MAE. Comparing several combinations of explanatory
 variables is also possible.
 \begin{figure}
 
-{\centering \includegraphics[width=0.5\linewidth]{figure/mlr_workflow} 
+{\centering \includegraphics[width=0.6\linewidth]{figure/mlr_workflow} 
 
 }
 
@@ -1227,14 +1225,15 @@ depending on longitude and latitude is very simplistic compared to the
 others. The other models are more similar but show that some of them are
 more reliable because the error is smaller. The better model is the
 second one on the first row. It is corresponding to the the model
-depending on longitude, latitude and elevation. For this hour, the model
-is the following : \[
+depending on longitude, latitude and elevation. For this hour, the
+better model is the following : \[
 T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
 \]
 
 Longitude and latitude are expressed in meters because the CRS used is
-Belgian Lambert 2008. That is why their coefficients are about 1e-05.
-For information, values of the coordinates are about 6e06.
+Belgian Lambert 2008. That is why their coefficients are about
+1\(e\)-05. For information, values of the coordinates are about
+6\$e\$06.
 
 \section{Discussion}\label{discussion}
 
@@ -1303,17 +1302,21 @@ Principal data have been recovered to be integrated as explanatory
 variables and first models have been built. Now, the routine is ready to
 build further models. First results are encouraging because models are
 relatively relevant and they can be improved adding new explanatory
-variables and using other statistical methods. The project will end in
-2020, that leaves time for building better models and developing
-decision support tools for crop monitoring. Therupon, the project will
-have an importance and some foreign organisations are already interested
-by the project.
+variables and using other statistical methods. Indeed, comparing models
+with a lot of different methods will be possible to find the best
+method, i.e.~the method with the smallest error (RMSE).
+
+The project will end in 2020, that leaves time for building better
+models and developing decision support tools for crop monitoring.
+Therupon, the project will have an importance and some foreign
+organisations are already interested by the project (Germany and
+Slovenia).
 
 Beyond the technical skills I developed during my internship, as the
 utilisation of R language to interpolate spatial data and manipulating
-them, the discovery of developer applications and tools, I also
-developed skills in collaborative work. It was a very enriching
-experience.
+them, the discovery of developer applications and tools like Docker or
+Ubuntu, I also developed skills in collaborative work, in particular
+with GitHub. It was a very enriching experience.
 
 Outside the AGROMET project, I worked for other projects. I contributed
 to the report on drought in this summer 2018 in Wallonia, upgrading
@@ -1326,6 +1329,9 @@ for other projects.
 \chapter{Resources on AGROMET and my
 work}\label{resources-on-agromet-and-my-work}
 \begin{itemize}
+\item
+  European directive 2009/128/CE :
+  \url{https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex\%3A32009L0128}
 \item
   Technical details about PAMESEB stations :
   \url{https://www.pameseb.be/meteo_intro/infos_techniques.html}

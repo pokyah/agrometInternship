@@ -51,7 +51,7 @@ Each PAMESEB station has 5 basic sensors :
 
 ### Context
 
-The European directive 2009/128/CE ::todo:: imposes member-states to set up tools that allow for a more rational use of crop protection products. Among these tools, agricultural warning systems, based on crop monitoring models for the control of pests and diseases are widely adopted and have proved their efficiency. However, due to the difficulty to get meteorological data at high spatial resolution (at the parcel scale), they still are underused. The use of geostatistical tools (Kriging, Multiple Regressions, ANN, etc.) makes it possible to interpolate data provided by physical weather stations in such a way that a high spatial resolution network (mesh size of 1 km2) of virtual weather stations could be generated. 
+The European directive 2009/128/CE imposes member-states to set up tools that allow for a more rational use of crop protection products. Among these tools, agricultural warning systems, based on crop monitoring models for the control of pests and diseases are widely adopted and have proved their efficiency. However, due to the difficulty to get meteorological data at high spatial resolution (at the parcel scale), they still are underused. The use of geostatistical tools (Kriging, Multiple Regressions, ANN, etc.) makes it possible to interpolate data provided by physical weather stations in such a way that a high spatial resolution network (mesh size of 1 km2) of virtual weather stations could be generated. 
 
 That is the objective of the AGROMET project. Moreover, some CRA-W's units and other partners are interested in to build models against crop diseases like potato late blight or orange midge which depends on meteorological conditions.
 

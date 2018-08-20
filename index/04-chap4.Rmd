@@ -62,16 +62,16 @@ The entire methodology is detailed in the _Appendix A_ (Spatialization methodolo
 
 All of our work is done on RStudio. It is a very powerful open-source software for R. Moreover, a R package which provides the infrastructure to run machine learning is available. This package **mlr** is very complete to build models, make predictions and evaluate performances.
 
-Machine learning in R offers a common and simplified interface for all statistical methods implemented in the package.
-
-With this package, run a benchmark with several statistical methods can be done on data from a period. This benchmark returns a lot of informations.
+Machine learning in R offers a common and simplified interface for all statistical methods implemented in the package. With this package, run a benchmark with several statistical methods can be done on data from a period. This benchmark returns a lot of informations.
 
 It is possible to compare statistical methods through measures of error like RMSE or MAE. Comparing several combinations of explanatory variables is also possible.
 
-```{r mlr, echo=FALSE, fig.cap="mlr workflow", out.width="50%", fig.align='center'}
+```{r mlr, echo=FALSE, fig.cap="mlr workflow", out.width="60%", fig.align='center'}
 include_graphics(path = "figure/mlr_workflow.png")
 ```
 
 The Figure \@ref(fig:mlr) shows the general workflow.
 
 This package has an important community which improves it regularly. A lot of statistical methods are implemented from other packages like _tgp_, _kknn_ or _DiceKriging_.
+
+

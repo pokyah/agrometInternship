@@ -8,6 +8,8 @@ If you feel it necessary to include an appendix, it goes here.
 
 # Resources on AGROMET and my work
 
+- European directive 2009/128/CE : [https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32009L0128](https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32009L0128)
+
 - Technical details about PAMESEB stations : [https://www.pameseb.be/meteo_intro/infos_techniques.html](https://www.pameseb.be/meteo_intro/infos_techniques.html)
 
 - Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
