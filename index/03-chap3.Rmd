@@ -47,14 +47,12 @@ After a long data preparation with transformation of CRS from WGS84 to Belgian L
 
 Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
 
+Buffers of 500 meters radius and grid cells of 1km² were compared but buffers were chosen because they have more relevance when they are compared to physical stations where only buffers were computed.
 
 ```{r clcperc, echo=FALSE}
 knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
   row_spec(0, bold = TRUE)
 ```
-
-
-Buffers of 500 meters radius and grid cells of 1km² were compared but buffers were chosen because they have more relevance when they are compared to physical stations where only buffers were computed.
 
 #### Digital Terrain Model
 

@@ -11,6 +11,6 @@
 
 - leaves wetness : _humidité du feuillage_
 
-
+- forecast : _prévision_
 
 

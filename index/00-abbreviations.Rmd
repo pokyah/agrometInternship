@@ -18,5 +18,5 @@
 
 - SSH : Secure Shell
 
-- WGS84 : Word Geodetic System 1984
+- WGS84 : World Geodetic System 1984
 

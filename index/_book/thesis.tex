@@ -191,7 +191,7 @@ prédiction de la température.
 \item
   SSH : Secure Shell
 \item
-  WGS84 : Word Geodetic System 1984
+  WGS84 : World Geodetic System 1984
 \end{itemize}
 }
 
@@ -209,6 +209,8 @@ prédiction de la température.
   orange midge : \emph{cécidomyie orange du blé}
 \item
   leaves wetness : \emph{humidité du feuillage}
+\item
+  forecast : \emph{prévision}
 \end{itemize}
 }
 
@@ -332,7 +334,7 @@ It was completely written with RMarkdown and \LaTeX.
     \item
       SSH : Secure Shell
     \item
-      WGS84 : Word Geodetic System 1984
+      WGS84 : World Geodetic System 1984
     \end{itemize}
   \end{abbreviations}
   \begin{definitions}
@@ -349,6 +351,8 @@ It was completely written with RMarkdown and \LaTeX.
       orange midge : \emph{cécidomyie orange du blé}
     \item
       leaves wetness : \emph{humidité du feuillage}
+    \item
+      forecast : \emph{prévision}
     \end{itemize}
   \end{definitions}
   \printindex
@@ -464,7 +468,8 @@ promote agrometeorology by taking climatic conditions into account in
 the walloon agriculture. PAMESEB has 30 weather stations in Wallonia.
 These stations provide measures for ways to fight crop diseases like
 late blight and wheat septoria. Stations have a local acquisition unit
-for hourly data recording.
+for hourly data recording. The PAMESEB network has an important place in
+the AGROMET project because it provides data for it.
 
 Each PAMESEB station has 5 basic sensors :
 \begin{itemize}
@@ -480,9 +485,6 @@ Each PAMESEB station has 5 basic sensors :
 \item
   Rain gauge
 \end{itemize}
-The PAMESEB network has an important place in the AGROMET project
-because it provides data for it.
-
 \section{The AGROMET project}\label{the-agromet-project}
 
 \subsection{Context}\label{context}
@@ -504,12 +506,14 @@ units and other partners are interested in to build models against crop
 diseases like potato late blight or orange midge which depends on
 meteorological conditions.
 
-The project was inspired by several academic papers like \emph{Use of
-geographic information systems in warning services for late blight}
-(Zeuner 2007) and \emph{Decision Support Systems in Agriculture :
-Administration of Meteorological Data, Use of Geographic Information
-Systems(GIS) and Validation Methods in Crop Protection Warning Service}
-(Racca \emph{et al.} 2011) ::todo::
+The project was inspired by several academic papers dealing with spatial
+interpolation of data like \emph{Use of geographic information systems
+in warning services for late blight} (Zeuner, 2007), \emph{Decision
+Support Systems in Agriculture : Administration of Meteorological Data,
+Use of Geographic Information Systems(GIS) and Validation Methods in
+Crop Protection Warning Service} (Racca \emph{et al.}, 2011) and
+\emph{Spatial interpolation of ambient ozone concentrations from sparse
+monitoring points in Belgium} (Hooyberghs, 2006).
 
 \subsection{Objectives}\label{objectives}
 
@@ -747,6 +751,10 @@ buffers have a radius of 100 meters for physical stations and 500 meters
 for virtual stations (because each station covers 1 km²). The Table
 \ref{tab:clcperc} below shows the structure of the data frame where each
 station identified by an ID has the percentage of cover for each class.
+
+Buffers of 500 meters radius and grid cells of 1km² were compared but
+buffers were chosen because they have more relevance when they are
+compared to physical stations where only buffers were computed.
 \begin{table}
 
 \caption{\label{tab:clcperc}Distribution of land covers around physical stations}
@@ -764,10 +772,6 @@ station identified by an ID has the percentage of cover for each class.
 \bottomrule
 \end{tabular}
 \end{table}
-Buffers of 500 meters radius and grid cells of 1km² were compared but
-buffers were chosen because they have more relevance when they are
-compared to physical stations where only buffers were computed.
-
 \subsubsection{Digital Terrain Model}\label{digital-terrain-model}
 
 In the same way as land cover, the terrain model could have an impact on
@@ -893,11 +897,13 @@ From \emph{machinelearningmastery.com} :
 \begin{quote}
 Supervised learning is where you have input variables (x) and an output
 variable (Y) and you use an algorithm to learn the mapping function from
-the input to the output : Y = f(X). The goal is to approximate the
-mapping function so well that when you have new input data (x), you can
-predict the output variables (Y) for that data. It is called supervised
-learning because the process of an algorithm learning from the training
-dataset can be thought of as a teacher supervising the learning process
+the input to the output : Y = f(X).\\
+The goal is to approximate the mapping function so well that when you
+have new input data (x), you can predict the output variables (Y) for
+that data.\\
+It is called supervised learning because the process of an algorithm
+learning from the training dataset can be thought of as a teacher
+supervising the learning process
 \end{quote}
 In this learning, the algorithm tries to learn from examples we give to
 it and then it returns a model of prediction. Classification and
@@ -954,7 +960,8 @@ sample where the model is tested to compute the error and then doing it
 again as many times as the number of samples. The error measured for our
 models will be the RMSE and MAE.
 
-The entire methodology is detailed in the \emph{Appendix A}.
+The entire methodology is detailed in the \emph{Appendix A}
+(Spatialization methodology).
 
 \section{Machine Learning in R}\label{machine-learning-in-r}
 
@@ -973,6 +980,19 @@ informations.
 It is possible to compare statistical methods through measures of error
 like RMSE or MAE. Comparing several combinations of explanatory
 variables is also possible.
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figure/mlr_workflow} 
+
+}
+
+\caption{mlr workflow}\label{fig:mlr}
+\end{figure}
+The Figure \ref{fig:mlr} shows the general workflow.
+
+This package has an important community which improves it regularly. A
+lot of statistical methods are implemented from other packages like
+\emph{tgp}, \emph{kknn} or \emph{DiceKriging}.
 
 \chapter{Results and discussion}\label{results}
 
@@ -1157,7 +1177,7 @@ shows what are the bests variables and display the related error.
 \hline
 \end{tabular}}
 \end{table}
-\subsection{Vizualisation}\label{vizualisation}
+\subsection{Visualization}\label{visualization}
 
 These models can be observed on maps. For that purpose, functions
 building maps have been made with ggplot2 library from R for static maps
@@ -1216,24 +1236,12 @@ Longitude and latitude are expressed in meters because the CRS used is
 Belgian Lambert 2008. That is why their coefficients are about 1e-05.
 For information, values of the coordinates are about 6e06.
 
-::todo:: interpretation
-
-::todo:: add example equations models tab
-
 \section{Discussion}\label{discussion}
 
 As a reminder, the objective of the project is to provide weather
 predictions. These predictions will feed decision support tools to
 monitor crop diseases like potato late blight and to operate in fields
 at the right times.
-
-Results have some limits that have to be discussed. The first limit is
-the period used to build models. Indeed, models were built with data
-from 2 and a half years. This period could be too short to be relevant.
-Moreover, this period is not necessarily representative of a mean
-period. According to RMI, 2015, 2017 and 2018 are hot and dry years
-compared to normal year, 2016 were a wet year. This is shown on the
-Figure \ref{fig:rmi}.
 \begin{figure}
 
 {\centering \includegraphics[width=400px,height=300px]{figure/rmi_climate_data} 
@@ -1242,6 +1250,14 @@ Figure \ref{fig:rmi}.
 
 \caption{Precipitations, temperatures and insolation, annual values}\label{fig:rmi}
 \end{figure}
+Results have some limits that have to be discussed. The first limit is
+the period used to build models. Indeed, models were built with data
+from 2 and a half years. This period could be too short to be relevant.
+Moreover, this period is not necessarily representative of a mean
+period. According to RMI, 2015, 2017 and 2018 are hot and dry years
+compared to normal year, 2016 were a wet year. This is shown on the
+Figure \ref{fig:rmi}.
+
 Models were built with some explanatory variables but they may be
 insufficient. Adding new variables like temperature predictions from RMI
 could improve models. Only 27 stations are used to build these models,
@@ -1267,7 +1283,8 @@ consequence, there is nothing wrong with it.
 
 With the aim to provide data for agronomic utilisation, there is an
 interest to compare mean error observed in Wallonia and this error in
-agricultural areas to be sure of the accuracy of predictions. ::todo::
+agricultural areas to be sure of the accuracy of predictions. That has
+not be done yet.
 
 Assuming that no other models will be better than those presented, there
 will be a question of transparency for the project. Indeed, as a public
@@ -1281,7 +1298,28 @@ different, and that will have to be mentioned.
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
 
-::todo::
+At the end of this internship, the progress of the project is great.
+Principal data have been recovered to be integrated as explanatory
+variables and first models have been built. Now, the routine is ready to
+build further models. First results are encouraging because models are
+relatively relevant and they can be improved adding new explanatory
+variables and using other statistical methods. The project will end in
+2020, that leaves time for building better models and developing
+decision support tools for crop monitoring. Therupon, the project will
+have an importance and some foreign organisations are already interested
+by the project.
+
+Beyond the technical skills I developed during my internship, as the
+utilisation of R language to interpolate spatial data and manipulating
+them, the discovery of developer applications and tools, I also
+developed skills in collaborative work. It was a very enriching
+experience.
+
+Outside the AGROMET project, I worked for other projects. I contributed
+to the report on drought in this summer 2018 in Wallonia, upgrading
+graphics and building a template of the map of Wallonia. I also
+contributed to provide data from the API of the project to co-workers
+for other projects.
 
 \appendix
 

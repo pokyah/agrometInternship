@@ -36,7 +36,7 @@ The activities of the Unit are the mainly the following :
 - Decision support systems and information technologies for the management of multifunctional agriculture
 - Spatial information systems for the management of rural areas.
 
-PAMESEB is a non-profit organisation handle by the CRA-W which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording.
+PAMESEB is a non-profit organisation handle by the CRA-W which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording. The PAMESEB network has an important place in the AGROMET project because it provides data for it.
 
 Each PAMESEB station has 5 basic sensors :
 
@@ -46,7 +46,6 @@ Each PAMESEB station has 5 basic sensors :
 - Wind sensor
 - Rain gauge
 
-The PAMESEB network has an important place in the AGROMET project because it provides data for it.
 
 ## The AGROMET project
 
@@ -56,7 +55,7 @@ The European directive 2009/128/CE ::todo:: imposes member-states to set up tool
 
 That is the objective of the AGROMET project. Moreover, some CRA-W's units and other partners are interested in to build models against crop diseases like potato late blight or orange midge which depends on meteorological conditions.
 
-The project was inspired by several academic papers like _Use of geographic information systems in warning services for late blight_ (Zeuner 2007) and _Decision Support Systems in Agriculture : Administration of Meteorological Data, Use of Geographic Information Systems(GIS) and Validation Methods in Crop Protection Warning Service_ (Racca _et al._ 2011) ::todo::
+The project was inspired by several academic papers dealing with spatial interpolation of data like _Use of geographic information systems in warning services for late blight_ (Zeuner, 2007), _Decision Support Systems in Agriculture : Administration of Meteorological Data, Use of Geographic Information Systems(GIS) and Validation Methods in Crop Protection Warning Service_ (Racca _et al._, 2011) and _Spatial interpolation of ambient ozone concentrations from sparse monitoring points in Belgium_ (Hooyberghs, 2006).
 
 ### Objectives
 

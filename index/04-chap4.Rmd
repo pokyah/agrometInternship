@@ -28,8 +28,8 @@ In practice, most of machine learning uses supervised learning.
 
 From *machinelearningmastery.com* :
 
->Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn the mapping function from the input to the output : Y = f(X).
-The goal is to approximate the mapping function so well that when you have new input data (x), you can predict the output variables (Y) for that data.
+>Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn the mapping function from the input to the output : Y = f(X).  
+The goal is to approximate the mapping function so well that when you have new input data (x), you can predict the output variables (Y) for that data.  
 It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process
 
 In this learning, the algorithm tries to learn from examples we give to it and then it returns a model of prediction. Classification and regression are supervised machine learning.  
@@ -56,7 +56,7 @@ In our case, we will use several statistical methods to build our model like kri
 
 To measure performance of our predictions, we need to use a __cross-validation resampling strategy__. Several methods exist but we will use the Leave-One-Out cross-validation method. It consists to establish model based on every samples except one which will be the sample where the model is tested to compute the error and then doing it again as many times as the number of samples. The error measured for our models will be the RMSE and MAE.
 
-The entire methodology is detailed in the _Appendix A_.
+The entire methodology is detailed in the _Appendix A_ (Spatialization methodology).
 
 ## Machine Learning in R
 
@@ -68,3 +68,10 @@ With this package, run a benchmark with several statistical methods can be done 
 
 It is possible to compare statistical methods through measures of error like RMSE or MAE. Comparing several combinations of explanatory variables is also possible.
 
+```{r mlr, echo=FALSE, fig.cap="mlr workflow", out.width="50%", fig.align='center'}
+include_graphics(path = "figure/mlr_workflow.png")
+```
+
+The Figure \@ref(fig:mlr) shows the general workflow.
+
+This package has an important community which improves it regularly. A lot of statistical methods are implemented from other packages like _tgp_, _kknn_ or _DiceKriging_.
