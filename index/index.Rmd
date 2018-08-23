@@ -6,7 +6,7 @@ school: 'Bordeaux Sciences Agro'
 institution: 'Centre de Recherches Agronomiques Wallon (CRA-W)'
 address: 'Rue de Liroux 9, 5030 Gembloux, Belgique'
 advisor: '*Internship supervisor* : Thomas Goossens'
-supervisor: '*Supervisor* : Jean-Pierre Da Costa'
+supervisor: '*Institute supervisor* : Jean-Pierre Da Costa'
 # Delete line 6 if you only have one advisor
 department: 'U11'
 # degree: 'Bachelor of Arts'

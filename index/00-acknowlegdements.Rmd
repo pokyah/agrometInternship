@@ -1,1 +1,8 @@
-This is the content of my acknowledgements
+
+I would first like to thank my internship supervisor in the CRA-W Thomas Goossens who accompanied and guided me throughout my intersnhip. He has always been available to help me when I had questions or problems and he has always put me back in the right direction.
+
+I would like to thank the others members of the AGROMET project : the project leader, Damien Rosillon, who trusted me throughout the internship and Jean-Pierre Huart for his kindness and benevolence.
+
+I also would like to thank the Youkou team for its good mood and kindness that made my internship even better.
+
+I thank my school supervisor in _Bordeaux Sciences Agro_, Jean-Pierre Da Costa, who accompanied me throughout my internship and made sure my internship runs correctly.

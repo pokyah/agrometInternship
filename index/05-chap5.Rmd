@@ -95,6 +95,8 @@ Models built from physical stations data are applied to the 1 km² grid cells. T
 
 The Figure \@ref(fig:map) shows an output for one hour based on the method where explanatory variables are Solar irradiance and the 2 variables with the best linear correlation with temperature. To build this map, some objects are needed : an object containing data (temperature and standard error) for the grid and a spatial vector object containing boundaries of Wallonia, but also the name of the variable to display. Then, some conditions can be chosen, like the display of the layer containing error, the display of the legend for error, the way to build the legend and its classes. Some arguments enable to customize the map with titles and comments. The function is thus reusable for other usages. For example, the function builds maps spatializing hydric deficit in Wallonia.
 
+The choice I made was to use quantiles to make class breaks because that is more relevant than homogeneous breaks.
+
 The figure has 2 maps. The one on the left is the map with spatialization of temperature, the right one has the layer with error on the temperature layer. It is possible to see regions where errors are more important.
 
 ```{r map, echo=FALSE, fig.cap="Example of an output for 2018-05-02 14:00:00 (left : without error ; right : with error)", out.width="100%"}
@@ -124,6 +126,7 @@ include_graphics(path = "figure/rmi_climate_data.png")
 
 Results have some limits that have to be discussed. The first limit is the period used to build models. Indeed, models were built with data from 2 and a half years. This period could be too short to be relevant. Moreover, this period is not necessarily representative of a mean period. According to RMI, 2015, 2017 and 2018 are hot and dry years compared to normal year, 2016 were a wet year. This is shown on the Figure \@ref(fig:rmi).
 
+Even if visualization of outputs is not the main objective of the project, the choice I made to compute class breaks with quantiles can be discussed. In the case of temperature, that seems relevant but other methods exist.
 
 Models were built with some explanatory variables but they may be insufficient. Adding new variables like temperature predictions from RMI could improve models. Only 27 stations are used to build these models, adding RMI stations network could be a solution to improve models too. However, weather stations from different networks have differences in their measures, checking interoperability is very important for that and making corrections is essential.
 

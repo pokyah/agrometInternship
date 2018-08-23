@@ -74,4 +74,29 @@ The Figure \@ref(fig:mlr) shows the general workflow.
 
 This package has an important community which improves it regularly. A lot of statistical methods are implemented from other packages like _tgp_, _kknn_ or _DiceKriging_.
 
+The following code chunk shows an example of the structure of the code using mlr to define learners, resampling strategy and run benchmark.
 
+\clearpage
+
+```{r exmlr, eval=FALSE, fig.cap="Structure of the code using mlr package", out.width="100%"}
+# define learners
+lrns.l <- list(makeFilterWrapper(learner = makeLearner(cl = "regr.lm", id = "lm.Long.Lat"), fw.method = "linear.correlation", fw.mandatory.feat = c("X", "Y"), fw.abs = 2),
+               makeFilterWrapper(learner = makeLearner(cl = "regr.lm", id = "lm.Long.Lat.Elev"), fw.method = "linear.correlation", fw.mandatory.feat = c("X", "Y", "altitude"), fw.abs = 3))
+
+# define resampling strategy
+resampling.l = makeResampleDesc(method = "LOO")
+
+#run benchmark
+benchmark <- benchmark(
+  learners = lrns.l[1],
+  tasks = data.stations.n.df$tasks, # 1 task = 1 hour
+  resamplings = resampling.l,
+  # additionnal parameters
+  keep.pred = FALSE, # boolean specifying if predictions have to be kept
+  show.info = TRUE, # boolean specifying if informations have to be shown when running
+  models = FALSE, # boolean specifying if models have to be kept
+  measures = list(rmse, mae, timetrain) # list of measures to do
+)
+```
+
+The package includes several ways to analyze benchmark results. Plots are integrated to visualize results and learning algoriths can be compared and ranked.

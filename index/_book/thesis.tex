@@ -75,6 +75,46 @@
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
 
 % Syntax highlighting #22
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \newcommand{\VerbBar}{|}
+  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \usepackage{framed}
+  \definecolor{shadecolor}{RGB}{248,248,248}
+  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+  \newcommand{\ImportTok}[1]{#1}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+  \newcommand{\BuiltInTok}[1]{#1}
+  \newcommand{\ExtensionTok}[1]{#1}
+  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+  \newcommand{\RegionMarkerTok}[1]{#1}
+  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+  \newcommand{\NormalTok}[1]{#1}
 
 % To pass between YAML and LaTeX the dollar signs are added by CII
 \title{Internship report}
@@ -83,7 +123,7 @@
 \date{21/05/2018 --- 20/08/2018}
 \division{}
 \advisor{\emph{Internship supervisor} : Thomas Goossens}
-\supervisor{\emph{Supervisor} : Jean-Pierre Da Costa}
+\supervisor{\emph{Institute supervisor} : Jean-Pierre Da Costa}
 \institution{Centre de Recherches Agronomiques Wallon (CRA-W)}
 \degree{}
 \subtitle{AGROMET project : Investigating spatial interpolation of temperature
@@ -216,7 +256,21 @@ prédiction de la température.
 
 
 \Acknowledgements{
-This is the content of my acknowledgements
+I would first like to thank my internship supervisor in the CRA-W Thomas
+Goossens who accompanied and guided me throughout my intersnhip. He has
+always been available to help me when I had questions or problems and he
+has always put me back in the right direction.
+
+I would like to thank the others members of the AGROMET project : the
+project leader, Damien Rosillon, who trusted me throughout the
+internship and Jean-Pierre Huart for his kindness and benevolence.
+
+I also would like to thank the Youkou team for its good mood and
+kindness that made my internship even better.
+
+I thank my school supervisor in \emph{Bordeaux Sciences Agro},
+Jean-Pierre Da Costa, who accompanied me throughout my internship and
+made sure my internship runs correctly.
 }
 
 \Dedication{
@@ -261,7 +315,21 @@ It was completely written with RMarkdown and \LaTeX.
 \frontmatter % this stuff will be roman-numbered
 \pagestyle{empty} % this removes page numbers from the frontmatter
   \begin{acknowledgements}
-    This is the content of my acknowledgements
+    I would first like to thank my internship supervisor in the CRA-W Thomas
+    Goossens who accompanied and guided me throughout my intersnhip. He has
+    always been available to help me when I had questions or problems and he
+    has always put me back in the right direction.
+    
+    I would like to thank the others members of the AGROMET project : the
+    project leader, Damien Rosillon, who trusted me throughout the
+    internship and Jean-Pierre Huart for his kindness and benevolence.
+    
+    I also would like to thank the Youkou team for its good mood and
+    kindness that made my internship even better.
+    
+    I thank my school supervisor in \emph{Bordeaux Sciences Agro},
+    Jean-Pierre Da Costa, who accompanied me throughout my internship and
+    made sure my internship runs correctly.
   \end{acknowledgements}
   \begin{preface}
     This document is my internship report for Bordeaux Sciences Agro as part
@@ -992,6 +1060,36 @@ This package has an important community which improves it regularly. A
 lot of statistical methods are implemented from other packages like
 \emph{tgp}, \emph{kknn} or \emph{DiceKriging}.
 
+The following code chunk shows an example of the structure of the code
+using mlr to define learners, resampling strategy and run benchmark.
+
+\clearpage
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# define learners}
+\NormalTok{lrns.l <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{2}\NormalTok{),}
+               \KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat.Elev"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"altitude"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{3}\NormalTok{))}
+
+\CommentTok{# define resampling strategy}
+\NormalTok{resampling.l =}\StringTok{ }\KeywordTok{makeResampleDesc}\NormalTok{(}\DataTypeTok{method =} \StringTok{"LOO"}\NormalTok{)}
+
+\CommentTok{#run benchmark}
+\NormalTok{benchmark <-}\StringTok{ }\KeywordTok{benchmark}\NormalTok{(}
+  \DataTypeTok{learners =}\NormalTok{ lrns.l[}\DecValTok{1}\NormalTok{],}
+  \DataTypeTok{tasks =}\NormalTok{ data.stations.n.df}\OperatorTok{$}\NormalTok{tasks, }\CommentTok{# 1 task = 1 hour}
+  \DataTypeTok{resamplings =}\NormalTok{ resampling.l,}
+  \CommentTok{# additionnal parameters}
+  \DataTypeTok{keep.pred =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if predictions have to be kept}
+  \DataTypeTok{show.info =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# boolean specifying if informations have to be shown when running}
+  \DataTypeTok{models =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if models have to be kept}
+  \DataTypeTok{measures =} \KeywordTok{list}\NormalTok{(rmse, mae, timetrain) }\CommentTok{# list of measures to do}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+The package includes several ways to analyze benchmark results. Plots
+are integrated to visualize results and learning algoriths can be
+compared and ranked.
+
 \chapter{Results and discussion}\label{results}
 
 \section{Benchmark}\label{benchmark}
@@ -1202,6 +1300,9 @@ enable to customize the map with titles and comments. The function is
 thus reusable for other usages. For example, the function builds maps
 spatializing hydric deficit in Wallonia.
 
+The choice I made was to use quantiles to make class breaks because that
+is more relevant than homogeneous breaks.
+
 The figure has 2 maps. The one on the left is the map with
 spatialization of temperature, the right one has the layer with error on
 the temperature layer. It is possible to see regions where errors are
@@ -1256,6 +1357,11 @@ Moreover, this period is not necessarily representative of a mean
 period. According to RMI, 2015, 2017 and 2018 are hot and dry years
 compared to normal year, 2016 were a wet year. This is shown on the
 Figure \ref{fig:rmi}.
+
+Even if visualization of outputs is not the main objective of the
+project, the choice I made to compute class breaks with quantiles can be
+discussed. In the case of temperature, that seems relevant but other
+methods exist.
 
 Models were built with some explanatory variables but they may be
 insufficient. Adding new variables like temperature predictions from RMI
