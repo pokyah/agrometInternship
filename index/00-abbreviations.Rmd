@@ -6,7 +6,11 @@
 
 - CRS : Coordinate Reference System
 
+- IDW : Inverse Distance Weight
+
 - JSON : JavaScript Object Notation
+
+- KNMI : Royal Netherlands Meteorological Institute (Dutch national weather service)
 
 - MAE : Mean Absolute Error
 

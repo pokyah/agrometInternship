@@ -1,38 +1,121 @@
-<!--
-The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
--->
+```{r include_packages_ch3, include = FALSE}
+# This chunk ensures that the thesisdown package is
+# installed and loaded. This thesisdown package includes
+# the template files for the thesis and also two functions
+# used for labeling and referencing
+library(devtools)
+devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+load("./data/env_report.RData")
+```
 
-# Working environment {#workenv}
+# Data acquisition and preparation {#data-acq}
 
-## Applications and tools
+Explanatory variables (i.e. independent variables) are required to build models able to predict the response variable (i.e. dependent variable). In our case the dependent variable is air temperature. We will call this variable our _target variable_. As set of explanatory variables have been identified and integrated in our modeling approach. These will be presented here below.
 
-Working in development field often imposes to be methodic. That's why preparing the working environment is very important.
+## Target variable
 
-First, I have installed **Ubuntu GNOME**, a distribution of Linux on my laptop. Indeed, this OS is prefered by developers and open-source addicts thanks to the high contribution to improve distributions. Linux distributions are safer than Windows due to that and it is very easy to automatise a lot of commands. This installation was done thanks to a USB drive with a boot of Ubuntu GNOME.
+The AGROMET project aims to provide weather data used as input for various crop models. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from the RMI (Belgian Météo France equivalent). The others are measured by weather stations from PAMESEB network, data are stored in a PostgreSQL database and users can query it using the API. Using the API, users retrieve untyped data and they have to type the data using specific functions. 
 
-Once I had Ubuntu installed on my laptop, I used an **ANSIBLE script** to install all the applications I need automatically. Moreover, this script handles the updates of these applications. That is a very useful way to earn some time.
+Temperature is the target variable concerned by my internship. 
 
-Accessing to servers has to be secured. That's why every developer should have a **SSH** key. This key or token is unique and enable people to access to servers. It is useful to access to Git repositories for example.
+## Explanatory variables
 
-**GitHub** is a hosting service for version control. Its utilisation is very common for developers because their codes are online, the access is public and GitHub enable to handle versions of files. It makes easier the collaborative work on a same code and enable to use codes of other users.
+As a reminder, the purpose of my internship was to implement the multiple linear regression algorithm as a spatialization method. This means that I need to find an equation where the target variable can be modeled from one or more explanatory variables. The equation will have the form : $Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n$ where $Y$ is the response variable and $X_n$ your $n$ explanatory variables related to their estimated parameter $b_n$.
 
-For my internship, I need to work with my mentor to code. GitHub is the best solution to that. I created a folder in my laptop to clone all the repositories I need for my work. Then, I have a copy that I can modify and I can send my modifications on GitHub. To clone these repositories, my SSH key was useful.
+These explanatory variables which have an influence on temperature are already known and some academic papers already have dealt with them (Zeuner 2007, Janssen 2011). 
 
-The AGROMET project for whom I worked has an **API** to store meteorological data from all the stations. An account has been created for my internship. Then, I can get data from the API to test my codes. These data have JSON or GeoJSON format, a open-standard file format derived from JavaScript which is easy for machines to parse and generate and easy to read and write for humans.
+Two types of explanatory variables can be discriminated : static variables, i.e. variables not time-dependent but depending on the spatial position and dynamic variables, i.e. time-dependent and position-dependent variables.
 
-**Docker** is a software for containerize platforms. This container approach has many advantages compares to the use of virtual machines : lightweight, quick and modular.
+### Static variables
 
-There are two main reasons to use R in conjunction with Docker. First, it allows you to quickly and easily share your work whatever the OS and R configuration of your collaborators. Second, it allows you to work in an isolated environment. This means that you will never pollute your OS and e.g. run in time-consuming re-installation procedures due to broken configuration. In case of OS crash, simply relaunch your Docker R container with a single command and you are ready to work.
+#### Land cover
 
-## Reproducible science
+All PAMESEB weather stations are localized in agricultural or herbaceous areas. That is a way to reduce errors about measures. However, the surrounding environment (100 meters around the station) of each station might be different and can have an impact on measures. For example, a station could have a different behaviour if a forest is near its area or if an artificial surface (road, construction) is near it. 
 
-The AGROMET project is a public one. That means that the CRA-W and all people involved have to be transparent about the work and the results. That will give to the project more credibility and more reliability.
+CORINE land cover is an inventory updated every 6 years by **Copernicus**, the European Union's Earth Observation Programme. These data can also be found on the **Belgian geo-portal**. CORINE Land Cover has been already used to make a spatial interpolation of air pollution (Janssen _et al._ 2011).
 
-Transparency is promoted thanks to open science. That means the content and the results of the project will be accessible to others. Indeed, transparency is superior to trust and is an ideal (Munafo, 2017).
+CORINE Land Cover is divided in 47 different land covers. 26 of them are found in Wallonia. However, we made a clustering to group land covers that we judge to have the same kind of impact on temperature. Then, we made 5 classes :
 
-In the case of the project, development represents its major part. Today, open science is widely used and tools have been developed for that. That insures to all codes written for the project to be available. As a consequence, anyone will be able to check the code and inspect it. Then, some people can improve codes and increase efficiency of work.
+- __Agricultural areas__ : areas where crops can be tall
 
-Moreover, this transparency insures that the models built will be completely explicit for people who will use them. That is a proof of the quality of models.
+- __Herbaceous vegetation__ : cleared areas like pastures and grasslands
+
+- __Artificial areas__ : roads, rails and constructions where anthropogenic material can impact temperature
+
+- __Forest__ : large areas providing shadow and cold
+
+- __Water bodies__ : areas like river, lake, wetlands and bogs. Finally, this class has been removed because of the fact that no stations are located near a water body
+
+&nbsp;
+
+R can handle different two types of spatial data : vector and raster. Vector model is based on points inside a CRS. Vector data can be points or lines or polygons. In R, `sp` and `sf` packages can handle this data type. The major difference between `sp` and `sf` is that `sf` objects can be treated as data frames in most operations and has better performances (Lovelace 2018). Raster model is based on a matrix representing equally spaced pixels and contains informations about the CRS, the extent and the origin. `raster` package handles this data type. These three packages can work together to convert data from a type to another one.
+
+CORINE land cover data downloaded on the geo-portal was a shapefile, i.e. vector data, with WGS84 CRS. This geographic CRS has coordinates expressed in degrees. Then, to read them in R, `sp` is necessary but a conversion to `sf` was prefered for clustering for the reasons given above.
+
+A conversion of CRS was also done from WGS84 to Belgian Lambert 2008. In contrast to WGS84, Lambert 2008 is a projected CRS expressed in meters. It facilitates our work to characterize the surrounding environment of the stations defining buffers around them. A projected CRS facilitates the definition of the radius of the buffer using meters instead of degrees.
+
+&nbsp;
+
+Thanks to these buffers, part of each class of land cover is computed and then stored in a table. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
+
+```{r clcperc, echo=FALSE}
+knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
+  row_spec(0, bold = TRUE)
+```
+
+
+#### Digital Terrain Model
+
+In the same way as land cover, the terrain characteristics could have an impact on temperature of the environment. These variables have been integrated in the models made by Zeuner _et al._ (2007) and the relevance has been demonstrated several times.
+
+Elevation data have been recovered for Wallonia from **NASA's SRTM** providing a high-resolution (90 meters) topographic data. Then, slope, aspect and roughess of terrain have been calculated with spatial libraries implemented in R.
+
+
+### Dynamic Variables
+
+#### Solar irradiance
+
+Some explanatory variables for temperature can be time-dependent. In this case, we can be interested in solar irradiance. Indeed, solar irradiance has an impact on weather changes (Dewitte _et al._ 2004).
+
+&nbsp;
+
+Data are recovered from **EUMETSAT**, the European Organisation for the Exploitation of Meteorological Satellites. They are produced every 30 minutes and expressed in W/m². These data are aggregated in hourly data and they are queried using the API of AGROMET.
+
+There are 875 points distributed in Wallonia where records are available, this is not sufficient in our case where the objective is to provide predictions with a precision of 1 km². The handle of these spatial data with R packages was necessary to spatialize the records. To do that, the IDW spatial interpolation method was used.
+
+These data are available from 2015-11-11. As a consequence, models built before this date do not use solar irradiance as explanatory variable. However, solar irradiance is an interesting explanatory variable, that's why no model was built before this date for my internship.
+
+In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable. The measures from weather stations are used to build models from physical stations whereas the EUMETSAT measures will be used later for the spatialization on the spatial grid of Wallonia.
+
+#### Temperature forecasts
+
+The AGROMET project is supported by RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms.  It was planned to integrate these data as explanatory variables but at the time of my internship these were not yet available.
+
+
+## Data preparation
+
+Once all the data are available, an important task is to organize them to perform modeling. This organisation needs to respond to a methodic approach :
+
+- help reduce computation time
+- respond to the structure imposed by the chosen modeling library
+
+Our choice turned to the use of the `mlr` package because it provides an interface for machine learning using a lot of statistical methods. The objective of data preparation is to make our data mlr-compliant because the package needs data with a specific structure. In particular, I needed to organize data to have one line for each station containing values for every explanatory variable. Moreover, this organisation must be done for every hour.
+
+The first step consists of grouping data. Static and dynamic variables are grouped in a data frame. Then, to reduce time computation and to prepare the integration of the data frame for the modeling, there is a way to nest data frames with the library purrr. In this way, it is possible to have one single row for each hour but every row contains data frames inside. The Figure \@ref(fig:nested) shows how it looks. This nested data frame is a efficient way to manipulate many sub-tables at once.
+
+```{r nested, echo=FALSE, fig.cap="Structure of a nested data frame", out.width="50%", fig.align='center'}
+include_graphics(path = "figure/purrr_nest.png")
+```
+
+In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Table \@ref(tab:ndf), there is a preview of the data frame contained into each row.
+
+```{r ndf, echo=FALSE, message=FALSE}
+knitr::kable(head(data.n.sample), caption = "Example of nested data frame in a row corresponding to 2016-05-19 15:00:00") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  row_spec(0, bold = TRUE)
+```
+
 
 
 

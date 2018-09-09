@@ -17,7 +17,7 @@ site: bookdown::bookdown_site
 output: 
  thesisdown::thesis_pdf: default
 #  thesisdown::thesis_gitbook: default 
-# thesisdown::thesis_word: default
+ # thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content here or
 # use code similar to line 20 for the files.  If you are producing in a different
@@ -47,6 +47,7 @@ lof: true
 # to have a blank new line between each paragraph
 #header-includes:
 #- \usepackage{tikz}
+always_allow_html: yes
 ---
 
 <!--

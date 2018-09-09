@@ -12,7 +12,9 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 The CRA-W was founded in 1872 and depends on the Regional Goverment of Wallonia. It aims to maintain and develop the scientific excellence and societal usefulness and contributes to sustainable development of the agricultural industry in Wallonia in its economic, ecological and cultural dimension. 120 scientifics are working in the CRA-W on three sites (Gembloux, Libramont and Mussy-la-Ville) representing 300 ha of fields, greenhouses, laboratories and offices. The CRA-W is a place for scientific research but also to provide services in agricultural and agri-food sector keeping a perspective view on the development of agriculture.
 
-The research is divided into 4 main fields where more than 100 projects are permanently in progress. : 
+&nbsp;
+
+The research is divided into 4 main fields where more than 100 projects are currently in progress. : 
 
 - Precision agriculture
 - Precision livestock farming
@@ -26,9 +28,11 @@ The CRA-W is divided into 4 departments with 4 research units each :
 - Valorisation of agricultural products
 - Agriculture and natural environment
 
-The last one has the Unit 11 corresponding to Farming Systems, Territory and Information Technologies Unit where I realized my internship. This Unit develops tools to meet society's new expectations and decision support systems to improve the technico-economic and environmental performance of farming systems. There are actually 28 projects in progress.
+&nbsp;
 
-The activities of the Unit are the mainly the following :
+The unit 11 _Farming Systems, Territory and Information Technologies_ where I realized my internship belongs to the _Agriculture and natural environment_ department. This Unit develops tools to meet society's new expectations and decision support systems to improve the technico-economic and environmental performance of farming systems. There are actually 28 projects in progress.
+
+The main activities of the Unit are the following :
 
 - Adaptation of agrosystems to global change : definition of references
 - Adaptation of agrosystems to global change through bottom-up approaches
@@ -36,9 +40,11 @@ The activities of the Unit are the mainly the following :
 - Decision support systems and information technologies for the management of multifunctional agriculture
 - Spatial information systems for the management of rural areas.
 
-PAMESEB is a non-profit organisation handle by the CRA-W which aims to promote agrometeorology by taking climatic conditions into account in the walloon agriculture. PAMESEB has 30 weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording. The PAMESEB network has an important place in the AGROMET project because it provides data for it.
+&nbsp;
 
-Each PAMESEB station has 5 basic sensors :
+PAMESEB is a non-profit organisation handled by the CRA-W which aims to promote agrometeorology by considering weather conditions in the context of walloon agriculture. PAMESEB manages a network of 30 automated weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording. The AGROMET project uses weather data provided by the PAMESEB network as its primary data source.
+
+Each PAMESEB station is equipped with 5 basic sensors :
 
 - Temperature sensor
 - Relative humidity sensor
@@ -53,7 +59,9 @@ Each PAMESEB station has 5 basic sensors :
 
 The European directive 2009/128/CE imposes member-states to set up tools that allow for a more rational use of crop protection products. Among these tools, agricultural warning systems, based on crop monitoring models for the control of pests and diseases are widely adopted and have proved their efficiency. However, due to the difficulty to get meteorological data at high spatial resolution (at the parcel scale), they still are underused. The use of geostatistical tools (Kriging, Multiple Regressions, ANN, etc.) makes it possible to interpolate data provided by physical weather stations in such a way that a high spatial resolution network (mesh size of 1 km2) of virtual weather stations could be generated. 
 
-That is the objective of the AGROMET project. Moreover, some CRA-W's units and other partners are interested in to build models against crop diseases like potato late blight or orange midge which depends on meteorological conditions.
+&nbsp;
+
+The purpose of the AGROMET project is to build a web platform that makes such "spatialized" weather data available to crop monitoring models. That will help other CRA-W's units and partners to act against crop diseases like potato late blight or orange midge which depends on meteorological conditions.
 
 The project was inspired by several academic papers dealing with spatial interpolation of data like _Use of geographic information systems in warning services for late blight_ (Zeuner, 2007), _Decision Support Systems in Agriculture : Administration of Meteorological Data, Use of Geographic Information Systems(GIS) and Validation Methods in Crop Protection Warning Service_ (Racca _et al._, 2011) and _Spatial interpolation of ambient ozone concentrations from sparse monitoring points in Belgium_ (Hooyberghs, 2006).
 
@@ -63,34 +71,93 @@ The project aims to set up an operational web-platform designed for real-time ag
 
 These "spatialized" data will be made available through a web-platform providing interactive visualization widgets (maps, charts, tables and various indicators) and an API allowing their use on the fly, notably by agricultural warning systems providers. An extensive and precise documentation about data origin, geo-statistic algorithms used and uncertainty will be also available.
 
-```{r agromet, echo=FALSE, fig.cap="First draft of the functional architecture of the platform", out.width="65%", fig.align='center'}
-include_graphics(path = "figure/agromet.jpg")
-```
+&nbsp;
 
-Meteorological data wanted to be predict are : 
+The meteorological data the project aims to spatialize are : 
 
 - Temperature (1.5 meters above the ground)
 - Relative humidity (1.5 meters above the ground)
 - Leaves wetness
 - Rainfall will be spatialized from RMI rain radar data.
 
-To predict these variables, known data are used :
+In order to perform spatial predictions of these variables, known independent variables are required. Depending of the weather parameter to be spatialized, various independent variables will be considered. We can mention :
 
 - Digital elevation model and its derivatives like aspect and slope
 - Solar irradiance
 - Other variables discussed to improve the prediction : distance to sea, CORINE land cover...
 
-The Figure \@ref(fig:agromet) shows the architecture of the future platform and steps before data diffusion.
+The Figure \@ref(fig:agromet) shows the global steps of the project and steps before data diffusion.
+
+```{r agromet, echo=FALSE, fig.cap="Global steps of the AGROMET project", out.width="65%", fig.align='center'}
+include_graphics(path = "figure/agromet.jpg")
+```
+
+## Scope of the internship : using multiple linear regression for temperature predictions
+
+ To perform spatial predictions of meteorological variables, several statistical methods can be tested like multiple linear regression, ANN and several kriging methods.
+
+&nbsp;
+
+Two workpackages were clearly defined for my internship :
+
+- acquiring and preparing independent variables that have been identified as potential explanatory variables for temperature
+- benchmarking various combinations of independent variables used with the __multiple linear regression__ algorithm as spatial prediction method for the __temperature__
+
+I used R because it is a free software for statistical computing and graphics. Spatial data were collected from different sources and involved the use of specific R libraries to manipulate them. I needed to handle these libraries to manipulate vector and raster geodata. Then, these data have been organised with the tidyverse library to respond to the structure imposed by the chosen modeling library and to help reduce computation time. The modeling library used is mlr, dealing with machine learning algorithms, responds to a special architecture and logic that I needed to understand. Then, the data have been integrated to build models through a benchmark and analysis. Visualization was done thanks to a plotting system for R, ggplot2, able to create graphics and maps.
+
+The benchmark was run on two large years (from 2015-11-11 to 2018-06-30) because some data were not available before this period.
 
 
-### Importance of the internship for the project
+## About the working environment
 
-To predict meteorological variables, several statistical method will be tested. The identified methods at this time are multiple linear regression, ANN and several kriging methods.
+### Applications and tools
 
-Two objectives were clearly defined for my internship. I operated in the data acquisition and data analysis steps with the aim of predicting **temperature** using **Multiple linear Regression**.
+Working in development field often imposes to be methodic. In particular for bug tracking or code versioning to detect errors and keep an history of code modifications. Being methodic is also important for code readability (adding comments for example) and code reproducibility. For the reason that the AGROMET project is public, this last point is important for transparency.
 
-First, I have collected data which can be explanatory variables for temperature and organised them to be integrated in the analysis and benchmark.
+That's why preparing the working environment is important to help achieve these good practices.
 
-Then, I ran a benchmark experiment where different desired regression learning algorithms are applied to various regression tasks (i.e. datasets with different combinations of explanatory variables and the target weather parameter) with the aim to compare and rank the combinations of algorithm and used explanatory variables using a cross validation resampling strategy that provides the desired performance metrics. And then, I aggregated, by calculating the mean, all the hourly performance measures to choose the method that globally performs the best. For each desired hourly dataset, I applied the choosen method to build a model to make spatial predictions. The predictions and their uncertainty have been vizualized using maps. Finally, I had to make the predictions available on the platform together with its uncertainty indicator.
+&nbsp;
 
-For a matter of time, this benchmark is run on two large years (from 2015-11-11 to 2018-06-30) because some data were not available before this period.
+First, I have installed **Ubuntu GNOME**, a distribution of Linux on my laptop. Indeed, this is an open-source OS prefered by developers. It has a large community which is important to solve problems and bugs and to improve the OS. Because it is free, anyone can install it and that is important for reproducibility. Due to its large community of developers, Linux is safer because they monitor for issues and can repair them. Moreover, Linux has only 3% of the market and hackers prefer target a large segment of users as Windows. This installation of Ubuntu was done thanks to a USB drive with a boot of Ubuntu GNOME.
+
+&nbsp;
+
+Once I had Ubuntu installed on my laptop, I used an **ANSIBLE script** to automatically install all the applications I need. Moreover, this script handles the updates of these applications. That is a very useful way to earn some time and it helps science reproductibility because anyone with the script will end up with the exact same installation.
+
+&nbsp;
+
+<!-- source : https://openclassrooms.com/en/courses/1197906-securiser-son-serveur-linux -->
+Accessing to servers has to be secured to be protected against intrusions and monitor logs. That's why every developer should have a **SSH** key. This key or token is unique and enable people to access to servers. It is useful to access to Git repositories for example. It also helps to save some time because anyone who wants to connect a service does not need to provide a login and password each time using an SSH connection instead.
+
+**GitHub** is a hosting service for version control. It facilitates the collaborative work on a same code, the handle of code versions and the use of code developed by other users. It is a very common tool for developers because it ensures a public and online access.
+
+For my internship, I had to collaboratively work on code development with my mentor. This is why we have been using GitHub. For each of the code folders that I had to work on, I made a fork that I've downloaded on my laptop for further local developments. Then, I have a copy that I can modify and I can send my modifications on GitHub. To clone these repositories, my SSH key was useful.
+
+&nbsp;
+
+The current development version of the AGROMET platform already offers an **API** that allows to retrieve weather data from the stations. A specific API token with reading rights has been created for my internship. The API provides data in both JSON and GeoJSON formats which are open-standard file formats. These formats are easy to parse by machines and are easy to read by humans.
+
+&nbsp;
+
+Among the different programming languages, R has been chosen because it is is a free software environment for statistical computing and graphics. It is adapted to data analysis because R was developed by statisticians and easy to use even for people without programming skills. R has a large community to help people to solve bugs and problems and packages are well documented.
+
+**Docker** is a software for containerizing platforms. This container approach has many advantages compares to the use of virtual machines : lightweight, quick and modular.
+
+There are two main reasons to use R in conjunction with Docker. First, it allows you to quickly and easily share your work whatever the OS and R configuration of your collaborators. Second, it allows you to work in an isolated environment. This means that you will never pollute your OS and e.g. run in time-consuming re-installation procedures due to broken configuration. In case of OS crash, simply relaunch your Docker R container with a single command and you are ready to work.
+
+### Reproducible science
+
+Reproducible science refers to the idea that full working environment of a research can be used by anyone to reproduce the results and create a new work based on it. That ensures reliability and credibility because the entire work is available.
+
+&nbsp;
+
+In the case of the AGROMET project, the purpose of choosing open-source is to allow reproducible science and transparency about the chosen methods and therefore the meaning of the produced datasets.
+
+Transparency is promoted thanks to open science. That means the content and the results of the project will be accessible to others. Indeed, transparency is superior to trust and is an ideal (Munafo, 2017).
+
+Development represents the major part of the project. Today, open science is widely used and tools have been developed for that. The availability of code on GitHub ensures that anyone can check the code and inspect it. Then, some people can improve codes and increase efficiency of work.
+
+Moreover, this transparency makes sure that people can inspect and understand the origin of the data produced by the platforms. Users will have a deep insight of the data they will be working with.
+
+For these reasons, transparency and open science will give more credibility and reliability to the project.
+

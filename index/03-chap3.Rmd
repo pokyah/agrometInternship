@@ -1,4 +1,4 @@
-```{r include_packages_ch3, include = FALSE}
+```{r include_packages_ch4, include = FALSE}
 # This chunk ensures that the thesisdown package is
 # installed and loaded. This thesisdown package includes
 # the template files for the thesis and also two functions
@@ -9,97 +9,93 @@ library(kableExtra)
 load("./data/env_report.RData")
 ```
 
-# Data acquisition and preparation {#data-acq}
 
-Variables have to be identified to build models. To do that, we need response variables, i.e. variables to predict, and explanatory variables, i.e. variables on which response variables depend.
+# Modeling with machine learning methods {#model}
 
-## Interest variables
+Once the dataset is ready, the next step is to model spatial predictions of temperature. To do that, machine learning is used through R.
 
-The AGROMET project will provide information about weather parameters which are important for some crop diseases. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from a Dutch company. The others are measured by weather stations from PAMESEB network, data are stored on an API. This API is an intermediary software where we can make requests to get some data. Data extracted from the API need to be transformed to be more manipulable. Functions were wrote to transform these data. For example, convert measures from character to numeric.
+## Principle of machine learning
 
-## Explanatory variables
+### Definition
 
-A little reminder : I will use multiple linear regression. That means I want to find an equation where a response variable can be modeled from two or more variables. The equation will have the form : $Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n$ where $Y$ is the response variable and $X_n$ your $n$ explanatory variables related to their estimated parameter $b_n$.
+Machine learning is the idea that there are generic algorithms that can tell you something interesting about a set of data without you having to write any custom code specific to the problem. Instead of writing code, you feed data to the generic algorithm and it builds its own logic based on the data. In other words, Machine learning is a subset of deep learning or Artificial Intelligence that provides an ability to “learn” with data. 
 
-These explanatory variables have been identified from academic papers (Zeuner 2007, Janssen 2011). Two types of explanatory variables can be discriminate : static variables and dynamic variables.
+&nbsp;
 
-### Static variables
+There are 2 types of machine learning : supervised and unsupervised learning.
 
-#### Land cover
+In practice, most of machine learning uses supervised learning.
 
-All PAMESEB weather stations are sited in agricultural or herbaceous areas. That is a way to reduce errors about measures. However, the environment of each station can be different and can have an impact on measures. For example, a station could have a different behaviour if a forest is near its area or if an artificial surface (road, construction) is near it. 
+&nbsp;
 
-CORINE land cover is an inventory updated every 6 years by **Copernicus**, the European Union's Earth Observation Programme. These data can also be found on the **Belgian geo-portal**. CORINE Land Cover has been already used to make a spatial interpolation of air pollution (Janssen _et al._ 2011).
+From *machinelearningmastery.com* :
 
-CORINE Land Cover is divided in 47 different land covers. 26 of them are in Wallonia. However, 26 land covers is too much to be integrated as explanatory variables. These land covers have been grouped in 5 classes we juged relevant :
+>Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn the mapping function from the input to the output : Y = f(X).  
+The goal is to approximate the mapping function so well that when you have new input data (x), you can predict the output variables (Y) for that data.  
+It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process
 
-- __Agricultural areas__ : areas where crops can be tall
+&nbsp;
 
-- __Herbaceous vegetation__ : cleared areas like pastures and grasslands
+For supervised machine learning, the algorithm tries to learn from examples we give to it and then it returns a model of prediction. Classification and regression are supervised machine learning.  
 
-- __Artificial areas__ : roads, rails and constructions where anthropogenic material can impact temperature
+This is the case of the AGROMET project where regression models are used.
 
-- __Forest__ : large areas providing shadow and cold
+The unsupervised machine learning is not relevant in the context of my work because this kind of machine learning does not need reference to infer patterns and cannot be directly applied to regression problems.
 
-- __Water bodies__ : areas like river, lake, wetlands and bogs. Finally, this class has been removed because of the fact that no stations are located near a water body
+## Machine learning approach in the AGROMET project
 
-After a long data preparation with transformation of CRS from WGS84 to Belgian Lambert 2008 and conversion in different forms of Spatial objects (Vector and Raster), data were completely manageable.
+The objective is to spatially predict weather parameters (temperature, relative humidity, leaves wetness). We use data from meteorological stations and from other sources like EUMETSAT for solar irradiance and COPERNICUS for land cover as explanatory variables for these weather parameters and to build our models.
 
-Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
+&nbsp;
 
-Buffers of 500 meters radius and grid cells of 1km² were compared but buffers were chosen because they have more relevance when they are compared to physical stations where only buffers were computed.
+Here is our approach :
 
-```{r clcperc, echo=FALSE}
-knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
-  row_spec(0, bold = TRUE)
+We choose a weather parameter to predict, it is our __target__. In the context of my internship, _temperature_ is my target variable.
+
+Then, from the historical dataset of hourly weather records from PAMESEB database, a representative subset of records is filtered. Stations are filtered to only keep the useful ones which are active. For each hourly set of records, a benchmark experiment is run with multiple linear regression algorithm, the __learner__, applied to various regression __tasks__, i.e. the target response variable (temperature) and all the chosen __explanatory variables__ (elevation, slope, land cover...). The different combinations of explanatory variables using multiple linear regression algorithm are compared and ranked using a __cross-validation resampling strategy__. Several methods exist but we will use the Leave-One-Out cross-validation method (LOOCV). It consists to establish, for each hourly dataset, a model based on every weather stations except one which will be the one where the model is tested to compute the error and then doing it again as many times as the number of weather stations. Performance metrics (RMSE and MAE) have been stored for each of these iterations.
+
+&nbsp;
+
+These performance metrics are two of the most common metrics used to measure accuracy for continuous variables and for validation step in machine learning.
+
+&nbsp;
+
+MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It is the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
+
+\[
+MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y}_{j} \rvert}
+\]
+
+&nbsp;
+&nbsp;
+
+RMSE is a quadratic scoring rule that also measures the average magnitude of the error. It is the square root of the average of squared differences between prediction and actual observation.
+
+\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y}_{j} )^2}}
+\]
+
+
+The entire methodology is detailed in the _Appendix A_ (Spatialization methodology).
+
+
+## Machine Learning in R
+
+All of our work is done using R. Moreover, a R package which provides the infrastructure to run machine learning is available. This package **mlr** is very complete to build models, make predictions and evaluate performances.
+
+Machine learning in R offers a common and simplified interface for all statistical methods implemented in the package. With this package, run a benchmark with several statistical methods can be done on data from a period. This benchmark returns a lot of informations :
+
+- about learners and task descriptions used in the benchmark
+- about models, test performance values, predictions from the benchmark
+
+The package includes several ways to analyze benchmark results. Plots are integrated to visualize results and learning algorithms can be compared and ranked. It is possible to compare learners and tasks through measures of error like RMSE or MAE. In the case ofmy internship, the learner is always the same, multiple linear regression, and tasks change because I modify the set of explanatory variables used.
+
+```{r mlr, echo=FALSE, fig.cap="mlr workflow", out.width="50%", fig.align='center'}
+include_graphics(path = "figure/mlr_workflow.png")
 ```
 
-#### Digital Terrain Model
+The Figure \@ref(fig:mlr) shows the general workflow of `mlr`.
 
-In the same way as land cover, the terrain model could have an impact on temperature of the environment. These variables have been integrated in the models made by Zeuner _et al._ (2007) and the relevance has been demonstrated several times.
+&nbsp;
 
-Elevation data have been recovered for Wallonia from **NASA's SRTM** providing a high-resolution (90 meters) topographic data. Then, slope, aspect and roughess of terrain have been calculated with spatial libraries from R. These data are very large and data processing is very long because resolution is high.
-
-
-### Dynamic Variables
-
-#### Solar irradiance
-
-In the same way as temperature is a dynamic variable, explanatory variables can be dynamic. In the case of temperature, we can be interested in solar irradiance. Indeed, solar irradiance has an impact on climate changes (Dewitte _et al._ 2004).
-
-Data are recovered from **EUMETSAT**, the European Organisation for the Exploitation of Meteorological Satellites. They are produced every 30 minutes and expressed in W/m². These data are aggregated in hourly data and they are stored on a API of AGROMET.
-
-Data are available from 2015-11-11. As a consequence, we can not build models from data before this date.
-
-In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable.
-
-#### Temperature forecasts
-
-The AGROMET project is supported by RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms. These data will be integrated as explanatory variables to build models.
-
-At the time of my internship, these data were not available.
-
-
-## Data organisation
-
-Once all the data are available, an important task is to organize them to realise the modeling. This organisation needs to respond to a methodic approach. Indeed, to reduce computation time, structure of data have to be optimised.
-
-The objective is to build models for each hour and compute its related error.
-
-The first step consists of grouping data. Static and dynamic variables are grouped in a data frame. Then, to reduce time computation and to prepare the integration of the data frame for the modeling, there is a way to nest data frames with the library purrr. In this way, it is possible to have one single row for each hour but every row contains data frames inside. The Figure \@ref(fig:nested) shows how it looks. This nested data frame is a efficient way to manipulate many sub-tables at once.
-
-```{r nested, echo=FALSE, fig.cap="Structure of a nested data frame", out.width="50%", fig.align='center'}
-include_graphics(path = "figure/purrr_nest.png")
-```
-
-In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Table \@ref(tab:ndf), there is a preview of the data frame contained into each row.
-
-```{r ndf, echo=FALSE, message=FALSE}
-knitr::kable(head(data.n.sample), caption = "Example of nested data frame in a row corresponding to 2016-05-19 15:00:00") %>%
-  kable_styling(latex_options = "scale_down") %>%
-  row_spec(0, bold = TRUE)
-```
-
-
-
-
+This package has an important community which improves it regularly. A lot of statistical methods are implemented from other packages like _tgp_, _kknn_ or _DiceKriging_.

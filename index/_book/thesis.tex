@@ -170,42 +170,46 @@ using Multiple Linear Regression}
 
 \Abstract{
 The European directive 2009/128/CE imposes member-states to set up tools
-that allow for a more rational use of crop protection products. Among
-these tools, agricultural warning systems, based on crop monitoring
-models for the control of pests and diseases are widely adopted and have
-proved their efficiency. However, due to the difficulty to get
-meteorological data at high spatial resolution (at the parcel scale),
-they still are underused. The AGROMET project, led by CRA-W, aims to
-generate a high spatial resolution network which diffuses interpolated
-weather data provided by physical weather stations using geostatistical
-tools. The internship operates in data acquisition and data analysis
-steps. As a first step, the objective was to collect data which can
-explained some weather parameters and then, secondly, to integrate them
-in a benchmark of statistical methods and combinations of variables to
-identify those which return models with the lowest error. For a matter
-of time, the internship has been focused on temperature prediction.
+that allow for a more rational use of crop protection products. The
+AGROMET project, led by CRA-W, aims to generate a high spatial
+resolution network which diffuses interpolated weather data provided by
+physical weather stations using geostatistical tools. The internship
+aimed to spatialize temperature using Multiple Linear Regression method.
+To do that, the internship was integrated in in data acquisition and
+data analysis steps. As a first step, data which can explain temperature
+were collected and organised to integrate them in machine learning
+algorithms. Then, the objective is to compare different combinations of
+explanatory variables and to identify which one provides the lowest
+error using multiple linear regression as learning method. The results
+obtained from a database containing more than 23000 hours show some
+interesting combinations as the one based on spatial coordinates and
+elevation or the one based on the variables with the best linear
+correlation computed every hour. Other variables will be integrated
+afterward to try to reduce prediction errors.
 
 ~ ~
 
 La directive européenne 2009/128/CE impose aux états-membres de mettre
 en place des outils visant à une utilisation rationnelle des produits
-phytosanitaires. Parmi ces outils, les systèmes d'avertissements
-agricoles, basés sur des modèles de suivi des maladies ou des ravageurs
-sont très largement utilisés et ont déjà fait preuve de leur efficacité.
-Cependant, ils sont encore sous-exploités du fait de la difficulté de
-disposer d'une information météorologique à haute résolution spatiale (à
-l'échelle de la parcelle). Le projet AGROMET, dirigé par le CRA-W, a
-pour but de genérer un réseau de stations virtuelles à haute résolution
-spatiale qui diffusera des données météorologiques interpolées à partir
-de données issues de stations physiques et d'outils géostatistiques. Le
-stage intervient dans la phase d'acquisition des données et d'analyse
-des données. Dans un premier temps, l'objectif était de récolter des
-données dont pourraient dépendre certains paramètres météorologiques
-puis, dans un second temps, de les intégrer dans une analyse comparative
-des méthodes statistiques et des combinaisons de variables explicatives
-pour trouver celles qui retournent des modèles avec l'erreur la plus
-faible. Pour une question de temps, le stage a été ciblé autour de la
-prédiction de la température.
+phytosanitaires. Le projet AGROMET, dirigé par le CRA-W, a pour but de
+genérer un réseau de stations virtuelles à haute résolution spatiale qui
+diffusera des données météorologiques interpolées à partir de données
+issues de stations physiques et d'outils géostatistiques. Le stage avait
+pour objectif de spatialiser la température à l'aide de la Régression
+Linéaire Multiple. Pour ce faire, le stage s'est intégré dans la phase
+d'acquisition des données et d'analyse des données. Dans un premier
+temps, des données qui pourraient expliquer la température ont été
+récoltées et organisées afin de les intégrer dans des algorithmes de
+machine learning. L'objectif est ensuite de comparer les différentes
+combinaisons de variables explicatives et d'identifier celle qui fournit
+les prédiction avec l'erreur la plus faible en utilisant la régression
+linéaire multiple comme méthode d'apprentissage. Les résultats obtenus à
+partir d'une base de données de plus de 23000 heures mettent en évidence
+plusieurs combinaisons intéressantes comme celle utilisant les
+coordonnées géographiques et l'altitude ou celle utilisant les variables
+avec la meilleure corrélation linéaire à chaque heure. D'autres
+variables seront par la suite intégrées pour tenter de réduire les
+erreurs de prédiction.
 }
 
 \Abbreviations{
@@ -219,7 +223,12 @@ prédiction de la température.
 \item
   CRS : Coordinate Reference System
 \item
+  IDW : Inverse Distance Weight
+\item
   JSON : JavaScript Object Notation
+\item
+  KNMI : Royal Netherlands Meteorological Institute (Dutch national
+  weather service)
 \item
   MAE : Mean Absolute Error
 \item
@@ -263,9 +272,11 @@ has always put me back in the right direction.
 
 I would like to thank the others members of the AGROMET project : the
 project leader, Damien Rosillon, who trusted me throughout the
-internship and Jean-Pierre Huart for his kindness and benevolence.
+internship and Jean-Pierre Huart for his kindness and benevolence. I
+also thank Viviane Planchon, the chief of the Unit 11 who trusted me for
+the report about drought in Wallonia.
 
-I also would like to thank the Youkou team for its good mood and
+I also would like to thank the \emph{Youkou} team for its good mood and
 kindness that made my internship even better.
 
 I thank my school supervisor in \emph{Bordeaux Sciences Agro},
@@ -322,9 +333,11 @@ It was completely written with RMarkdown and \LaTeX.
     
     I would like to thank the others members of the AGROMET project : the
     project leader, Damien Rosillon, who trusted me throughout the
-    internship and Jean-Pierre Huart for his kindness and benevolence.
+    internship and Jean-Pierre Huart for his kindness and benevolence. I
+    also thank Viviane Planchon, the chief of the Unit 11 who trusted me for
+    the report about drought in Wallonia.
     
-    I also would like to thank the Youkou team for its good mood and
+    I also would like to thank the \emph{Youkou} team for its good mood and
     kindness that made my internship even better.
     
     I thank my school supervisor in \emph{Bordeaux Sciences Agro},
@@ -342,42 +355,46 @@ It was completely written with RMarkdown and \LaTeX.
   \end{preface}
   \begin{abstract}
     The European directive 2009/128/CE imposes member-states to set up tools
-    that allow for a more rational use of crop protection products. Among
-    these tools, agricultural warning systems, based on crop monitoring
-    models for the control of pests and diseases are widely adopted and have
-    proved their efficiency. However, due to the difficulty to get
-    meteorological data at high spatial resolution (at the parcel scale),
-    they still are underused. The AGROMET project, led by CRA-W, aims to
-    generate a high spatial resolution network which diffuses interpolated
-    weather data provided by physical weather stations using geostatistical
-    tools. The internship operates in data acquisition and data analysis
-    steps. As a first step, the objective was to collect data which can
-    explained some weather parameters and then, secondly, to integrate them
-    in a benchmark of statistical methods and combinations of variables to
-    identify those which return models with the lowest error. For a matter
-    of time, the internship has been focused on temperature prediction.
+    that allow for a more rational use of crop protection products. The
+    AGROMET project, led by CRA-W, aims to generate a high spatial
+    resolution network which diffuses interpolated weather data provided by
+    physical weather stations using geostatistical tools. The internship
+    aimed to spatialize temperature using Multiple Linear Regression method.
+    To do that, the internship was integrated in in data acquisition and
+    data analysis steps. As a first step, data which can explain temperature
+    were collected and organised to integrate them in machine learning
+    algorithms. Then, the objective is to compare different combinations of
+    explanatory variables and to identify which one provides the lowest
+    error using multiple linear regression as learning method. The results
+    obtained from a database containing more than 23000 hours show some
+    interesting combinations as the one based on spatial coordinates and
+    elevation or the one based on the variables with the best linear
+    correlation computed every hour. Other variables will be integrated
+    afterward to try to reduce prediction errors.
     
     ~ ~
     
     La directive européenne 2009/128/CE impose aux états-membres de mettre
     en place des outils visant à une utilisation rationnelle des produits
-    phytosanitaires. Parmi ces outils, les systèmes d'avertissements
-    agricoles, basés sur des modèles de suivi des maladies ou des ravageurs
-    sont très largement utilisés et ont déjà fait preuve de leur efficacité.
-    Cependant, ils sont encore sous-exploités du fait de la difficulté de
-    disposer d'une information météorologique à haute résolution spatiale (à
-    l'échelle de la parcelle). Le projet AGROMET, dirigé par le CRA-W, a
-    pour but de genérer un réseau de stations virtuelles à haute résolution
-    spatiale qui diffusera des données météorologiques interpolées à partir
-    de données issues de stations physiques et d'outils géostatistiques. Le
-    stage intervient dans la phase d'acquisition des données et d'analyse
-    des données. Dans un premier temps, l'objectif était de récolter des
-    données dont pourraient dépendre certains paramètres météorologiques
-    puis, dans un second temps, de les intégrer dans une analyse comparative
-    des méthodes statistiques et des combinaisons de variables explicatives
-    pour trouver celles qui retournent des modèles avec l'erreur la plus
-    faible. Pour une question de temps, le stage a été ciblé autour de la
-    prédiction de la température.
+    phytosanitaires. Le projet AGROMET, dirigé par le CRA-W, a pour but de
+    genérer un réseau de stations virtuelles à haute résolution spatiale qui
+    diffusera des données météorologiques interpolées à partir de données
+    issues de stations physiques et d'outils géostatistiques. Le stage avait
+    pour objectif de spatialiser la température à l'aide de la Régression
+    Linéaire Multiple. Pour ce faire, le stage s'est intégré dans la phase
+    d'acquisition des données et d'analyse des données. Dans un premier
+    temps, des données qui pourraient expliquer la température ont été
+    récoltées et organisées afin de les intégrer dans des algorithmes de
+    machine learning. L'objectif est ensuite de comparer les différentes
+    combinaisons de variables explicatives et d'identifier celle qui fournit
+    les prédiction avec l'erreur la plus faible en utilisant la régression
+    linéaire multiple comme méthode d'apprentissage. Les résultats obtenus à
+    partir d'une base de données de plus de 23000 heures mettent en évidence
+    plusieurs combinaisons intéressantes comme celle utilisant les
+    coordonnées géographiques et l'altitude ou celle utilisant les variables
+    avec la meilleure corrélation linéaire à chaque heure. D'autres
+    variables seront par la suite intégrées pour tenter de réduire les
+    erreurs de prédiction.
   \end{abstract}
   \begin{abbreviations}
     \begin{itemize}
@@ -390,7 +407,12 @@ It was completely written with RMarkdown and \LaTeX.
     \item
       CRS : Coordinate Reference System
     \item
+      IDW : Inverse Distance Weight
+    \item
       JSON : JavaScript Object Notation
+    \item
+      KNMI : Royal Netherlands Meteorological Institute (Dutch national
+      weather service)
     \item
       MAE : Mean Absolute Error
     \item
@@ -482,8 +504,10 @@ scientific research but also to provide services in agricultural and
 agri-food sector keeping a perspective view on the development of
 agriculture.
 
+~
+
 The research is divided into 4 main fields where more than 100 projects
-are permanently in progress. :
+are currently in progress. :
 \begin{itemize}
 \tightlist
 \item
@@ -507,14 +531,16 @@ The CRA-W is divided into 4 departments with 4 research units each :
 \item
   Agriculture and natural environment
 \end{itemize}
-The last one has the Unit 11 corresponding to Farming Systems, Territory
-and Information Technologies Unit where I realized my internship. This
-Unit develops tools to meet society's new expectations and decision
-support systems to improve the technico-economic and environmental
-performance of farming systems. There are actually 28 projects in
-progress.
+~
 
-The activities of the Unit are the mainly the following :
+The unit 11 \emph{Farming Systems, Territory and Information
+Technologies} where I realized my internship belongs to the
+\emph{Agriculture and natural environment} department. This Unit
+develops tools to meet society's new expectations and decision support
+systems to improve the technico-economic and environmental performance
+of farming systems. There are actually 28 projects in progress.
+
+The main activities of the Unit are the following :
 \begin{itemize}
 \tightlist
 \item
@@ -531,15 +557,18 @@ The activities of the Unit are the mainly the following :
 \item
   Spatial information systems for the management of rural areas.
 \end{itemize}
-PAMESEB is a non-profit organisation handle by the CRA-W which aims to
-promote agrometeorology by taking climatic conditions into account in
-the walloon agriculture. PAMESEB has 30 weather stations in Wallonia.
-These stations provide measures for ways to fight crop diseases like
-late blight and wheat septoria. Stations have a local acquisition unit
-for hourly data recording. The PAMESEB network has an important place in
-the AGROMET project because it provides data for it.
+~
 
-Each PAMESEB station has 5 basic sensors :
+PAMESEB is a non-profit organisation handled by the CRA-W which aims to
+promote agrometeorology by considering weather conditions in the context
+of walloon agriculture. PAMESEB manages a network of 30 automated
+weather stations in Wallonia. These stations provide measures for ways
+to fight crop diseases like late blight and wheat septoria. Stations
+have a local acquisition unit for hourly data recording. The AGROMET
+project uses weather data provided by the PAMESEB network as its primary
+data source.
+
+Each PAMESEB station is equipped with 5 basic sensors :
 \begin{itemize}
 \tightlist
 \item
@@ -569,8 +598,11 @@ provided by physical weather stations in such a way that a high spatial
 resolution network (mesh size of 1 km2) of virtual weather stations
 could be generated.
 
-That is the objective of the AGROMET project. Moreover, some CRA-W's
-units and other partners are interested in to build models against crop
+~
+
+The purpose of the AGROMET project is to build a web platform that makes
+such ``spatialized'' weather data available to crop monitoring models.
+That will help other CRA-W's units and partners to act against crop
 diseases like potato late blight or orange midge which depends on
 meteorological conditions.
 
@@ -600,15 +632,10 @@ various indicators) and an API allowing their use on the fly, notably by
 agricultural warning systems providers. An extensive and precise
 documentation about data origin, geo-statistic algorithms used and
 uncertainty will be also available.
-\begin{figure}
 
-{\centering \includegraphics[width=0.65\linewidth]{figure/agromet} 
+~
 
-}
-
-\caption{First draft of the functional architecture of the platform}\label{fig:agromet}
-\end{figure}
-Meteorological data wanted to be predict are :
+The meteorological data the project aims to spatialize are :
 \begin{itemize}
 \tightlist
 \item
@@ -620,7 +647,10 @@ Meteorological data wanted to be predict are :
 \item
   Rainfall will be spatialized from RMI rain radar data.
 \end{itemize}
-To predict these variables, known data are used :
+In order to perform spatial predictions of these variables, known
+independent variables are required. Depending of the weather parameter
+to be spatialized, various independent variables will be considered. We
+can mention :
 \begin{itemize}
 \tightlist
 \item
@@ -631,88 +661,131 @@ To predict these variables, known data are used :
   Other variables discussed to improve the prediction : distance to sea,
   CORINE land cover\ldots{}
 \end{itemize}
-The Figure \ref{fig:agromet} shows the architecture of the future
-platform and steps before data diffusion.
+The Figure \ref{fig:agromet} shows the global steps of the project and
+steps before data diffusion.
+\begin{figure}
 
-\subsection{Importance of the internship for the
-project}\label{importance-of-the-internship-for-the-project}
+{\centering \includegraphics[width=0.65\linewidth]{figure/agromet} 
 
-To predict meteorological variables, several statistical method will be
-tested. The identified methods at this time are multiple linear
-regression, ANN and several kriging methods.
+}
 
-Two objectives were clearly defined for my internship. I operated in the
-data acquisition and data analysis steps with the aim of predicting
-\textbf{temperature} using \textbf{Multiple linear Regression}.
+\caption{Global steps of the AGROMET project}\label{fig:agromet}
+\end{figure}
+\section{Scope of the internship : using multiple linear regression for
+temperature
+predictions}\label{scope-of-the-internship-using-multiple-linear-regression-for-temperature-predictions}
 
-First, I have collected data which can be explanatory variables for
-temperature and organised them to be integrated in the analysis and
-benchmark.
+To perform spatial predictions of meteorological variables, several
+statistical methods can be tested like multiple linear regression, ANN
+and several kriging methods.
 
-Then, I ran a benchmark experiment where different desired regression
-learning algorithms are applied to various regression tasks
-(i.e.~datasets with different combinations of explanatory variables and
-the target weather parameter) with the aim to compare and rank the
-combinations of algorithm and used explanatory variables using a cross
-validation resampling strategy that provides the desired performance
-metrics. And then, I aggregated, by calculating the mean, all the hourly
-performance measures to choose the method that globally performs the
-best. For each desired hourly dataset, I applied the choosen method to
-build a model to make spatial predictions. The predictions and their
-uncertainty have been vizualized using maps. Finally, I had to make the
-predictions available on the platform together with its uncertainty
-indicator.
+~
 
-For a matter of time, this benchmark is run on two large years (from
-2015-11-11 to 2018-06-30) because some data were not available before
-this period.
+Two workpackages were clearly defined for my internship :
+\begin{itemize}
+\tightlist
+\item
+  acquiring and preparing independent variables that have been
+  identified as potential explanatory variables for temperature
+\item
+  benchmarking various combinations of independent variables used with
+  the \textbf{multiple linear regression} algorithm as spatial
+  prediction method for the \textbf{temperature}
+\end{itemize}
+I used R because it is a free software for statistical computing and
+graphics. Spatial data were collected from different sources and
+involved the use of specific R libraries to manipulate them. I needed to
+handle these libraries to manipulate vector and raster geodata. Then,
+these data have been organised with the tidyverse library to respond to
+the structure imposed by the chosen modeling library and to help reduce
+computation time. The modeling library used is mlr, dealing with machine
+learning algorithms, responds to a special architecture and logic that I
+needed to understand. Then, the data have been integrated to build
+models through a benchmark and analysis. Visualization was done thanks
+to a plotting system for R, ggplot2, able to create graphics and maps.
 
-\chapter{Working environment}\label{workenv}
+The benchmark was run on two large years (from 2015-11-11 to 2018-06-30)
+because some data were not available before this period.
 
-\section{Applications and tools}\label{applications-and-tools}
+\section{About the working
+environment}\label{about-the-working-environment}
 
-Working in development field often imposes to be methodic. That's why
-preparing the working environment is very important.
+\subsection{Applications and tools}\label{applications-and-tools}
+
+Working in development field often imposes to be methodic. In particular
+for bug tracking or code versioning to detect errors and keep an history
+of code modifications. Being methodic is also important for code
+readability (adding comments for example) and code reproducibility. For
+the reason that the AGROMET project is public, this last point is
+important for transparency.
+
+That's why preparing the working environment is important to help
+achieve these good practices.
+
+~
 
 First, I have installed \textbf{Ubuntu GNOME}, a distribution of Linux
-on my laptop. Indeed, this OS is prefered by developers and open-source
-addicts thanks to the high contribution to improve distributions. Linux
-distributions are safer than Windows due to that and it is very easy to
-automatise a lot of commands. This installation was done thanks to a USB
-drive with a boot of Ubuntu GNOME.
+on my laptop. Indeed, this is an open-source OS prefered by developers.
+It has a large community which is important to solve problems and bugs
+and to improve the OS. Because it is free, anyone can install it and
+that is important for reproducibility. Due to its large community of
+developers, Linux is safer because they monitor for issues and can
+repair them. Moreover, Linux has only 3\% of the market and hackers
+prefer target a large segment of users as Windows. This installation of
+Ubuntu was done thanks to a USB drive with a boot of Ubuntu GNOME.
+
+~
 
 Once I had Ubuntu installed on my laptop, I used an \textbf{ANSIBLE
-script} to install all the applications I need automatically. Moreover,
+script} to automatically install all the applications I need. Moreover,
 this script handles the updates of these applications. That is a very
-useful way to earn some time.
+useful way to earn some time and it helps science reproductibility
+because anyone with the script will end up with the exact same
+installation.
 
-Accessing to servers has to be secured. That's why every developer
-should have a \textbf{SSH} key. This key or token is unique and enable
-people to access to servers. It is useful to access to Git repositories
-for example.
+~
 
-\textbf{GitHub} is a hosting service for version control. Its
-utilisation is very common for developers because their codes are
-online, the access is public and GitHub enable to handle versions of
-files. It makes easier the collaborative work on a same code and enable
-to use codes of other users.
+Accessing to servers has to be secured to be protected against
+intrusions and monitor logs. That's why every developer should have a
+\textbf{SSH} key. This key or token is unique and enable people to
+access to servers. It is useful to access to Git repositories for
+example. It also helps to save some time because anyone who wants to
+connect a service does not need to provide a login and password each
+time using an SSH connection instead.
 
-For my internship, I need to work with my mentor to code. GitHub is the
-best solution to that. I created a folder in my laptop to clone all the
-repositories I need for my work. Then, I have a copy that I can modify
-and I can send my modifications on GitHub. To clone these repositories,
-my SSH key was useful.
+\textbf{GitHub} is a hosting service for version control. It facilitates
+the collaborative work on a same code, the handle of code versions and
+the use of code developed by other users. It is a very common tool for
+developers because it ensures a public and online access.
 
-The AGROMET project for whom I worked has an \textbf{API} to store
-meteorological data from all the stations. An account has been created
-for my internship. Then, I can get data from the API to test my codes.
-These data have JSON or GeoJSON format, a open-standard file format
-derived from JavaScript which is easy for machines to parse and generate
-and easy to read and write for humans.
+For my internship, I had to collaboratively work on code development
+with my mentor. This is why we have been using GitHub. For each of the
+code folders that I had to work on, I made a fork that I've downloaded
+on my laptop for further local developments. Then, I have a copy that I
+can modify and I can send my modifications on GitHub. To clone these
+repositories, my SSH key was useful.
 
-\textbf{Docker} is a software for containerize platforms. This container
-approach has many advantages compares to the use of virtual machines :
-lightweight, quick and modular.
+~
+
+The current development version of the AGROMET platform already offers
+an \textbf{API} that allows to retrieve weather data from the stations.
+A specific API token with reading rights has been created for my
+internship. The API provides data in both JSON and GeoJSON formats which
+are open-standard file formats. These formats are easy to parse by
+machines and are easy to read by humans.
+
+~
+
+Among the different programming languages, R has been chosen because it
+is is a free software environment for statistical computing and
+graphics. It is adapted to data analysis because R was developed by
+statisticians and easy to use even for people without programming
+skills. R has a large community to help people to solve bugs and
+problems and packages are well documented.
+
+\textbf{Docker} is a software for containerizing platforms. This
+container approach has many advantages compares to the use of virtual
+machines : lightweight, quick and modular.
 
 There are two main reasons to use R in conjunction with Docker. First,
 it allows you to quickly and easily share your work whatever the OS and
@@ -722,67 +795,87 @@ and e.g.~run in time-consuming re-installation procedures due to broken
 configuration. In case of OS crash, simply relaunch your Docker R
 container with a single command and you are ready to work.
 
-\section{Reproducible science}\label{reproducible-science}
+\subsection{Reproducible science}\label{reproducible-science}
 
-The AGROMET project is a public one. That means that the CRA-W and all
-people involved have to be transparent about the work and the results.
-That will give to the project more credibility and more reliability.
+Reproducible science refers to the idea that full working environment of
+a research can be used by anyone to reproduce the results and create a
+new work based on it. That ensures reliability and credibility because
+the entire work is available.
+
+~
+
+In the case of the AGROMET project, the purpose of choosing open-source
+is to allow reproducible science and transparency about the chosen
+methods and therefore the meaning of the produced datasets.
 
 Transparency is promoted thanks to open science. That means the content
 and the results of the project will be accessible to others. Indeed,
 transparency is superior to trust and is an ideal (Munafo, 2017).
 
-In the case of the project, development represents its major part.
-Today, open science is widely used and tools have been developed for
-that. That insures to all codes written for the project to be available.
-As a consequence, anyone will be able to check the code and inspect it.
-Then, some people can improve codes and increase efficiency of work.
+Development represents the major part of the project. Today, open
+science is widely used and tools have been developed for that. The
+availability of code on GitHub ensures that anyone can check the code
+and inspect it. Then, some people can improve codes and increase
+efficiency of work.
 
-Moreover, this transparency insures that the models built will be
-completely explicit for people who will use them. That is a proof of the
-quality of models.
+Moreover, this transparency makes sure that people can inspect and
+understand the origin of the data produced by the platforms. Users will
+have a deep insight of the data they will be working with.
+
+For these reasons, transparency and open science will give more
+credibility and reliability to the project.
 
 \chapter{Data acquisition and preparation}\label{data-acq}
 
-Variables have to be identified to build models. To do that, we need
-response variables, i.e.~variables to predict, and explanatory
-variables, i.e.~variables on which response variables depend.
+Explanatory variables (i.e.~independent variables) are required to build
+models able to predict the response variable (i.e.~dependent variable).
+In our case the dependent variable is air temperature. We will call this
+variable our \emph{target variable}. As set of explanatory variables
+have been identified and integrated in our modeling approach. These will
+be presented here below.
 
-\section{Interest variables}\label{interest-variables}
+\section{Target variable}\label{target-variable}
 
-The AGROMET project will provide information about weather parameters
-which are important for some crop diseases. These parameters are
-temperature, relative humidity, leaves wetness and rainfall. The last
-one is retrieved from a Dutch company. The others are measured by
-weather stations from PAMESEB network, data are stored on an API. This
-API is an intermediary software where we can make requests to get some
-data. Data extracted from the API need to be transformed to be more
-manipulable. Functions were wrote to transform these data. For example,
-convert measures from character to numeric.
+The AGROMET project aims to provide weather data used as input for
+various crop models. These parameters are temperature, relative
+humidity, leaves wetness and rainfall. The last one is retrieved from
+the RMI (Belgian Météo France equivalent). The others are measured by
+weather stations from PAMESEB network, data are stored in a PostgreSQL
+database and users can query it using the API. Using the API, users
+retrieve untyped data and they have to type the data using specific
+functions.
+
+Temperature is the target variable concerned by my internship.
 
 \section{Explanatory variables}\label{explanatory-variables}
 
-A little reminder : I will use multiple linear regression. That means I
-want to find an equation where a response variable can be modeled from
-two or more variables. The equation will have the form :
-\(Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n\) where \(Y\) is the
-response variable and \(X_n\) your \(n\) explanatory variables related
-to their estimated parameter \(b_n\).
+As a reminder, the purpose of my internship was to implement the
+multiple linear regression algorithm as a spatialization method. This
+means that I need to find an equation where the target variable can be
+modeled from one or more explanatory variables. The equation will have
+the form : \(Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n\) where \(Y\)
+is the response variable and \(X_n\) your \(n\) explanatory variables
+related to their estimated parameter \(b_n\).
 
-These explanatory variables have been identified from academic papers
-(Zeuner 2007, Janssen 2011). Two types of explanatory variables can be
-discriminate : static variables and dynamic variables.
+These explanatory variables which have an influence on temperature are
+already known and some academic papers already have dealt with them
+(Zeuner 2007, Janssen 2011).
+
+Two types of explanatory variables can be discriminated : static
+variables, i.e.~variables not time-dependent but depending on the
+spatial position and dynamic variables, i.e.~time-dependent and
+position-dependent variables.
 
 \subsection{Static variables}\label{static-variables}
 
 \subsubsection{Land cover}\label{land-cover}
 
-All PAMESEB weather stations are sited in agricultural or herbaceous
+All PAMESEB weather stations are localized in agricultural or herbaceous
 areas. That is a way to reduce errors about measures. However, the
-environment of each station can be different and can have an impact on
-measures. For example, a station could have a different behaviour if a
-forest is near its area or if an artificial surface (road, construction)
-is near it.
+surrounding environment (100 meters around the station) of each station
+might be different and can have an impact on measures. For example, a
+station could have a different behaviour if a forest is near its area or
+if an artificial surface (road, construction) is near it.
 
 CORINE land cover is an inventory updated every 6 years by
 \textbf{Copernicus}, the European Union's Earth Observation Programme.
@@ -791,9 +884,9 @@ Land Cover has been already used to make a spatial interpolation of air
 pollution (Janssen \emph{et al.} 2011).
 
 CORINE Land Cover is divided in 47 different land covers. 26 of them are
-in Wallonia. However, 26 land covers is too much to be integrated as
-explanatory variables. These land covers have been grouped in 5 classes
-we juged relevant :
+found in Wallonia. However, we made a clustering to group land covers
+that we judge to have the same kind of impact on temperature. Then, we
+made 5 classes :
 \begin{itemize}
 \item
   \textbf{Agricultural areas} : areas where crops can be tall
@@ -810,19 +903,40 @@ we juged relevant :
   Finally, this class has been removed because of the fact that no
   stations are located near a water body
 \end{itemize}
-After a long data preparation with transformation of CRS from WGS84 to
-Belgian Lambert 2008 and conversion in different forms of Spatial
-objects (Vector and Raster), data were completely manageable.
+~
 
-Finally, data are recovered at stations positions with buffers. These
-buffers have a radius of 100 meters for physical stations and 500 meters
-for virtual stations (because each station covers 1 km²). The Table
-\ref{tab:clcperc} below shows the structure of the data frame where each
-station identified by an ID has the percentage of cover for each class.
+R can handle different two types of spatial data : vector and raster.
+Vector model is based on points inside a CRS. Vector data can be points
+or lines or polygons. In R, \texttt{sp} and \texttt{sf} packages can
+handle this data type. The major difference between \texttt{sp} and
+\texttt{sf} is that \texttt{sf} objects can be treated as data frames in
+most operations and has better performances (Lovelace 2018). Raster
+model is based on a matrix representing equally spaced pixels and
+contains informations about the CRS, the extent and the origin.
+\texttt{raster} package handles this data type. These three packages can
+work together to convert data from a type to another one.
 
-Buffers of 500 meters radius and grid cells of 1km² were compared but
-buffers were chosen because they have more relevance when they are
-compared to physical stations where only buffers were computed.
+CORINE land cover data downloaded on the geo-portal was a shapefile,
+i.e.~vector data, with WGS84 CRS. This geographic CRS has coordinates
+expressed in degrees. Then, to read them in R, \texttt{sp} is necessary
+but a conversion to \texttt{sf} was prefered for clustering for the
+reasons given above.
+
+A conversion of CRS was also done from WGS84 to Belgian Lambert 2008. In
+contrast to WGS84, Lambert 2008 is a projected CRS expressed in meters.
+It facilitates our work to characterize the surrounding environment of
+the stations defining buffers around them. A projected CRS facilitates
+the definition of the radius of the buffer using meters instead of
+degrees.
+
+~
+
+Thanks to these buffers, part of each class of land cover is computed
+and then stored in a table. These buffers have a radius of 100 meters
+for physical stations and 500 meters for virtual stations (because each
+station covers 1 km²). The Table \ref{tab:clcperc} below shows the
+structure of the data frame where each station identified by an ID has
+the percentage of cover for each class.
 \begin{table}
 
 \caption{\label{tab:clcperc}Distribution of land covers around physical stations}
@@ -842,55 +956,76 @@ compared to physical stations where only buffers were computed.
 \end{table}
 \subsubsection{Digital Terrain Model}\label{digital-terrain-model}
 
-In the same way as land cover, the terrain model could have an impact on
-temperature of the environment. These variables have been integrated in
-the models made by Zeuner \emph{et al.} (2007) and the relevance has
-been demonstrated several times.
+In the same way as land cover, the terrain characteristics could have an
+impact on temperature of the environment. These variables have been
+integrated in the models made by Zeuner \emph{et al.} (2007) and the
+relevance has been demonstrated several times.
 
 Elevation data have been recovered for Wallonia from \textbf{NASA's
 SRTM} providing a high-resolution (90 meters) topographic data. Then,
 slope, aspect and roughess of terrain have been calculated with spatial
-libraries from R. These data are very large and data processing is very
-long because resolution is high.
+libraries implemented in R.
 
 \subsection{Dynamic Variables}\label{dynamic-variables}
 
 \subsubsection{Solar irradiance}\label{solar-irradiance}
 
-In the same way as temperature is a dynamic variable, explanatory
-variables can be dynamic. In the case of temperature, we can be
-interested in solar irradiance. Indeed, solar irradiance has an impact
-on climate changes (Dewitte \emph{et al.} 2004).
+Some explanatory variables for temperature can be time-dependent. In
+this case, we can be interested in solar irradiance. Indeed, solar
+irradiance has an impact on weather changes (Dewitte \emph{et al.}
+2004).
+
+~
 
 Data are recovered from \textbf{EUMETSAT}, the European Organisation for
 the Exploitation of Meteorological Satellites. They are produced every
 30 minutes and expressed in W/m². These data are aggregated in hourly
-data and they are stored on a API of AGROMET.
+data and they are queried using the API of AGROMET.
 
-Data are available from 2015-11-11. As a consequence, we can not build
-models from data before this date.
+There are 875 points distributed in Wallonia where records are
+available, this is not sufficient in our case where the objective is to
+provide predictions with a precision of 1 km². The handle of these
+spatial data with R packages was necessary to spatialize the records. To
+do that, the IDW spatial interpolation method was used.
+
+These data are available from 2015-11-11. As a consequence, models built
+before this date do not use solar irradiance as explanatory variable.
+However, solar irradiance is an interesting explanatory variable, that's
+why no model was built before this date for my internship.
 
 In parallel with that, PAMESEB stations also measure solar irradiance.
-But only 27 stations are useable.
+But only 27 stations are useable. The measures from weather stations are
+used to build models from physical stations whereas the EUMETSAT
+measures will be used later for the spatialization on the spatial grid
+of Wallonia.
 
 \subsubsection{Temperature forecasts}\label{temperature-forecasts}
 
 The AGROMET project is supported by RMI, the Belgian equivalent of Météo
 France. As a partner, RMI will provide temperature forecasts based on
-their own algorithms. These data will be integrated as explanatory
-variables to build models.
+their own algorithms. It was planned to integrate these data as
+explanatory variables but at the time of my internship these were not
+yet available.
 
-At the time of my internship, these data were not available.
-
-\section{Data organisation}\label{data-organisation}
+\section{Data preparation}\label{data-preparation}
 
 Once all the data are available, an important task is to organize them
-to realise the modeling. This organisation needs to respond to a
-methodic approach. Indeed, to reduce computation time, structure of data
-have to be optimised.
-
-The objective is to build models for each hour and compute its related
-error.
+to perform modeling. This organisation needs to respond to a methodic
+approach :
+\begin{itemize}
+\tightlist
+\item
+  help reduce computation time
+\item
+  respond to the structure imposed by the chosen modeling library
+\end{itemize}
+Our choice turned to the use of the \texttt{mlr} package because it
+provides an interface for machine learning using a lot of statistical
+methods. The objective of data preparation is to make our data
+mlr-compliant because the package needs data with a specific structure.
+In particular, I needed to organize data to have one line for each
+station containing values for every explanatory variable. Moreover, this
+organisation must be done for every hour.
 
 The first step consists of grouping data. Static and dynamic variables
 are grouped in a data frame. Then, to reduce time computation and to
@@ -937,8 +1072,8 @@ frame contained into each row.
 \end{table}
 \chapter{Modeling with machine learning methods}\label{model}
 
-Once the dataset is ready, the next step is to model predictions of
-temperature. To do that, machine learning is used through R.
+Once the dataset is ready, the next step is to model spatial predictions
+of temperature. To do that, machine learning is used through R.
 
 \section{Principle of machine
 learning}\label{principle-of-machine-learning}
@@ -953,13 +1088,14 @@ on the data. In other words, Machine learning is a subset of deep
 learning or Artificial Intelligence that provides an ability to
 ``learn'' with data.
 
+~
+
 There are 2 types of machine learning : supervised and unsupervised
 learning.
 
-\subsection{Supervised Machine
-Learning}\label{supervised-machine-learning}
-
 In practice, most of machine learning uses supervised learning.
+
+~
 
 From \emph{machinelearningmastery.com} :
 \begin{quote}
@@ -973,122 +1109,122 @@ It is called supervised learning because the process of an algorithm
 learning from the training dataset can be thought of as a teacher
 supervising the learning process
 \end{quote}
-In this learning, the algorithm tries to learn from examples we give to
-it and then it returns a model of prediction. Classification and
-regression are supervised machine learning.
+~
+
+For supervised machine learning, the algorithm tries to learn from
+examples we give to it and then it returns a model of prediction.
+Classification and regression are supervised machine learning.
 
 This is the case of the AGROMET project where regression models are
 used.
 
-\subsection{Unsupervised machine
-learning}\label{unsupervised-machine-learning}
-
-Although that is not the subject, unsupervised learning consists in
-algorithms which have to find themselves interesting structures in the
-data. It differs from supervised learning because correct answers are
-not given to the machine and it has to find answers itself. Association
-and clustering are unsupervised machine learning.
-
-For example, take 400 pictures of cats and 400 of dogs. While supervised
-learning will give these pictures with the answer to the machine to make
-it to find a way to discriminate cats and dogs, unsupervised learning
-will give only the pictures and the machine will have to find itself
-differences between cats and dogs separating them in two groups.
-Obviously, the machine will not know that one group is corresponding to
-cat and the other to dog because we did not labelled them but the
-machine will be able to distinguish them like two separate entities.
+The unsupervised machine learning is not relevant in the context of my
+work because this kind of machine learning does not need reference to
+infer patterns and cannot be directly applied to regression problems.
 
 \section{Machine learning approach in the AGROMET
 project}\label{machine-learning-approach-in-the-agromet-project}
 
-The objective is to predict weather parameters (temperature, relative
-humidity, leaves wetness). We use data from meteorological stations and
-from other sources like EUMETSAT for solar irradiance and COPERNICUS for
-land cover.
+The objective is to spatially predict weather parameters (temperature,
+relative humidity, leaves wetness). We use data from meteorological
+stations and from other sources like EUMETSAT for solar irradiance and
+COPERNICUS for land cover as explanatory variables for these weather
+parameters and to build our models.
+
+~
 
 Here is our approach :
 
-We choose a weather parameter to predict, temperature for example. It is
-our \textbf{target}.
+We choose a weather parameter to predict, it is our \textbf{target}. In
+the context of my internship, \emph{temperature} is my target variable.
 
-Then, we define our \textbf{explanatory variables}, i.e.~the parameters
-we want to build our model. These variables are our \textbf{task} and it
-contains target data.
+Then, from the historical dataset of hourly weather records from PAMESEB
+database, a representative subset of records is filtered. Stations are
+filtered to only keep the useful ones which are active. For each hourly
+set of records, a benchmark experiment is run with multiple linear
+regression algorithm, the \textbf{learner}, applied to various
+regression \textbf{tasks}, i.e.~the target response variable
+(temperature) and all the chosen \textbf{explanatory variables}
+(elevation, slope, land cover\ldots{}). The different combinations of
+explanatory variables using multiple linear regression algorithm are
+compared and ranked using a \textbf{cross-validation resampling
+strategy}. Several methods exist but we will use the Leave-One-Out
+cross-validation method (LOOCV). It consists to establish, for each
+hourly dataset, a model based on every weather stations except one which
+will be the one where the model is tested to compute the error and then
+doing it again as many times as the number of weather stations.
+Performance metrics (RMSE and MAE) have been stored for each of these
+iterations.
 
-In our case, we will use several statistical methods to build our model
-like kriging, multiple linear regression model or neural networks. Those
-which are chosen to build a model are called \textbf{learners} and will
-be compared.
+~
 
-To measure performance of our predictions, we need to use a
-\textbf{cross-validation resampling strategy}. Several methods exist but
-we will use the Leave-One-Out cross-validation method. It consists to
-establish model based on every samples except one which will be the
-sample where the model is tested to compute the error and then doing it
-again as many times as the number of samples. The error measured for our
-models will be the RMSE and MAE.
+These performance metrics are two of the most common metrics used to
+measure accuracy for continuous variables and for validation step in
+machine learning.
+
+~
+
+MAE measures the average magnitude of the errors in a set of
+predictions, without considering their direction. It is the average over
+the test sample of the absolute differences between prediction and
+actual observation where all individual differences have equal weight.
+
+\[
+MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y}_{j} \rvert}
+\]
+
+~ ~
+
+RMSE is a quadratic scoring rule that also measures the average
+magnitude of the error. It is the square root of the average of squared
+differences between prediction and actual observation.
+
+\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y}_{j} )^2}}
+\]
 
 The entire methodology is detailed in the \emph{Appendix A}
 (Spatialization methodology).
 
 \section{Machine Learning in R}\label{machine-learning-in-r}
 
-All of our work is done on RStudio. It is a very powerful open-source
-software for R. Moreover, a R package which provides the infrastructure
-to run machine learning is available. This package \textbf{mlr} is very
-complete to build models, make predictions and evaluate performances.
+All of our work is done using R. Moreover, a R package which provides
+the infrastructure to run machine learning is available. This package
+\textbf{mlr} is very complete to build models, make predictions and
+evaluate performances.
 
 Machine learning in R offers a common and simplified interface for all
 statistical methods implemented in the package. With this package, run a
 benchmark with several statistical methods can be done on data from a
-period. This benchmark returns a lot of informations.
-
-It is possible to compare statistical methods through measures of error
-like RMSE or MAE. Comparing several combinations of explanatory
-variables is also possible.
+period. This benchmark returns a lot of informations :
+\begin{itemize}
+\tightlist
+\item
+  about learners and task descriptions used in the benchmark
+\item
+  about models, test performance values, predictions from the benchmark
+\end{itemize}
+The package includes several ways to analyze benchmark results. Plots
+are integrated to visualize results and learning algorithms can be
+compared and ranked. It is possible to compare learners and tasks
+through measures of error like RMSE or MAE. In the case ofmy internship,
+the learner is always the same, multiple linear regression, and tasks
+change because I modify the set of explanatory variables used.
 \begin{figure}
 
-{\centering \includegraphics[width=0.6\linewidth]{figure/mlr_workflow} 
+{\centering \includegraphics[width=0.5\linewidth]{figure/mlr_workflow} 
 
 }
 
 \caption{mlr workflow}\label{fig:mlr}
 \end{figure}
-The Figure \ref{fig:mlr} shows the general workflow.
+The Figure \ref{fig:mlr} shows the general workflow of \texttt{mlr}.
+
+~
 
 This package has an important community which improves it regularly. A
 lot of statistical methods are implemented from other packages like
 \emph{tgp}, \emph{kknn} or \emph{DiceKriging}.
-
-The following code chunk shows an example of the structure of the code
-using mlr to define learners, resampling strategy and run benchmark.
-
-\clearpage
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# define learners}
-\NormalTok{lrns.l <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{2}\NormalTok{),}
-               \KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat.Elev"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"altitude"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{3}\NormalTok{))}
-
-\CommentTok{# define resampling strategy}
-\NormalTok{resampling.l =}\StringTok{ }\KeywordTok{makeResampleDesc}\NormalTok{(}\DataTypeTok{method =} \StringTok{"LOO"}\NormalTok{)}
-
-\CommentTok{#run benchmark}
-\NormalTok{benchmark <-}\StringTok{ }\KeywordTok{benchmark}\NormalTok{(}
-  \DataTypeTok{learners =}\NormalTok{ lrns.l[}\DecValTok{1}\NormalTok{],}
-  \DataTypeTok{tasks =}\NormalTok{ data.stations.n.df}\OperatorTok{$}\NormalTok{tasks, }\CommentTok{# 1 task = 1 hour}
-  \DataTypeTok{resamplings =}\NormalTok{ resampling.l,}
-  \CommentTok{# additionnal parameters}
-  \DataTypeTok{keep.pred =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if predictions have to be kept}
-  \DataTypeTok{show.info =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# boolean specifying if informations have to be shown when running}
-  \DataTypeTok{models =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if models have to be kept}
-  \DataTypeTok{measures =} \KeywordTok{list}\NormalTok{(rmse, mae, timetrain) }\CommentTok{# list of measures to do}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-The package includes several ways to analyze benchmark results. Plots
-are integrated to visualize results and learning algoriths can be
-compared and ranked.
 
 \chapter{Results and discussion}\label{results}
 
@@ -1096,24 +1232,55 @@ compared and ranked.
 
 \subsection{Methodology}\label{methodology}
 
-To realize the benchmark, data from 2015-11-11 00:00:00 to 2018-06-30
+In the case of the project, a benchmark is an analysis where the
+objective is to compare and rank the different combinations of tasks and
+learners.
+
+To realize this benchmark, data from 2015-11-11 00:00:00 to 2018-06-30
 00:00:00 were used. The objective is to run a benchmark on 5 years of
 data but at this moment, solar irradiance data from EUMETSAT were not
 available before this date. Here, the dataset has 23089 hours.
 
-The learners were defined with filter methods, i.e.~the same statistical
-method was applied to different combinations of explanatory variables.
-For my internship, I only used \textbf{Multiple Linear Regression}.
+~
 
-The Table \ref{tab:explvar} shows the different combinations used and
-compared.
+The learners were defined with filter methods implemented in
+\texttt{mlr}. These filter methods are applied to a statistical
+algorithm (multiple linear regression) to choose explanatory variables
+using conditions. The different conditions used to filter explanatory
+variables are the following :
+\begin{itemize}
+\tightlist
+\item
+  for each hourly dataset, linear correlation with temperature is
+  computed for every explanatory variable. Other filter methods are
+  available (chi-squared, anova\ldots{}) but linear correlation seems to
+  be the most relevant one for a regression problem.
+\item
+  then, explanatory variables are kept according to conditions :
+  variables with the best hourly linear correlation with temperature
+  (the number of variables to keep is specified) or all the variables
+  which have a linear correlation greater than a value from 0 to 1.
+\item
+  I can also choose explanatory variables that I want to build models
+  regardless of their linear correlation
+\end{itemize}
+All these filter methods where applied to \textbf{Multiple Linear
+Regression} learner in the case of my internship.
 
-Every computation is done for each hour. As a consequence, the
-combination of explanatory variables is not unique for each hour but
-depends on a condition checked every time.
+~
 
-Performances were measured with a Leave-One-Out cross-validation
-resampling strategy.
+The Table \ref{tab:explvar} shows the different combinations compared
+using filter methods.
+
+~
+
+The benchmark performs for every hour and filter methods are applied
+each time. As a consequence, linear correlation computation is hourly
+done and \texttt{mlr} choose automatically the variables using the
+filter methods. Then, based on this hourly computation, the combination
+of explanatory variables can be different from one hour to another.
+
+~
 
 The benchmark took about 30 hours, i.e.~3 hours per method. Computations
 are very long and results are very large. Each method represents more
@@ -1133,15 +1300,15 @@ Multiple Linear Regression & lm.Long.Lat.Elev & Longitude \& Latitude \& Elevati
 \hline
 Multiple Linear Regression & lm.SolIrr+1bestVar & Solar Irradiance \& best variable based on an hourly linear correlation computation\\
 \hline
-Multiple Linear Regression & lm.SolIrr+2bestsVar & Solar Irradiance \& 2 bests variables based on an hourly linear correlation computation\\
+Multiple Linear Regression & lm.SolIrr+2bestsVar & Solar Irradiance \& 2 best variables based on an hourly linear correlation computation\\
 \hline
-Multiple Linear Regression & lm.SolIrr+3bestsVar & Solar Irradiance \& 3 bests variables based on an hourly linear correlation computation\\
+Multiple Linear Regression & lm.SolIrr+3bestsVar & Solar Irradiance \& 3 best variables based on an hourly linear correlation computation\\
 \hline
-Multiple Linear Regression & lm.2bestsVar & 2 bests variables based on linear correlation computation for every hour\\
+Multiple Linear Regression & lm.2bestsVar & 2 best variables based on linear correlation computation for every hour\\
 \hline
-Multiple Linear Regression & lm.3bestsVar & 3 bests variables based on linear correlation computation for every hour\\
+Multiple Linear Regression & lm.3bestsVar & 3 best variables based on linear correlation computation for every hour\\
 \hline
-Multiple Linear Regression & lm.4bestsVar & 4 bests variables based on linear correlation computation for every hour\\
+Multiple Linear Regression & lm.4bestsVar & 4 best variables based on linear correlation computation for every hour\\
 \hline
 Multiple Linear Regression & lm.Vars.r>0,5 & Variables with a linear correlation greater than 0.5\\
 \hline
@@ -1153,54 +1320,45 @@ Multiple Linear Regression & lm.Vars.r>0,3 & Variables with a linear correlation
 
 Once benchmark results are available, comparison of methods is possible.
 This comparison is based on the error of measures. In our case, RMSE and
-MAE were computed.
-
-MAE measures the average magnitude of the errors in a set of
-predictions, without considering their direction. It is the average over
-the test sample of the absolute differences between prediction and
-actual observation where all individual differences have equal weight.
-\[
-MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y}_{j} \rvert}
-\]
-
-RMSE is a quadratic scoring rule that also measures the average
-magnitude of the error. It is the square root of the average of squared
-differences between prediction and actual observation.
-
-\[
-RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y}_{j} )^2}}
-\]
-
-They both express average model prediction error in units of the
-variable of interest. Both metrics can range from 0 to \(\infty\) and
-are indifferent to the direction of errors. They are negatively-oriented
-scores, which means lower values are better.
+MAE were computed because they both express average model prediction
+error in units of the variable of interest. Both metrics can range from
+0 to \(\infty\) and are indifferent to the direction of errors. They are
+negatively-oriented scores, which means lower values are better.
 
 Since the errors are squared before they are averaged, the RMSE gives a
 relatively high weight to large errors. This means the RMSE is more
 useful because large errors are particularly undesirable in the project.
 (Chai, 2014)
 
+~
+
 From the 10 methods compared, MAE and RMSE are computed and compared.
 The results are shown in the Figure \ref{fig:meanerror}. In this case,
-they both have the same behaviour. Multiple linear regression using
-coordinates to build models has a large error, the model is too
-simplified. Multiple linear regression using explanatory variables whose
-their linear correlations with temperature is greater than 0.3 has an
-error larger than the other methods too, this filter method is too
-flexible to return a valid model. A few methods have a similar error. In
-particular, that is the case when too many variables are chosen to build
-models.
+they both have the same behaviour. Indeed, they both return the same
+ranking of the methods and they both show methods which stand out from
+the other ones.
 
-On the three best methods, one is better than the others. That is the
-model built from an equation using longitude, latitude and altitude as
+Multiple linear regression using coordinates to build models has a large
+error, this combination is not relevant to spatially predict temperature
+in Wallonia. Multiple linear regression using explanatory variables
+whose their linear correlations with temperature is greater than 0.3 has
+an error larger than the other methods too, this filter method is too
+flexible to return valid spatial predictions. A few methods have a
+similar error. In particular, that is the case when too many variables
+are chosen to build models.
+
+~
+
+Among the three best methods, one is better than the others. This is the
+models built from an equation using longitude, latitude and altitude as
 explanatory variables. Tests realized on two months of data have already
 shown that altitude is a powerful explanatory variable. The two other
-methods are based on the computation of the linear correlations with
-temperature, with or without solar irradiance as mandatory variable have
-a similar error. However, they are more interesting because the equation
-is dynamic throughout hours and, in this way, the model is adapted to
-the evaluated hour.
+methods are based on the hourly computation of the linear correlations
+with temperature, with or without solar irradiance as mandatory variable
+and keeping the 2 other best variables have a similar error. However, in
+spite of their larger error, they can be interesting because the
+equation is dynamic throughout hours and, in this way, the models are
+adapted to the evaluated hour.
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/meanerror} 
@@ -1214,21 +1372,26 @@ RMSE. These errors should be near zero. Both of MAE and RMSE are
 expressed in degrees such as temperature. An error of 1 degree is
 relatively important and has to be taken into consideration.
 
+~
+
 Performances of methods can be compared computing their rank for each
-hour. The Figure \ref{fig:barchart} compares five of the bests methods :
+hour. The Figure \ref{fig:barchart} compares the three best methods :
 \begin{itemize}
 \tightlist
 \item
-  the 2 variables with the best linear correlation with temperature
+  the 2 variables with the best hourly linear correlation with
+  temperature
 \item
   longitude, latitude and elevation
 \item
-  solar irradiance and the 2 variables with the best linear correlation
-  with temperature
+  solar irradiance and the 2 variables with the hourly best linear
+  correlation with temperature
 \end{itemize}
 This barchart corroborates the precedent graph. The method based on
 coordinates and elevation is widely better than the two others which are
-more similar but with a relevant difference.
+more similar but with a relevant difference. The ranks \(1.5\) and
+\(2.5\) correspond to cases where two methods have exactly the same
+error for a same task.
 \begin{figure}
 
 {\centering \includegraphics[width=1\linewidth]{figure/barchart} 
@@ -1241,7 +1404,7 @@ For each hour, the equation of the model is computed. They can be
 extracted from the benchmark. The Table \ref{tab:models} shows the
 structure of the equations in the case where explanatory variables can
 be different from one hour to another (lm.2bestsVar). The table also
-shows what are the bests variables and display the related error.
+shows what are the best variables and display the related error.
 \begin{table}
 
 \caption{\label{tab:models}Models with their equations}
@@ -1303,7 +1466,7 @@ spatializing hydric deficit in Wallonia.
 The choice I made was to use quantiles to make class breaks because that
 is more relevant than homogeneous breaks.
 
-The figure has 2 maps. The one on the left is the map with
+The figure shows 2 maps. The one on the left is the map with
 spatialization of temperature, the right one has the layer with error on
 the temperature layer. It is possible to see regions where errors are
 more important.
@@ -1358,10 +1521,14 @@ period. According to RMI, 2015, 2017 and 2018 are hot and dry years
 compared to normal year, 2016 were a wet year. This is shown on the
 Figure \ref{fig:rmi}.
 
+~
+
 Even if visualization of outputs is not the main objective of the
 project, the choice I made to compute class breaks with quantiles can be
 discussed. In the case of temperature, that seems relevant but other
 methods exist.
+
+~
 
 Models were built with some explanatory variables but they may be
 insufficient. Adding new variables like temperature predictions from RMI
@@ -1371,6 +1538,8 @@ However, weather stations from different networks have differences in
 their measures, checking interoperability is very important for that and
 making corrections is essential.
 
+~
+
 Multiple linear regression is the only statistical method used to build
 models, but going forward, other methods will be compared like ANN and
 different kriging methods. The major constraint will be time computation
@@ -1379,26 +1548,42 @@ explanatory variables to compare, choices must be done because of the
 time computation. These choices sometimes can be subjective and not
 based on scientific literature.
 
-Beyond these limits, other points can be discussed. For example, solar
-irradiance data are provided by EUMETSAT and by PAMESEB stations. These
-data have to be compared because both sources are used. Data from
-stations are used to build models, data from EUMETSAT for
-spatialization. The comparison shows a correlation around 0.95. As a
-consequence, there is nothing wrong with it.
+~
+
+Beyond these limits, other points can be discussed. Solar irradiance
+data are provided by EUMETSAT and by PAMESEB stations. These data have
+to be compared because both sources are used. Data from stations are
+used to build models, data from EUMETSAT for spatialization. To do this
+comparison, I have searched for the nearest point of record from
+EUMETSAT to each PAMESEB station. Then, I compared each couple on the
+period where I realised the benchmark. This comparison shows a
+correlation around 0.95. As a consequence, there is nothing wrong with
+it.
+
+~
+
+The ranking of the methods show that the method using the hourly 2 best
+variables provides a smaller error than the same method adding solar
+irradiance in every task. That is interesting because intuitively,
+adding an explanatory variable should reduce the error. I noticed that
+solar irradiance provides a large error for a few tasks, that might
+explain these results.
+
+~
 
 With the aim to provide data for agronomic utilisation, there is an
 interest to compare mean error observed in Wallonia and this error in
 agricultural areas to be sure of the accuracy of predictions. That has
 not be done yet.
 
+~
+
 Assuming that no other models will be better than those presented, there
-will be a question of transparency for the project. Indeed, as a public
-project within the scope of public agencies, the work that is done has
-to be transparent. In that way, models will be clearly presented. If one
-static model is chosen for predictions, this will be clear and
-transparent. But if the chosen method is a dynamic one, using
-computation every hour, the method used for each hour could be
-different, and that will have to be mentioned.
+will be a question of transparency for the project. In that way, models
+will be clearly presented. If one static model is chosen for
+predictions, this will be clear and transparent. But if the chosen
+method is a dynamic one, using computation every hour, the method used
+for each hour could be different, and that will have to be mentioned.
 
 \chapter*{Conclusion}\label{conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
@@ -1439,8 +1624,7 @@ work}\label{resources-on-agromet-and-my-work}
   European directive 2009/128/CE :
   \url{https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex\%3A32009L0128}
 \item
-  Technical details about PAMESEB stations :
-  \url{https://www.pameseb.be/meteo_intro/infos_techniques.html}
+  PAMESEB network : \url{https://www.pameseb.be/}
 \item
   Spatialization methodology available here :
   \url{https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg}
@@ -1475,6 +1659,8 @@ in Table \ref{tab:explvar}. Models built for 2018-03-07 14:00:00.
   API :
   \url{https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82}
 \item
+  R : \url{https://www.r-project.org/}
+\item
   Docker : \url{https://www.docker.com/what-docker}
 \item
   Copernicus :
@@ -1493,6 +1679,30 @@ in Table \ref{tab:explvar}. Models built for 2018-03-07 14:00:00.
 \item
   Machine Learning in R : \url{http://mlr-org.github.io/mlr/index.html}
 \end{itemize}
+\chapter{Structure of the code using mlr
+package}\label{structure-of-the-code-using-mlr-package}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# define learners}
+\NormalTok{lrns.l <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{2}\NormalTok{),}
+               \KeywordTok{makeFilterWrapper}\NormalTok{(}\DataTypeTok{learner =} \KeywordTok{makeLearner}\NormalTok{(}\DataTypeTok{cl =} \StringTok{"regr.lm"}\NormalTok{, }\DataTypeTok{id =} \StringTok{"lm.Long.Lat.Elev"}\NormalTok{), }\DataTypeTok{fw.method =} \StringTok{"linear.correlation"}\NormalTok{, }\DataTypeTok{fw.mandatory.feat =} \KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{, }\StringTok{"altitude"}\NormalTok{), }\DataTypeTok{fw.abs =} \DecValTok{3}\NormalTok{))}
+
+\CommentTok{# define resampling strategy}
+\NormalTok{resampling.l =}\StringTok{ }\KeywordTok{makeResampleDesc}\NormalTok{(}\DataTypeTok{method =} \StringTok{"LOO"}\NormalTok{)}
+
+\CommentTok{#run benchmark}
+\NormalTok{benchmark <-}\StringTok{ }\KeywordTok{benchmark}\NormalTok{(}
+  \DataTypeTok{learners =}\NormalTok{ lrns.l[}\DecValTok{1}\NormalTok{],}
+  \DataTypeTok{tasks =}\NormalTok{ data.stations.n.df}\OperatorTok{$}\NormalTok{tasks, }\CommentTok{# 1 task = 1 hour}
+  \DataTypeTok{resamplings =}\NormalTok{ resampling.l,}
+  \CommentTok{# additionnal parameters}
+  \DataTypeTok{keep.pred =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if predictions have to be kept}
+  \DataTypeTok{show.info =} \OtherTok{TRUE}\NormalTok{, }\CommentTok{# boolean specifying if informations have to be shown when running}
+  \DataTypeTok{models =} \OtherTok{FALSE}\NormalTok{, }\CommentTok{# boolean specifying if models have to be kept}
+  \DataTypeTok{measures =} \KeywordTok{list}\NormalTok{(rmse, mae, timetrain) }\CommentTok{# list of measures to do}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 \backmatter
 
 \chapter*{References}\label{references}
