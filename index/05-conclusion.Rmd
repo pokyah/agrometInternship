@@ -1,0 +1,9 @@
+# Conclusion {-}
+
+At the end of this internship, the progress of the project is great. Principal data have been recovered to be integrated as explanatory variables and first models have been built. Now, the routine is ready to build further models. First results are encouraging because models are relatively relevant and they can be improved adding new explanatory variables and using other statistical methods. Indeed, comparing models with a lot of different methods will be possible to find the best method, i.e. the method with the smallest error (RMSE).
+
+The project will end in 2020, that leaves time for building better models and developing decision support tools for crop monitoring. Therupon, the project will have an importance and some foreign organisations are already interested by the project (Germany and Slovenia).
+
+Beyond the technical skills I developed during my internship, as the utilisation of R language to interpolate spatial data and manipulating them, the discovery of developer applications and tools like Docker or Ubuntu, I also developed skills in collaborative work, in particular with GitHub. It was a very enriching experience.
+
+Outside the AGROMET project, I worked for other projects. I contributed to the report on drought in this summer 2018 in Wallonia, upgrading graphics and building a template of the map of Wallonia. I also contributed to provide data from the API of the project to co-workers for other projects.

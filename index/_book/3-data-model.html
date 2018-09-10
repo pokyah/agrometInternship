@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Internship report</title>
+  <meta name="description" content="Internship report">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Internship report" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Internship report" />
+  
+  
+  
+
+<meta name="author" content="Loïc Davadan">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="2-data-explvar.html">
+<link rel="next" href="4-results.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-presentation.html"><a href="1-presentation.html"><i class="fa fa-check"></i><b>1</b> Presentation of the AGROMET project and the CRA-W</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-presentation.html"><a href="1-presentation.html#cra-w-and-farming-systems-territory-and-information-technologies-unit"><i class="fa fa-check"></i><b>1.1</b> CRA-W and Farming Systems, Territory and Information Technologies Unit</a></li>
+<li class="chapter" data-level="1.2" data-path="1-presentation.html"><a href="1-presentation.html#the-agromet-project"><i class="fa fa-check"></i><b>1.2</b> The AGROMET project</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-presentation.html"><a href="1-presentation.html#context"><i class="fa fa-check"></i><b>1.2.1</b> Context</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-presentation.html"><a href="1-presentation.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-presentation.html"><a href="1-presentation.html#importance-of-the-internship-for-the-project"><i class="fa fa-check"></i><b>1.2.3</b> Importance of the internship for the project</a></li>
+<li class="chapter" data-level="1.2.4" data-path="1-presentation.html"><a href="1-presentation.html#preparing-the-working-environment"><i class="fa fa-check"></i><b>1.2.4</b> Preparing the working environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-data-explvar.html"><a href="2-data-explvar.html"><i class="fa fa-check"></i><b>2</b> Data acquisition and explanatory variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#interest-variables"><i class="fa fa-check"></i><b>2.1</b> Interest variables</a></li>
+<li class="chapter" data-level="2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#explanatory-variables"><i class="fa fa-check"></i><b>2.2</b> Explanatory variables</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#static-variables"><i class="fa fa-check"></i><b>2.2.1</b> Static variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#dynamic-variables"><i class="fa fa-check"></i><b>2.2.2</b> Dynamic Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-data-model.html"><a href="3-data-model.html"><i class="fa fa-check"></i><b>3</b> Data organisation and modeling</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-data-model.html"><a href="3-data-model.html#data-organisation"><i class="fa fa-check"></i><b>3.1</b> Data organisation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-data-model.html"><a href="3-data-model.html#modeling"><i class="fa fa-check"></i><b>3.2</b> Modeling</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-data-model.html"><a href="3-data-model.html#principle-of-machine-learning"><i class="fa fa-check"></i><b>3.2.1</b> Principle of machine learning</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-approach-in-the-agromet-project"><i class="fa fa-check"></i><b>3.2.2</b> Machine learning approach in the AGROMET project</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-in-r"><i class="fa fa-check"></i><b>3.2.3</b> Machine Learning in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-results.html"><a href="4-results.html"><i class="fa fa-check"></i><b>4</b> Results and discussion</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-results.html"><a href="4-results.html#benchmark"><i class="fa fa-check"></i><b>4.1</b> Benchmark</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="4-results.html"><a href="4-results.html#methodology"><i class="fa fa-check"></i><b>4.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4-results.html"><a href="4-results.html#comparison-of-methods"><i class="fa fa-check"></i><b>4.1.2</b> Comparison of methods</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4-results.html"><a href="4-results.html#vizualisation"><i class="fa fa-check"></i><b>4.1.3</b> Vizualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-results.html"><a href="4-results.html#discussion"><i class="fa fa-check"></i><b>4.2</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Annex</b></span></li>
+<li class="chapter" data-level="A" data-path="A-resources-on-agromet-and-my-work.html"><a href="A-resources-on-agromet-and-my-work.html"><i class="fa fa-check"></i><b>A</b> Resources on AGROMET and my work</a></li>
+<li class="chapter" data-level="B" data-path="B-annex-2.html"><a href="B-annex-2.html"><i class="fa fa-check"></i><b>B</b> Annex 2</a></li>
+<li class="chapter" data-level="C" data-path="C-additional-resources.html"><a href="C-additional-resources.html"><i class="fa fa-check"></i><b>C</b> Additional resources</a></li>
+<li class="chapter" data-level="D" data-path="D-details-of-my-work.html"><a href="D-details-of-my-work.html"><i class="fa fa-check"></i><b>D</b> Details of my work</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Internship report</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-model" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Data organisation and modeling</h1>
+<p>Once all the data are available, an important task is to organize them to realise the modeling. This organisation needs to respond to a methodic approach. Indeed, to reduce computation time, structure of data have to be optimised.</p>
+<div id="data-organisation" class="section level2">
+<h2><span class="header-section-number">3.1</span> Data organisation</h2>
+<p>The objective is to build models for each hour and compute its related error.</p>
+<p>The first step consists of grouping data. Static and dynamic variables are grouped in a data frame. Then, to reduce time computation and to prepare the integration of the data frame for the modeling, there is a way to nest data frames with the library purrr. In this way, it is possible to have one single row for each hour but every row contains data frames inside. The Figure <a href="3-data-model.html#fig:nested">3.1</a> shows how it looks. This nested data frame is a efficient way to manipulate many sub-tables at once.</p>
+<div class="figure" style="text-align: center"><span id="fig:nested"></span>
+<img src="figure/purrr_nest.png" alt="Structure of a nested data frame" width="50%" />
+<p class="caption">
+Figure 3.1: Structure of a nested data frame
+</p>
+</div>
+<p>In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Table <a href="3-data-model.html#tab:ndf">3.1</a>, there is a preview of the data frame contained into each row.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ndf">Table 3.1: </span>Example of nested data frame in a row corresponding to 2016-05-19 15:00:00
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;font-weight: bold;">
+altitude
+</th>
+<th style="text-align:right;font-weight: bold;">
+slope
+</th>
+<th style="text-align:right;font-weight: bold;">
+aspect
+</th>
+<th style="text-align:right;font-weight: bold;">
+roughness
+</th>
+<th style="text-align:right;font-weight: bold;">
+crops
+</th>
+<th style="text-align:right;font-weight: bold;">
+artificial
+</th>
+<th style="text-align:right;font-weight: bold;">
+forest
+</th>
+<th style="text-align:right;font-weight: bold;">
+herbaceous
+</th>
+<th style="text-align:right;font-weight: bold;">
+ens
+</th>
+<th style="text-align:right;font-weight: bold;">
+tsa
+</th>
+<th style="text-align:right;font-weight: bold;">
+X
+</th>
+<th style="text-align:right;font-weight: bold;">
+Y
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+473.6300
+</td>
+<td style="text-align:right;">
+3.392046
+</td>
+<td style="text-align:right;">
+211.6529
+</td>
+<td style="text-align:right;">
+12.917668
+</td>
+<td style="text-align:right;">
+63.85818
+</td>
+<td style="text-align:right;">
+4.265755
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+31.83038
+</td>
+<td style="text-align:right;">
+348
+</td>
+<td style="text-align:right;">
+12.4
+</td>
+<td style="text-align:right;">
+721240.2
+</td>
+<td style="text-align:right;">
+568849.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+345.7340
+</td>
+<td style="text-align:right;">
+1.908891
+</td>
+<td style="text-align:right;">
+162.7127
+</td>
+<td style="text-align:right;">
+9.446796
+</td>
+<td style="text-align:right;">
+64.11932
+</td>
+<td style="text-align:right;">
+35.834990
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+389
+</td>
+<td style="text-align:right;">
+12.8
+</td>
+<td style="text-align:right;">
+714221.2
+</td>
+<td style="text-align:right;">
+543453.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+348.8835
+</td>
+<td style="text-align:right;">
+2.611751
+</td>
+<td style="text-align:right;">
+165.0716
+</td>
+<td style="text-align:right;">
+10.269126
+</td>
+<td style="text-align:right;">
+75.28137
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+24.67295
+</td>
+<td style="text-align:right;">
+779
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+<td style="text-align:right;">
+750500.7
+</td>
+<td style="text-align:right;">
+550825.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+497.7260
+</td>
+<td style="text-align:right;">
+1.823958
+</td>
+<td style="text-align:right;">
+137.0710
+</td>
+<td style="text-align:right;">
+8.165029
+</td>
+<td style="text-align:right;">
+99.95431
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+916
+</td>
+<td style="text-align:right;">
+13.5
+</td>
+<td style="text-align:right;">
+753130.6
+</td>
+<td style="text-align:right;">
+581716.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+389.9188
+</td>
+<td style="text-align:right;">
+6.510637
+</td>
+<td style="text-align:right;">
+310.6517
+</td>
+<td style="text-align:right;">
+22.573696
+</td>
+<td style="text-align:right;">
+69.91902
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+30.03530
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+916
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+734687.9
+</td>
+<td style="text-align:right;">
+580969.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+259.7389
+</td>
+<td style="text-align:right;">
+1.669001
+</td>
+<td style="text-align:right;">
+288.5355
+</td>
+<td style="text-align:right;">
+6.330072
+</td>
+<td style="text-align:right;">
+89.50912
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+10.44519
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+774
+</td>
+<td style="text-align:right;">
+15.2
+</td>
+<td style="text-align:right;">
+641664.8
+</td>
+<td style="text-align:right;">
+588814.6
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="modeling" class="section level2">
+<h2><span class="header-section-number">3.2</span> Modeling</h2>
+<p>Once the dataset is ready, the next step is to model predictions of temperature. To do that, machine learning is used through R.</p>
+<div id="principle-of-machine-learning" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Principle of machine learning</h3>
+<div id="definition" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Definition</h4>
+<p>Machine learning is the idea that there are generic algorithms that can tell you something interesting about a set of data without you having to write any custom code specific to the problem. Instead of writing code, you feed data to the generic algorithm and it builds its own logic based on the data. In other words, Machine learning is a subset of deep learning or Artificial Intelligence that provides an ability to “learn” with data.</p>
+<p>There are 2 types of machine learning : supervised and unsupervised learning.</p>
+</div>
+<div id="supervised-machine-learning" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> Supervised Machine Learning</h4>
+<p>In practice, most of machine learning uses supervised learning.</p>
+<p>From <em>machinelearningmastery.com</em> :</p>
+<blockquote>
+<p>Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn the mapping function from the input to the output : Y = f(X). The goal is to approximate the mapping function so well that when you have new input data (x), you can predict the output variables (Y) for that data. It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process</p>
+</blockquote>
+<p>In this learning, the algorithm tries to learn from examples we give to it and then it returns a model of prediction. Classification and regression are supervised machine learning.</p>
+<p>This is the case of the AGROMET project where regression models are used.</p>
+</div>
+<div id="unsupervised-machine-learning" class="section level4">
+<h4><span class="header-section-number">3.2.1.3</span> Unsupervised machine learning</h4>
+<p>Although that is not the subject, unsupervised learning consists in algorithms which have to find themselves interesting structures in the data. It differs from supervised learning because correct answers are not given to the machine and it has to find answers itself. Association and clustering are unsupervised machine learning.</p>
+<p>For example, take 400 pictures of cats and 400 of dogs. While supervised learning will give these pictures with the answer to the machine to make it to find a way to discriminate cats and dogs, unsupervised learning will give only the pictures and the machine will have to find itself differences between cats and dogs separating them in two groups. Obviously, the machine will not know that one group is corresponding to cat and the other to dog because we did not labelled them but the machine will be able to distinguish them like two separate entities.</p>
+</div>
+</div>
+<div id="machine-learning-approach-in-the-agromet-project" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Machine learning approach in the AGROMET project</h3>
+<p>The objective is to predict weather parameters (temperature, relative humidity, leaves wetness). We use data from meteorological stations and from other sources like EUMETSAT for solar irradiance and COPERNICUS for land cover.</p>
+<p>Here is our approach :</p>
+<p>We choose a weather parameter to predict, temperature for example. It is our <strong>target</strong>.</p>
+<p>Then, we define our <strong>explanatory variables</strong>, i.e. the parameters we want to build our model. These variables are our <strong>task</strong> and it contains target data.</p>
+<p>In our case, we will use several statistical methods to build our model like kriging, multiple linear regression model or neural networks. Those which are chosen to build a model are called <strong>learners</strong> and will be compared.</p>
+<p>To measure performance of our predictions, we need to use a <strong>cross-validation resampling strategy</strong>. Several methods exist but we will use the Leave-One-Out cross-validation method. It consists to establish model based on every samples except one which will be the sample where the model is tested to compute the error and then doing it again as many times as the number of samples. The error measured for our models will be the RMSE and MAE.</p>
+<p>The entire methodology is detailed in the <em>Appendix A</em>.</p>
+</div>
+<div id="machine-learning-in-r" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Machine Learning in R</h3>
+<p>All of our work is done on RStudio. It is a very powerful open-source software for R. Moreover, a R package which provides the infrastructure to run machine learning is available. This package <strong>mlr</strong> is very complete to build models, make predictions and evaluate performances.</p>
+<p>Machine learning in R offers a common and simplified interface for all statistical methods implemented in the package.</p>
+<p>With this package, run a benchmark with several statistical methods can be done on data from a period. This benchmark returns a lot of informations.</p>
+<p>It is possible to compare statistical methods through measures of error like RMSE or MAE. Comparing several combinations of explanatory variables is also possible.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-data-explvar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

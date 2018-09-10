@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Internship report</title>
+  <meta name="description" content="Internship report">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Internship report" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Internship report" />
+  
+  
+  
+
+<meta name="author" content="Loïc Davadan">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="3-data-model.html">
+<link rel="next" href="conclusion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-presentation.html"><a href="1-presentation.html"><i class="fa fa-check"></i><b>1</b> Presentation of the AGROMET project and the CRA-W</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-presentation.html"><a href="1-presentation.html#cra-w-and-farming-systems-territory-and-information-technologies-unit"><i class="fa fa-check"></i><b>1.1</b> CRA-W and Farming Systems, Territory and Information Technologies Unit</a></li>
+<li class="chapter" data-level="1.2" data-path="1-presentation.html"><a href="1-presentation.html#the-agromet-project"><i class="fa fa-check"></i><b>1.2</b> The AGROMET project</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-presentation.html"><a href="1-presentation.html#context"><i class="fa fa-check"></i><b>1.2.1</b> Context</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-presentation.html"><a href="1-presentation.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-presentation.html"><a href="1-presentation.html#importance-of-the-internship-for-the-project"><i class="fa fa-check"></i><b>1.2.3</b> Importance of the internship for the project</a></li>
+<li class="chapter" data-level="1.2.4" data-path="1-presentation.html"><a href="1-presentation.html#preparing-the-working-environment"><i class="fa fa-check"></i><b>1.2.4</b> Preparing the working environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-data-explvar.html"><a href="2-data-explvar.html"><i class="fa fa-check"></i><b>2</b> Data acquisition and explanatory variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#interest-variables"><i class="fa fa-check"></i><b>2.1</b> Interest variables</a></li>
+<li class="chapter" data-level="2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#explanatory-variables"><i class="fa fa-check"></i><b>2.2</b> Explanatory variables</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#static-variables"><i class="fa fa-check"></i><b>2.2.1</b> Static variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#dynamic-variables"><i class="fa fa-check"></i><b>2.2.2</b> Dynamic Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-data-model.html"><a href="3-data-model.html"><i class="fa fa-check"></i><b>3</b> Data organisation and modeling</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-data-model.html"><a href="3-data-model.html#data-organisation"><i class="fa fa-check"></i><b>3.1</b> Data organisation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-data-model.html"><a href="3-data-model.html#modeling"><i class="fa fa-check"></i><b>3.2</b> Modeling</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-data-model.html"><a href="3-data-model.html#principle-of-machine-learning"><i class="fa fa-check"></i><b>3.2.1</b> Principle of machine learning</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-approach-in-the-agromet-project"><i class="fa fa-check"></i><b>3.2.2</b> Machine learning approach in the AGROMET project</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-in-r"><i class="fa fa-check"></i><b>3.2.3</b> Machine Learning in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-results.html"><a href="4-results.html"><i class="fa fa-check"></i><b>4</b> Results and discussion</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-results.html"><a href="4-results.html#benchmark"><i class="fa fa-check"></i><b>4.1</b> Benchmark</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="4-results.html"><a href="4-results.html#methodology"><i class="fa fa-check"></i><b>4.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4-results.html"><a href="4-results.html#comparison-of-methods"><i class="fa fa-check"></i><b>4.1.2</b> Comparison of methods</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4-results.html"><a href="4-results.html#vizualisation"><i class="fa fa-check"></i><b>4.1.3</b> Vizualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-results.html"><a href="4-results.html#discussion"><i class="fa fa-check"></i><b>4.2</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Annex</b></span></li>
+<li class="chapter" data-level="A" data-path="A-resources-on-agromet-and-my-work.html"><a href="A-resources-on-agromet-and-my-work.html"><i class="fa fa-check"></i><b>A</b> Resources on AGROMET and my work</a></li>
+<li class="chapter" data-level="B" data-path="B-annex-2.html"><a href="B-annex-2.html"><i class="fa fa-check"></i><b>B</b> Annex 2</a></li>
+<li class="chapter" data-level="C" data-path="C-additional-resources.html"><a href="C-additional-resources.html"><i class="fa fa-check"></i><b>C</b> Additional resources</a></li>
+<li class="chapter" data-level="D" data-path="D-details-of-my-work.html"><a href="D-details-of-my-work.html"><i class="fa fa-check"></i><b>D</b> Details of my work</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Internship report</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="results" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Results and discussion</h1>
+<div id="benchmark" class="section level2">
+<h2><span class="header-section-number">4.1</span> Benchmark</h2>
+<div id="methodology" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Methodology</h3>
+<p>To realize the benchmark, data from 2015-11-11 00:00:00 to 2018-06-30 00:00:00 were used. The objective is to run a benchmark on 5 years of data but at this moment, solar irradiance data from EUMETSAT were not available before this date. Here, the dataset has 23089 hours.</p>
+<p>The learners were defined with filter methods, i.e. the same statistical method was applied to different combinations of explanatory variables.</p>
+<p>The Table <a href="#tab:explvar">4.1</a> shows the different combinations used and compared.</p>
+<p>Every computation is done for each hour. As a consequence, the combination of explanatory variables is not unique for each hour but depends on a condition checked every time.</p>
+<p>Performances were measured with a Leave-One-Out cross-validation resampling strategy.</p>
+<p>The benchmark took 30 hours, i.e. 3 hours per method. Computations are very long and results are very large. Each method represents 1 Gigabyte of data.</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="22%" />
+<col width="57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Statistical Method</th>
+<th align="left">ID</th>
+<th align="center">Explanatory Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.Long.Lat</em></td>
+<td align="center">Longitude &amp; Latitude</td>
+</tr>
+<tr class="even">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.Long.Lat.Elev</em></td>
+<td align="center">Longitude &amp; Latitude &amp; Elevation</td>
+</tr>
+<tr class="odd">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.SolIrr+1bestVar</em></td>
+<td align="center">Solar Irradiance &amp; best variable based on an hourly linear correlation computation</td>
+</tr>
+<tr class="even">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.SolIrr+2bestsVar</em></td>
+<td align="center">Solar Irradiance &amp; 2 bests variables based on an hourly linear correlation computation</td>
+</tr>
+<tr class="odd">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.SolIrr+3bestsVar</em></td>
+<td align="center">Solar Irradiance &amp; 3 bests variables based on an hourly linear correlation computation</td>
+</tr>
+<tr class="even">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.2bestsVar</em></td>
+<td align="center">2 bests variables based on linear correlation computation for every hour</td>
+</tr>
+<tr class="odd">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.3bestsVar</em></td>
+<td align="center">3 bests variables based on linear correlation computation for every hour</td>
+</tr>
+<tr class="even">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.4bestsVar</em></td>
+<td align="center">4 bests variables based on linear correlation computation for every hour</td>
+</tr>
+<tr class="odd">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.Vars.r&gt;0,5</em></td>
+<td align="center">Variables with a linear correlation greater than 0.5</td>
+</tr>
+<tr class="even">
+<td align="center">Multiple Linear Regression</td>
+<td align="left"><em>lm.Vars.r&gt;0,3</em></td>
+<td align="center">Variables with a linear correlation greater than 0.3</td>
+</tr>
+</tbody>
+</table>
+<p>Table : (#tab:explvar) Combinations of explanatory variables used</p>
+</div>
+<div id="comparison-of-methods" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Comparison of methods</h3>
+<p>Once benchmark results are available, comparison of methods is possible. This comparison is based on the error of measures. In our case, RMSE and MAE were computed.</p>
+<p>MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It is the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight. <span class="math display">\[
+MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y_{j}} \rvert}
+\]</span></p>
+<p>RMSE is a quadratic scoring rule that also measures the average magnitude of the error. It’s the square root of the average of squared differences between prediction and actual observation.</p>
+<p><span class="math display">\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y_{j}} )^2}}
+\]</span></p>
+<p>They both express average model prediction error in units of the variable of interest. Both metrics can range from 0 to <span class="math inline">\(\infty\)</span> and are indifferent to the direction of errors. They are negatively-oriented scores, which means lower values are better.</p>
+<p>Since the errors are squared before they are averaged, the RMSE gives a relatively high weight to large errors. This means the RMSE is more useful because large errors are particularly undesirable in the project.</p>
+<p>From the 10 methods compared, MAE and RMSE are computed and compared. The results are shown in the Figure <a href="4-results.html#fig:meanerror">4.1</a>. In this case, they both have the same behaviour. Multiple linear regression using coordinates to build models has a large error, the model is too simplified. Multiple linear regression using explanatory variables whose their linear correlations with temperature is greater than 0.3 has an error larger than the other methods too, this filter method is too flexible to return a valid model. A few methods have a similar error. In particular, that is the case when too many variables are chosen to build models.</p>
+<p>On the three best methods, one is better than the others. That is the model built from an equation using longitude, latitude and altitude as explanatory variables. Tests realized on two months of data have already shown that altitude is a powerful explanatory variable. The two other methods are based on the computation of the linear correlations with temperature, with or without solar irradiance as mandatory variable have a similar error. However, they are more interesting because the equation is dynamic throughout hours and, in this way, the model is adapted to the evaluated hour.</p>
+<div class="figure" style="text-align: center"><span id="fig:meanerror"></span>
+<img src="figure/meanerror.png" alt="Errors (RMSE and MAE) of methods" width="100%" />
+<p class="caption">
+Figure 4.1: Errors (RMSE and MAE) of methods
+</p>
+</div>
+<p>Errors are between 0.72 and 0.91 for MAE and between 0.93 and 1.20 for RMSE. These errors should be near zero. Both of MAE and RMSE are expressed in degrees such as temperature. An error of 1 degree is relatively important and has to be taken into consideration.</p>
+<p>Performances of methods can be compared computing their rank for each hour. The Figure <a href="4-results.html#fig:barchart">4.2</a> compares the three bests methods :</p>
+<ul>
+<li>the 2 variables with the best linear correlation with temperature</li>
+<li>longitude, latitude and elevation</li>
+<li>solar irradiance and the 2 variables with the best linear correlation with temperature</li>
+</ul>
+<p>This barchart corroborates the precedent graph. The method based on coordinates and elevation is widely better than the two others which are more similar but with a relevant difference.</p>
+<div class="figure" style="text-align: center"><span id="fig:barchart"></span>
+<img src="figure/barchart.png" alt="Comparison of methods by rank" width="100%" />
+<p class="caption">
+Figure 4.2: Comparison of methods by rank
+</p>
+</div>
+<p>For each hour, the equation of the model is computed. They can be extracted from the benchmark. The Table <a href="4-results.html#tab:models">4.2</a> shows the structure of the equations in the case where explanatory variables can be different from one hour to another (lm.2bestsVar). The table also shows what are the bests variables and display the related error.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:models">Table 4.2: </span>Models with their equations
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+</th>
+<th style="text-align:left;font-weight: bold;">
+Datetime
+</th>
+<th style="text-align:left;font-weight: bold;">
+Equation
+</th>
+<th style="text-align:left;font-weight: bold;">
+BestVar1
+</th>
+<th style="text-align:left;font-weight: bold;">
+BestVar2
+</th>
+<th style="text-align:right;font-weight: bold;">
+RMSE
+</th>
+<th style="text-align:right;font-weight: bold;">
+MAE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+16135
+</td>
+<td style="text-align:left;">
+2017-09-13 06:00:00
+</td>
+<td style="text-align:left;">
+T = 14.656695 + -0.008887.altitude + 1e-06.X
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:right;">
+0.5674956
+</td>
+<td style="text-align:right;">
+0.4107285
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16136
+</td>
+<td style="text-align:left;">
+2017-09-13 07:00:00
+</td>
+<td style="text-align:left;">
+T = 14.722147 + -0.00574.altitude + 0.012719.ens
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+ens
+</td>
+<td style="text-align:right;">
+0.6122121
+</td>
+<td style="text-align:right;">
+0.4529545
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16137
+</td>
+<td style="text-align:left;">
+2017-09-13 08:00:00
+</td>
+<td style="text-align:left;">
+T = 15.676696 + -0.004304.altitude + -0.011732.herbaceous
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+herbaceous
+</td>
+<td style="text-align:right;">
+0.9375293
+</td>
+<td style="text-align:right;">
+0.7287999
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16138
+</td>
+<td style="text-align:left;">
+2017-09-13 09:00:00
+</td>
+<td style="text-align:left;">
+T = 13.701668 + -0.012835.herbaceous + 0.00415.ens
+</td>
+<td style="text-align:left;">
+herbaceous
+</td>
+<td style="text-align:left;">
+ens
+</td>
+<td style="text-align:right;">
+1.2198397
+</td>
+<td style="text-align:right;">
+0.9671947
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16139
+</td>
+<td style="text-align:left;">
+2017-09-13 10:00:00
+</td>
+<td style="text-align:left;">
+T = 14.987154 + -0.001473.altitude + -0.009431.herbaceous
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+herbaceous
+</td>
+<td style="text-align:right;">
+1.0206276
+</td>
+<td style="text-align:right;">
+0.8224733
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16140
+</td>
+<td style="text-align:left;">
+2017-09-13 11:00:00
+</td>
+<td style="text-align:left;">
+T = 14.131936 + -0.003737.altitude + 0.005707.ens
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+ens
+</td>
+<td style="text-align:right;">
+0.8312792
+</td>
+<td style="text-align:right;">
+0.5979420
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16141
+</td>
+<td style="text-align:left;">
+2017-09-13 12:00:00
+</td>
+<td style="text-align:left;">
+T = 11.852128 + -0.002653.altitude + 0.012421.ens
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+ens
+</td>
+<td style="text-align:right;">
+0.9727891
+</td>
+<td style="text-align:right;">
+0.7488237
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16142
+</td>
+<td style="text-align:left;">
+2017-09-13 13:00:00
+</td>
+<td style="text-align:left;">
+T = 22.557946 + 0.003638.ens + -1.4e-05.Y
+</td>
+<td style="text-align:left;">
+ens
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+1.2605875
+</td>
+<td style="text-align:right;">
+0.9444467
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16143
+</td>
+<td style="text-align:left;">
+2017-09-13 14:00:00
+</td>
+<td style="text-align:left;">
+T = 15.441184 + 0.000484.altitude + -0.015099.herbaceous
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+herbaceous
+</td>
+<td style="text-align:right;">
+1.0796645
+</td>
+<td style="text-align:right;">
+0.8760026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16144
+</td>
+<td style="text-align:left;">
+2017-09-13 15:00:00
+</td>
+<td style="text-align:left;">
+T = 10.730857 + -0.003947.altitude + 9e-06.Y
+</td>
+<td style="text-align:left;">
+altitude
+</td>
+<td style="text-align:left;">
+Y
+</td>
+<td style="text-align:right;">
+0.9526830
+</td>
+<td style="text-align:right;">
+0.7777128
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="vizualisation" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Vizualisation</h3>
+<p>These models can be observed on maps. For that purpose, functions building maps have been made with ggplot2 library from R for static maps and leaflet library for interactive maps.</p>
+<p>Models built from physical stations data are applied to the 1 km² grid cells. Then, the temperature is mapped with a color palette similar to the one of RMI. Class breaks are based on quantiles of temperature values. Standard error is computed for each cell and it is shown on the map with a white layer which has different levels of transparency according to the error. A large standard error is related to an opacity and vice-versa.</p>
+<p>The Figure <a href="#fig:map"><strong>??</strong></a> shows an output for one hour based on the method ::todo::. To build this map, some objects are needed : an object containing data (temperature and standard error) for the grid and a spatial vector object containing boundaries of Wallonia, but also the name of the variable to display. Then, some conditions can be chosen, like the display of the layer containing error, the display of the legend for error, the way to build the legend and its classes. Some arguments enable to customize the map with titles and comments. The function is thus reusable for other usages. For example, the function builds maps spatializing hydric deficit in Wallonia.</p>
+<p>This figure shows the output based on a model depending on ::todo::, the equation is the following one :</p>
+<p>[</p>
+<p>]</p>
+<p>These maps show whether the models are relevant. The <em>Annex 2</em> shows maps made with all methods for one hour. These maps show differences in the relevance of each model. For example, the model depending on longitude and latitude is very simplistic compared to the others. The other models are more similar but show that some of them are more reliable because the error is smaller. The better model is the second one on the first row. It is corresponding to the the model depending on longitude, latitude and elevation. For this hour, the model is the following : <span class="math display">\[
+T = -9.375042 + -0.010431 \times Elevation + 1.02e-05 \times Longitude + 1.59e-05 \times Latitude
+\]</span></p>
+<p>Longitude and latitude are expressed in meters because the CRS used is Belgian Lambert 2008. That is why their coefficients are about 1e-05. For information, values of the coordinates are about 6e06.</p>
+<p>::todo:: interpretation</p>
+<p>::todo:: add example equations models tab</p>
+</div>
+</div>
+<div id="discussion" class="section level2">
+<h2><span class="header-section-number">4.2</span> Discussion</h2>
+<p>As a reminder, the objective of the project is to provide weather predictions. These predictions will feed decision support tools to monitor crop diseases like potato late blight and to operate in fields at the right times.</p>
+<p>Results have some limits that have to be discussed. The first limit is the period used to build models. Indeed, models were built with data from 2 and a half years. This period could be too short to be relevant. Moreover, this period is not necessarily realistic of a mean period. According to RMI, 2015, 2017 and 2018 are hot and dry years compared to normal year, 2016 were a wet year and 2018. This is shown on the Figure <a href="4-results.html#fig:rmi">4.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmi"></span>
+<img src="figure/rmi_climate_data.png" alt="Precipitations, temperatures and insolation, annual values" width="400px" height="300px" />
+<p class="caption">
+Figure 4.3: Precipitations, temperatures and insolation, annual values
+</p>
+</div>
+<p>Models were built with some explanatory variables but they may be insufficient. Adding new variables like temperature predictions from RMI could improve models. Only 27 stations are used to build these models, adding RMI stations network could be a solution to improve models too. However, weather stations from different networks have differences in their measures, checking interoperability is very important for that and making corrections is essential.</p>
+<p>Multiple linear regression is the only statistical method used to build models, but going forward, other methods will be compared like ANN and different kriging methods. The major constraint will be time computation which is relatively long.</p>
+<p>Beyond these limits, other points can be discussed. For example, solar irradiance data are provided by EUMETSAT and by PAMESEB stations. These data have to be compared because both sources are used. Data from stations are used to build models, data from EUMETSAT for spatialization. The comparison shows a correlation around 0.95. As a consequence, there is nothing wrong with it.</p>
+<p>With the aim to provide data for agronomic utilisation, there is an interest to compare mean error observed in Wallonia and this error in agricultural areas to be sure of the accuracy of predictions. ::todo::</p>
+<p>Assuming that no other models will be better than those presented, there will be a question of transparency for the project. Indeed, as a public project within the scope of public agencies, the work that is done has to be transparent. In that way, models will be clearly presented. If one static model is chosen for predictions, this will be clear and transparent. But if the chosen method is a dynamic one, using computation every hour, the method used for each hour could be different, and that will have to be mentioned.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="3-data-model.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

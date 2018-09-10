@@ -1,136 +1,101 @@
-```{r include_packages_2, include = FALSE}
+```{r include_packages_ch4, include = FALSE}
 # This chunk ensures that the thesisdown package is
 # installed and loaded. This thesisdown package includes
 # the template files for the thesis and also two functions
 # used for labeling and referencing
-if(!require(devtools))
-  install.packages("devtools", repos = "http://cran.rstudio.com")
-if(!require(dplyr))
-    install.packages("dplyr", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("ggplot2", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("bookdown", repos = "http://cran.rstudio.com")
-if(!require(thesisdown)){
-  library(devtools)
-  devtools::install_github("ismayc/thesisdown")
-  }
-library(thesisdown)
-flights <- read.csv("data/flights.csv")
+library(devtools)
+devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+load("./data/env_report.RData")
 ```
 
 
-# Tables, Graphics, References, and Labels {#ref-labels}
+# Modeling with machine learning methods {#model}
 
-## Tables
+Once the dataset is ready, the next step is to model spatial predictions of temperature. To do that, machine learning is used through R.
 
-In addition to the tables that can be automatically generated from a data frame in **R** that you saw in [R Markdown Basics] using the `kable` function, you can also create tables using _pandoc_. (More information is available at <http://pandoc.org/README.html#tables>.)  This might be useful if you don't have values specifically stored in **R**, but you'd like to display them in table form.  Below is an example.  Pay careful attention to the alignment in the table and hyphens to create the rows and columns.
+## Principle of machine learning
 
-----------------------------------------------------------------------------------
-  Factors                    Correlation between Parents & Child      Inherited
-------------------------- ----------------------------------------- --------------
-  Education                                -0.49                         Yes
-  
-  Socio-Economic Status                     0.28                        Slight   
-  
-  Income                                    0.08                          No
-  
-  Family Size                               0.18                        Slight
-  
-  Occupational Prestige                     0.21                        Slight
-------------------------- ----------------------------------------- --------------
-Table: (\#tab:inher) Correlation of Inheritance Factors for Parents and Child 
+### Definition
 
-We can also create a link to the table by doing the following: Table \@ref(tab:inher).  If you go back to [Loading and exploring data] and look at the `kable` table, we can create a reference to this max delays table too: Table \@ref(tab:maxdelays). The addition of the `(\#tab:inher)` option to the end of the table caption allows us to then make a reference to Table `\@ref(tab:label)`. Note that this reference could appear anywhere throughout the document after the table has appeared.  
+Machine learning is the idea that there are generic algorithms that can tell you something interesting about a set of data without you having to write any custom code specific to the problem. Instead of writing code, you feed data to the generic algorithm and it builds its own logic based on the data. In other words, Machine learning is a subset of deep learning or Artificial Intelligence that provides an ability to “learn” with data. 
 
-<!-- We will next explore ways to create this label-ref link using figures. -->
+&nbsp;
 
-\clearpage
+There are 2 types of machine learning : supervised and unsupervised learning.
 
-<!-- clearpage ends the page, and also dumps out all floats.
-  Floats are things like tables and figures. -->
+In practice, most of machine learning uses supervised learning.
+
+&nbsp;
+
+From *machinelearningmastery.com* :
+
+>Supervised learning is where you have input variables (x) and an output variable (Y) and you use an algorithm to learn the mapping function from the input to the output : Y = f(X).  
+The goal is to approximate the mapping function so well that when you have new input data (x), you can predict the output variables (Y) for that data.  
+It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process
+
+&nbsp;
+
+For supervised machine learning, the algorithm tries to learn from examples we give to it and then it returns a model of prediction. Classification and regression are supervised machine learning.  
+
+This is the case of the AGROMET project where regression models are used.
+
+The unsupervised machine learning is not relevant in the context of my work because this kind of machine learning does not need reference to infer patterns and cannot be directly applied to regression problems.
+
+## Machine learning approach in the AGROMET project
+
+The objective is to spatially predict weather parameters (temperature, relative humidity, leaves wetness). We use data from meteorological stations and from other sources like EUMETSAT for solar irradiance and COPERNICUS for land cover as explanatory variables for these weather parameters and to build our models.
+
+&nbsp;
+
+Here is our approach :
+
+We choose a weather parameter to predict, it is our __target__. In the context of my internship, _temperature_ is my target variable.
+
+Then, from the historical dataset of hourly weather records from PAMESEB database, a representative subset of records is filtered. Stations are filtered to only keep the useful ones which are active. For each hourly set of records, a benchmark experiment is run with multiple linear regression algorithm, the __learner__, applied to various regression __tasks__, i.e. the target response variable (temperature) and all the chosen __explanatory variables__ (elevation, slope, land cover...). The different combinations of explanatory variables using multiple linear regression algorithm are compared and ranked using a __cross-validation resampling strategy__. Several methods exist but we will use the Leave-One-Out cross-validation method (LOOCV). It consists to establish, for each hourly dataset, a model based on every weather stations except one which will be the one where the model is tested to compute the error and then doing it again as many times as the number of weather stations. Performance metrics (RMSE and MAE) have been stored for each of these iterations.
+
+&nbsp;
+
+These performance metrics are two of the most common metrics used to measure accuracy for continuous variables and for validation step in machine learning.
+
+&nbsp;
+
+MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It is the average over the test sample of the absolute differences between prediction and actual observation where all individual differences have equal weight.
+
+\[
+MAE = \frac{1}{n} \sum_{i=1}^{n}{ \lvert y_{j} - \widehat{y}_{j} \rvert}
+\]
+
+&nbsp;
+&nbsp;
+
+RMSE is a quadratic scoring rule that also measures the average magnitude of the error. It is the square root of the average of squared differences between prediction and actual observation.
+
+\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n}{( y_{j} - \widehat{y}_{j} )^2}}
+\]
 
 
-## Figures
-
-If your thesis has a lot of figures, _R Markdown_ might behave better for you than that other word processor.  One perk is that it will automatically number the figures accordingly in each chapter.    You'll also be able to create a label for each figure, add a caption, and then reference the figure in a way similar to what we saw with tables earlier.  If you label your figures, you can move the figures around and _R Markdown_ will automatically adjust the numbering for you.  No need for you to remember!  So that you don't have to get too far into LaTeX to do this, a couple **R** functions have been created for you to assist.  You'll see their use below.
-
-<!--
-One thing that may be annoying is the way _R Markdown_ handles "floats" like tables and figures (it's really \LaTeX's fault). \LaTeX\ will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies. There are some optional arguments specified in the options parameter of the `label` function.  If you need to shift your figure around, it might be good to look here on tweaking the options argument:  <https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions>
-
-If you need a graphic or tabular material to be part of the text, you can just put it inline. If you need it to appear in the list of figures or tables, it should be placed in a code chunk.
--->
+The entire methodology is detailed in the _Appendix A_ (Spatialization methodology).
 
 
-In the **R** chunk below, we will load in a picture stored as `reed.jpg` in our main directory.  We then give it the caption of "Reed logo", the label of "reedlogo", and specify that this is a figure.  Make note of the different **R** chunk options that are given in the R Markdown file (not shown in the knitted document).
+## Machine Learning in R
 
-```{r reedlogo, fig.cap="Reed logo"}
-include_graphics(path = "figure/reed.jpg")
+All of our work is done using R. Moreover, a R package which provides the infrastructure to run machine learning is available. This package **mlr** is very complete to build models, make predictions and evaluate performances.
+
+Machine learning in R offers a common and simplified interface for all statistical methods implemented in the package. With this package, run a benchmark with several statistical methods can be done on data from a period. This benchmark returns a lot of informations :
+
+- about learners and task descriptions used in the benchmark
+- about models, test performance values, predictions from the benchmark
+
+The package includes several ways to analyze benchmark results. Plots are integrated to visualize results and learning algorithms can be compared and ranked. It is possible to compare learners and tasks through measures of error like RMSE or MAE. In the case ofmy internship, the learner is always the same, multiple linear regression, and tasks change because I modify the set of explanatory variables used.
+
+```{r mlr, echo=FALSE, fig.cap="mlr workflow", out.width="50%", fig.align='center'}
+include_graphics(path = "figure/mlr_workflow.png")
 ```
 
-Here is a reference to the Reed logo: Figure \@ref(fig:reedlogo).  Note the use of the `fig:` code here.  By naming the **R** chunk that contains the figure, we can then reference that figure later as done in the first sentence here.  We can also specify the caption for the figure via the R chunk option `fig.cap`.
+The Figure \@ref(fig:mlr) shows the general workflow of `mlr`.
 
-\clearpage 
+&nbsp;
 
-<!-- starts a new page and stops trying to place floats such as tables and figures -->
-
-Below we will investigate how to save the output of an **R** plot and label it in a way similar to that done above.  Recall the `flights` dataset from Chapter \@ref(rmd-basics).  (Note that we've shown a different way to reference a section or chapter here.)  We will next explore a bar graph with the mean flight departure delays by airline from Portland for 2014.  Note also the use of the `scale` parameter which is discussed on the next page.
-
-```{r delaysboxplot, warnings=FALSE, messages=FALSE, fig.cap="Mean Delays by Airline", fig.width=6}
-flights %>% group_by(carrier) %>%
-  summarize(mean_dep_delay = mean(dep_delay)) %>%
-  ggplot(aes(x = carrier, y = mean_dep_delay)) +
-  geom_bar(position = "identity", stat = "identity", fill = "red")
-```
-
-Here is a reference to this image: Figure \@ref(fig:delaysboxplot).
-
-A table linking these carrier codes to airline names is available at <https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv>.
-
-\clearpage
-
-Next, we will explore the use of the `out.extra` chunk option, which can be used to shrink or expand an image loaded from a file by specifying `"scale= "`. Here we use the mathematical graph stored in the "subdivision.pdf" file.
-
-```{r subd, results="asis", echo=FALSE, fig.cap="Subdiv. graph", out.extra="scale=0.75"}
-include_graphics("figure/subdivision.pdf")
-```
-
-Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALSE` is specified so that the **R** code is hidden in the document.
-
-**More Figure Stuff**
-
-Lastly, we will explore how to rotate and enlarge figures using the `out.extra` chunk option.  (Currently this only works in the PDF version of the book.)
-
-```{r subd2, results="asis", echo=FALSE, out.extra="angle=180, scale=1.1", fig.cap="A Larger Figure, Flipped Upside Down"}
-include_graphics("figure/subdivision.pdf")
-```
-
-As another example, here is a reference: Figure \@ref(fig:subd2).  
-
-## Footnotes and Endnotes
-
-You might want to footnote something. ^[footnote text] The footnote will be in a smaller font and placed appropriately. Endnotes work in much the same way. More information can be found about both on the CUS site or feel free to reach out to <data@reed.edu>.
-
-## Bibliographies
-
-Of course you will need to cite things, and you will probably accumulate an armful of sources. There are a variety of tools available for creating a bibliography database (stored with the .bib extension).  In addition to BibTeX suggested below, you may want to consider using the free and easy-to-use tool called Zotero.  The Reed librarians have created Zotero documentation at <http://libguides.reed.edu/citation/zotero>.  In addition, a tutorial is available from Middlebury College at <http://sites.middlebury.edu/zoteromiddlebury/>.
-
-_R Markdown_ uses _pandoc_ (<http://pandoc.org/>) to build its bibliographies.  One nice caveat of this is that you won't have to do a second compile to load in references as standard LaTeX requires. To cite references in your thesis (after creating your bibliography database), place the reference name inside square brackets and precede it by the "at" symbol.  For example, here's a reference to a book about worrying:  [@Molina1994].  This `Molina1994` entry appears in a file called `thesis.bib` in the `bib` folder.  This bibliography database file was created by a program called BibTeX.  You can call this file something else if you like (look at the YAML header in the main .Rmd file) and, by default, is to placed in the `bib` folder.  
-
-For more information about BibTeX and bibliographies, see our CUS site (<http://web.reed.edu/cis/help/latex/index.html>)^[@reedweb2007]. There are three pages on this topic:  _bibtex_ (which talks about using BibTeX, at <http://web.reed.edu/cis/help/latex/bibtex.html>), _bibtexstyles_ (about how to find and use the bibliography style that best suits your needs, at <http://web.reed.edu/cis/help/latex/bibtexstyles.html>) and _bibman_ (which covers how to make and maintain a bibliography by hand, without BibTeX, at <http://web.reed.edu/cis/help/latex/bibman.html>). The last page will not be useful unless you have only a few sources.
-
-If you look at the YAML header at the top of the main .Rmd file you can see that we can specify the style of the bibliography by referencing the appropriate csl file.  You can download a variety of different style files at <https://www.zotero.org/styles>.  Make sure to download the file into the csl folder.
-
-**Tips for Bibliographies**
-
-- Like with thesis formatting, the sooner you start compiling your bibliography for something as large as thesis, the better. Typing in source after source is mind-numbing enough; do you really want to do it for hours on end in late April? Think of it as procrastination.
-- The cite key (a citation's label) needs to be unique from the other entries.
-- When you have more than one author or editor, you need to separate each author's name by the word "and" e.g. `Author = {Noble, Sam and Youngberg, Jessica},`.
-- Bibliographies made using BibTeX (whether manually or using a manager) accept LaTeX markup, so you can italicize and add symbols as necessary.
-- To force capitalization in an article title or where all lowercase is generally used, bracket the capital letter in curly braces.
-- You can add a Reed Thesis citation^[@noble2002] option. The best way to do this is to use the phdthesis type of citation, and use the optional "type" field to enter "Reed thesis" or "Undergraduate thesis." 
-
-## Anything else?
-
-If you'd like to see examples of other things in this template, please contact the Data @ Reed team (email <data@reed.edu>) with your suggestions. We love to see people using _R Markdown_ for their theses, and are happy to help.
-
+This package has an important community which improves it regularly. A lot of statistical methods are implemented from other packages like _tgp_, _kknn_ or _DiceKriging_.
