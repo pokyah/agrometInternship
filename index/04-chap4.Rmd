@@ -131,7 +131,7 @@ Longitude and latitude are expressed in meters because the CRS used is Belgian L
 
 As a reminder, the objective of the project is to provide weather predictions. These predictions will feed decision support tools to monitor crop diseases like potato late blight and to operate in fields at the right times.
 
-```{r rmi, echo=FALSE, fig.cap="Precipitations, temperatures and insolation, annual values", out.height="300px", out.width="400px", fig.align='center'}
+```{r rmi, echo=FALSE, fig.cap="Precipitations, temperatures and insolation, annual values", out.width="100%", fig.align='center'}
 include_graphics(path = "figure/rmi_climate_data.png")
 ```
 

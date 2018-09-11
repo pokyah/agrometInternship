@@ -87,9 +87,9 @@ on chapters.
 
 Use of pesticides and other crop protection products is a topical issue in an environmental and societal context. These products are increasingly criticized for their risks and impacts on human health and environment. Crop monitoring models are developed and their efficiency is well demonstrated. Acting at the right time in plots is inscreasingly possible thanks to these models. In Belgium, the Walloon agricultural resarch centre (CRA-W) is a research centre where a lot of issues are explored to bring solutions. 
 
-From May 22nd to August 20th, I did an internship in the (CRA-W). I worked on the AGROMET project which is a project about agrometeorology where the aim is to provide a near real-time hourly gridded datasets of weather parameters at the resolution of 1 km² for the whole region of Wallonia characterized by a quality indicator. This project is led by the Farming Systems, Territory and Information Technologies Unit.
+From May 21^st^ to August 20^th^, I did an internship in the CRA-W. I worked on the AGROMET project which is a project about agrometeorology where the aim is to provide a near real-time hourly gridded datasets of weather parameters at the resolution of 1 km² for the whole region of Wallonia characterized by a quality indicator. This project is led by the Farming Systems, Territory and Information Technologies Unit.
 
-The internship has for objective to investigate a spatial interpolation of the temperature using multiple linar regression with the best combination of explanatory variables. 
+The objective of the internship was to investigate a spatial interpolation of the temperature using multiple linar regression with the best combination of explanatory variables. 
 
-First, the report will present the CRA-W, its organisation, the Unit where I worked and the project. Then, my workflow will be detailed in two parts : the data acquisition and the data analysis through the benchmark. Finally, the results will be interprated and discussed.
+First, the report will present the CRA-W, its organisation, the Unit where I worked and the AGROMET project. Then, my workflow will be detailed in two parts : the data acquisition and preparation and the machine learning methods used. Finally, the results will be presented and discussed.
 

@@ -90,7 +90,7 @@ In parallel with that, PAMESEB stations also measure solar irradiance. But only 
 
 #### Temperature forecasts
 
-The AGROMET project is supported by RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms.  It was planned to integrate these data as explanatory variables but at the time of my internship these were not yet available.
+The AGROMET project is supported by the RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms.  It was planned to integrate these data as explanatory variables but at the time of my internship these were not yet available.
 
 
 ## Data preparation
