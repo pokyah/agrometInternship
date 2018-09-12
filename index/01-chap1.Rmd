@@ -6,178 +6,158 @@ This is for including Chapter 1.  Notice that it's also good practice to name yo
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of Chapter 1.  These labels will automatically be generated (if not specified) by changing the spaces to hyphens and capital letters to lowercase.  Look for the reference to this label at the beginning of Chapter 2.
 -->
 
-# R Markdown Basics {#rmd-basics}
+# Presentation of the AGROMET project and the CRA-W {#presentation}
 
-Here is a brief introduction into using _R Markdown_. _Markdown_ is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. _R Markdown_ provides the flexibility of _Markdown_ with the implementation of **R** input and output.  For more details on using _R Markdown_ see <http://rmarkdown.rstudio.com>.  
+## CRA-W and Farming Systems, Territory and Information Technologies Unit
 
-Be careful with your spacing in _Markdown_ documents.  While whitespace largely is ignored, it does at times give _Markdown_ signals as to how to proceed.  As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.  In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
+The CRA-W was founded in 1872 and depends on the Regional Goverment of Wallonia. It aims to maintain and develop the scientific excellence and societal usefulness and contributes to sustainable development of the agricultural industry in Wallonia in its economic, ecological and cultural dimension. 120 scientifics are working in the CRA-W on three sites (Gembloux, Libramont and Mussy-la-Ville) representing 300 ha of fields, greenhouses, laboratories and offices. The CRA-W is a place for scientific research but also to provide services in agricultural and agri-food sector keeping a perspective view on the development of agriculture.
 
-## Lists
+&nbsp;
 
-It's easy to create a list.  It can be unordered like
+The research is divided into 4 main fields where more than 100 projects are currently in progress. : 
 
-* Item 1
-* Item 2
+- Precision agriculture
+- Precision livestock farming
+- Risk management
+- Understanding products
 
-or it can be ordered like
+The CRA-W is divided into 4 departments with 4 research units each :
 
-1. Item 1
-4. Item 2
+- Life sciences
+- Production et sectors
+- Valorisation of agricultural products
+- Agriculture and natural environment
 
-Notice that I intentionally mislabeled Item 2 as number 4.  _Markdown_ automatically figures this out!  You can put any numbers in the list and it will create the list.  Check it out below.
+&nbsp;
 
-To create a sublist, just indent the values a bit (at least four spaces or a tab).  (Here's one case where indentation is key!)
+The unit 11 _Farming Systems, Territory and Information Technologies_ where I realized my internship belongs to the _Agriculture and natural environment_ department. This Unit develops tools to meet society's new expectations and decision support systems to improve the technico-economic and environmental performance of farming systems. There are actually 28 projects in progress.
 
-1. Item 1
-1. Item 2
-1. Item 3
-    - Item 3a
-    - Item 3b
+The main activities of the Unit are the following :
 
-## Line breaks
+- Adaptation of agrosystems to global change : definition of references
+- Adaptation of agrosystems to global change through bottom-up approaches
+- Support to the development of agrosystems in line with territory projects 
+- Decision support systems and information technologies for the management of multifunctional agriculture
+- Spatial information systems for the management of rural areas.
 
-Make sure to add white space between lines if you'd like to start a new paragraph.  Look at what happens below in the outputted document if you don't:
+&nbsp;
 
-Here is the first sentence.  Here is another sentence.  Here is the last sentence to end the paragraph.
-This should be a new paragraph.
+PAMESEB is a non-profit organisation handled by the CRA-W which aims to promote agrometeorology by considering weather conditions in the context of walloon agriculture. PAMESEB manages a network of 30 automated weather stations in Wallonia. These stations provide measures for ways to fight crop diseases like late blight and wheat septoria. Stations have a local acquisition unit for hourly data recording. The AGROMET project uses weather data provided by the PAMESEB network as its primary data source.
 
-*Now for the correct way:* 
+Each PAMESEB station is equipped with 5 basic sensors :
 
-Here is the first sentence.  Here is another sentence.  Here is the last sentence to end the paragraph.
+- Temperature sensor
+- Relative humidity sensor
+- Solar sensor
+- Wind sensor
+- Rain gauge
 
-This should be a new paragraph.
 
-## R chunks
+## The AGROMET project
 
-When you click the **Knit** button above a document will be generated that includes both content as well as the output of any embedded **R** code chunks within the document. You can embed an **R** code chunk like this (`cars` is a built-in **R** dataset):
+### Context
 
-```{r cars}
-summary(cars)
+The European directive 2009/128/CE imposes member-states to set up tools that allow for a more rational use of crop protection products. Among these tools, agricultural warning systems, based on crop monitoring models for the control of pests and diseases are widely adopted and have proved their efficiency. However, due to the difficulty to get meteorological data at high spatial resolution (at the parcel scale), they still are underused. The use of geostatistical tools (Kriging, Multiple Regressions, ANN, etc.) makes it possible to interpolate data provided by physical weather stations in such a way that a high spatial resolution network (mesh size of 1 km2) of virtual weather stations could be generated. 
+
+&nbsp;
+
+The purpose of the AGROMET project is to build a web platform that makes such "spatialized" weather data available to crop monitoring models. That will help other CRA-W's units and partners to act against crop diseases like potato late blight or orange midge which depends on meteorological conditions.
+
+The project was inspired by several academic papers dealing with spatial interpolation of data like _Use of geographic information systems in warning services for late blight_ (Zeuner, 2007), _Decision Support Systems in Agriculture : Administration of Meteorological Data, Use of Geographic Information Systems(GIS) and Validation Methods in Crop Protection Warning Service_ (Racca _et al._, 2011) and _Spatial interpolation of ambient ozone concentrations from sparse monitoring points in Belgium_ (Hooyberghs, 2006).
+
+### Objectives
+
+The project aims to set up an operational web-platform designed for real-time agro-meteorological data dissemination at high spatial (1km2) and temporal (hourly) resolution. To achieve the availability of data at such a high spatial resolution, we plan to "spatialize" the real-time data sent by more than 30 connected physical weather stations belonging to the PAMESEB and RMI networks. This spatialization will then result in a gridded dataset corresponding to a network of 17 000 virtual stations uniformly spread on the whole territory of Wallonia.
+
+These "spatialized" data will be made available through a web-platform providing interactive visualization widgets (maps, charts, tables and various indicators) and an API allowing their use on the fly, notably by agricultural warning systems providers. An extensive and precise documentation about data origin, geo-statistic algorithms used and uncertainty will be also available.
+
+&nbsp;
+
+The meteorological data the project aims to spatialize are : 
+
+- Temperature (1.5 meters above the ground)
+- Relative humidity (1.5 meters above the ground)
+- Leaves wetness
+- Rainfall will be spatialized from RMI rain radar data.
+
+In order to perform spatial predictions of these variables, known independent variables are required. Depending of the weather parameter to be spatialized, various independent variables will be considered. We can mention :
+
+- Digital elevation model and its derivatives like aspect and slope
+- Solar irradiance
+- Other variables discussed to improve the prediction : distance to sea, CORINE land cover...
+
+The Figure \@ref(fig:agromet) shows the global steps of the project and steps before data diffusion.
+
+```{r agromet, echo=FALSE, fig.cap="Global steps of the AGROMET project", out.width="65%", fig.align='center'}
+include_graphics(path = "figure/agromet.jpg")
 ```
 
-## Inline code
+## Scope of the internship : using multiple linear regression for temperature predictions
 
-If you'd like to put the results of your analysis directly into your discussion, add inline code like this:
+ To perform spatial predictions of meteorological variables, several statistical methods can be tested like multiple linear regression, ANN and several kriging methods.
 
-> The `cos` of $2 \pi$ is `r cos(2*pi)`. 
+&nbsp;
 
-Another example would be the direct calculation of the standard deviation:
+Two workpackages were clearly defined for my internship :
 
-> The standard deviation of `speed` in `cars` is `r sd(cars$speed)`.
+- acquiring and preparing independent variables that have been identified as potential explanatory variables for temperature
+- benchmarking various combinations of independent variables used with the __multiple linear regression__ algorithm as spatial prediction method for the __temperature__
 
-One last neat feature is the use of the `ifelse` conditional statement which can be used to output text depending on the result of an **R** calculation:
+I used R because it is a free software for statistical computing and graphics. Spatial data were collected from different sources and involved the use of specific R libraries to manipulate them. I needed to handle these libraries to manipulate vector and raster geodata. Then, these data have been organised with the tidyverse library to respond to the structure imposed by the chosen modeling library and to help reduce computation time. The modeling library used is mlr, dealing with machine learning algorithms, responds to a special architecture and logic that I needed to understand. Then, the data have been integrated to build models through a benchmark and analysis. Visualization was done thanks to a plotting system for R, ggplot2, able to create graphics and maps.
 
-> `r ifelse(sd(cars$speed) < 6, "The standard deviation is less than 6.", "The standard deviation is equal to or greater than 6.")`
-
-Note the use of `>` here, which signifies a quotation environment that will be indented.
-
-As you see with `$2 \pi$` above, mathematics can be added by surrounding the mathematical text with dollar signs.  More examples of this are in [Mathematics and Science] if you uncomment the code in [Math].  
-
-## Including plots
-
-You can also embed plots.  For example, here is a way to use the base **R** graphics package to produce a plot using the built-in `pressure` dataset:
-
-```{r pressure, echo=FALSE, cache=TRUE}
-plot(pressure)
-```
-
-Note that the `echo=FALSE` parameter was added to the code chunk to prevent printing of the **R** code that generated the plot.  There are plenty of other ways to add chunk options.  More information is available at <http://yihui.name/knitr/options/>.  
-
-Another useful chunk option is the setting of `cache=TRUE` as you see here.  If document rendering becomes time consuming due to long computations or plots that are expensive to generate you can use knitr caching to improve performance.  Later in this file, you'll see a way to reference plots created in **R** or external figures.
-
-## Loading and exploring data
-
-Included in this template is a file called `flights.csv`.  This file includes a subset of the larger dataset of information about all flights that departed from Seattle and Portland in 2014.  More information about this dataset and its **R** package is available at <http://github.com/ismayc/pnwflights14>.  This subset includes only Portland flights and only rows that were complete with no missing values.  Merges were also done with the `airports` and `airlines` data sets in the `pnwflights14` package to get more descriptive airport and airline names.
-
-We can load in this data set using the following command:
-
-```{r load_data}
-flights <- read.csv("data/flights.csv")
-```
-
-The data is now stored in the data frame called `flights` in **R**.  To get a better feel for the variables included in this dataset we can use a variety of functions.  Here we can see the dimensions (rows by columns) and also the names of the columns.
-
-```{r str}
-dim(flights)
-names(flights)
-```
-
-Another good idea is to take a look at the dataset in table form.  With this dataset having more than 50,000 rows, we won't explicitly show the results of the command here.  I recommend you enter the command into the Console **_after_** you have run the **R** chunks above to load the data into **R**.
-
-```{r view_flights, eval=FALSE}
-View(flights)
-```
-
-While not required, it is highly recommended you use the `dplyr` package to manipulate and summarize your data set as needed.  It uses a syntax that is easy to understand using chaining operations.  Below I've created a few examples of using `dplyr` to get information about the Portland flights in 2014.  You will also see the use of the `ggplot2` package, which produces beautiful, high-quality academic visuals.
-
-We begin by checking to ensure that needed packages are installed and then we load them into our current working environment:
-
-```{r load_pkgs, message=FALSE}
-# List of packages required for this analysis
-pkg <- c("dplyr", "ggplot2", "knitr", "bookdown", "devtools")
-# Check if packages are not installed and assign the
-# names of the packages not installed to the variable new.pkg
-new.pkg <- pkg[!(pkg %in% installed.packages())]
-# If there are any packages in the list that aren't installed,
-# install them
-if (length(new.pkg))
-  install.packages(new.pkg, repos = "http://cran.rstudio.com")
-# Load packages (thesisdown will load all of the packages as well)
-library(thesisdown)
-```
-
-\clearpage
-
-The example we show here does the following:
-
-- Selects only the `carrier_name` and `arr_delay` from the `flights` dataset and then assigns this subset to a new variable called `flights2`. 
-
-- Using `flights2`, we determine the largest arrival delay for each of the carriers.
-
-```{r max_delays}
-flights2 <- flights %>% 
-  select(carrier_name, arr_delay)
-max_delays <- flights2 %>% 
-  group_by(carrier_name) %>%
-  summarize(max_arr_delay = max(arr_delay, na.rm = TRUE))
-```
-
-A useful function in the `knitr` package for making nice tables in _R Markdown_ is called `kable`.  It is much easier to use than manually entering values into a table by copying and pasting values into Excel or LaTeX.  This again goes to show how nice reproducible documents can be! (Note the use of `results="asis"`, which will produce the table instead of the code to create the table.)  The `caption.short` argument is used to include a shorter title to appear in the List of Tables.
-
-```{r maxdelays, results="asis"}
-kable(max_delays, 
-      col.names = c("Airline", "Max Arrival Delay"),
-      caption = "Maximum Delays by Airline",
-      caption.short = "Max Delays by Airline",
-      longtable = TRUE,
-      booktabs = TRUE)
-```
-
-The last two options make the table a little easier-to-read.
-
-We can further look into the properties of the largest value here for American Airlines Inc.  To do so, we can isolate the row corresponding to the arrival delay of 1539 minutes for American in our original `flights` dataset.
+The benchmark was run on two large years (from 2015-11-11 to 2018-06-30) because some data were not available before this period.
 
 
-```{r max_props}
-flights %>% filter(arr_delay == 1539, 
-                  carrier_name == "American Airlines Inc.") %>%
-  select(-c(month, day, carrier, dest_name, hour, 
-            minute, carrier_name, arr_delay))
-```
+## About the working environment
 
-We see that the flight occurred on March 3rd and departed a little after 2 PM on its way to Dallas/Fort Worth.  Lastly, we show how we can visualize the arrival delay of all departing flights from Portland on March 3rd against time of departure.
+### Applications and tools
 
-```{r march3plot, fig.height=3, fig.width=6}
-flights %>% filter(month == 3, day == 3) %>%
-  ggplot(aes(x = dep_time, y = arr_delay)) + geom_point()
-```
+Working in development field often imposes to be methodic. In particular for bug tracking or code versioning to detect errors and keep an history of code modifications. Being methodic is also important for code readability (adding comments for example) and code reproducibility. For the reason that the AGROMET project is public, this last point is important for transparency.
 
-## Additional resources
+That's why preparing the working environment is important to help achieve these good practices.
 
-- _Markdown_ Cheatsheet - <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
+&nbsp;
 
-- _R Markdown_ Reference Guide - <https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf>
+First, I have installed **Ubuntu GNOME**, a distribution of Linux on my laptop. Indeed, this is an open-source OS prefered by developers. It has a large community which is important to solve problems and bugs and to improve the OS. Because it is free, anyone can install it and that is important for reproducibility. Due to its large community of developers, Linux is safer because they monitor for issues and can repair them. Moreover, Linux has only 3% of the market and hackers prefer target a large segment of users as Windows. This installation of Ubuntu was done thanks to a USB drive with a boot of Ubuntu GNOME.
 
-- Introduction to `dplyr` - <https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html>
+&nbsp;
 
-- `ggplot2` Documentation - <http://docs.ggplot2.org/current/>
+Once I had Ubuntu installed on my laptop, I used an **ANSIBLE script** to automatically install all the applications I need. Moreover, this script handles the updates of these applications. That is a very useful way to earn some time and it helps science reproductibility because anyone with the script will end up with the exact same installation.
+
+&nbsp;
+
+<!-- source : https://openclassrooms.com/en/courses/1197906-securiser-son-serveur-linux -->
+Accessing to servers has to be secured to be protected against intrusions and monitor logs. That's why every developer should have a **SSH** key. This key or token is unique and enable people to access to servers. It is useful to access to Git repositories for example. It also helps to save some time because anyone who wants to connect a service does not need to provide a login and password each time using an SSH connection instead.
+
+**GitHub** is a hosting service for version control. It facilitates the collaborative work on a same code, the handle of code versions and the use of code developed by other users. It is a very common tool for developers because it ensures a public and online access.
+
+For my internship, I had to collaboratively work on code development with my mentor. This is why we have been using GitHub. For each of the code folders that I had to work on, I made a fork that I've downloaded on my laptop for further local developments. Then, I have a copy that I can modify and I can send my modifications on GitHub. To clone these repositories, my SSH key was useful.
+
+&nbsp;
+
+The current development version of the AGROMET platform already offers an **API** that allows to retrieve weather data from the stations. A specific API token with reading rights has been created for my internship. The API provides data in both JSON and GeoJSON formats which are open-standard file formats. These formats are easy to parse by machines and are easy to read by humans.
+
+&nbsp;
+
+Among the different programming languages, R has been chosen because it is is a free software environment for statistical computing and graphics. It is adapted to data analysis because R was developed by statisticians and easy to use even for people without programming skills. R has a large community to help people to solve bugs and problems and packages are well documented.
+
+**Docker** is a software for containerizing platforms. This container approach has many advantages compares to the use of virtual machines : lightweight, quick and modular.
+
+There are two main reasons to use R in conjunction with Docker. First, it allows you to quickly and easily share your work whatever the OS and R configuration of your collaborators. Second, it allows you to work in an isolated environment. This means that you will never pollute your OS and e.g. run in time-consuming re-installation procedures due to broken configuration. In case of OS crash, simply relaunch your Docker R container with a single command and you are ready to work.
+
+### Reproducible science
+
+Reproducible science refers to the idea that full working environment of a research can be used by anyone to reproduce the results and create a new work based on it. That ensures reliability and credibility because the entire work is available.
+
+&nbsp;
+
+In the case of the AGROMET project, the purpose of choosing open-source is to allow reproducible science and transparency about the chosen methods and therefore the meaning of the produced datasets.
+
+Transparency is promoted thanks to open science. That means the content and the results of the project will be accessible to others. Indeed, transparency is superior to trust and is an ideal (Munafo, 2017).
+
+Development represents the major part of the project. Today, open science is widely used and tools have been developed for that. The availability of code on GitHub ensures that anyone can check the code and inspect it. Then, some people can improve codes and increase efficiency of work.
+
+Moreover, this transparency makes sure that people can inspect and understand the origin of the data produced by the platforms. Users will have a deep insight of the data they will be working with.
+
+For these reasons, transparency and open science will give more credibility and reliability to the project.
+

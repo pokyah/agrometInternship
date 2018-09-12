@@ -1,123 +1,121 @@
-# Mathematics and Science {#math-sci}
+```{r include_packages_ch3, include = FALSE}
+# This chunk ensures that the thesisdown package is
+# installed and loaded. This thesisdown package includes
+# the template files for the thesis and also two functions
+# used for labeling and referencing
+library(devtools)
+devtools::install_github("haozhu233/kableExtra")
+library(kableExtra)
+load("./data/env_report.RData")
+```
 
-<!-- Required to number equations in HTML files -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+# Data acquisition and preparation {#data-acq}
 
-## Math
+Explanatory variables (i.e. independent variables) are required to build models able to predict the response variable (i.e. dependent variable). In our case the dependent variable is air temperature. We will call this variable our _target variable_. As set of explanatory variables have been identified and integrated in our modeling approach. These will be presented here below.
 
-\TeX\ is the best way to typeset mathematics. Donald Knuth designed \TeX\ when he got frustrated at how long it was taking the typesetters to finish his book, which contained a lot of mathematics.  One nice feature of _R Markdown_ is its ability to read LaTeX code directly.
+## Target variable
 
-If you are doing a thesis that will involve lots of math, you will want to read the following section which has been commented out. If you're not going to use math, skip over or delete this next commented section.
+The AGROMET project aims to provide weather data used as input for various crop models. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from the RMI (Belgian Météo France equivalent). The others are measured by weather stations from PAMESEB network, data are stored in a PostgreSQL database and users can query it using the API. Using the API, users retrieve untyped data and they have to type the data using specific functions. 
 
+Temperature is the target variable concerned by my internship. 
 
-<!-- MATH and PHYSICS majors: Uncomment the following section -->
-<!--
-$$\sum_{j=1}^n (\delta\theta_j)^2 \leq {{\beta_i^2}\over{\delta_i^2 + \rho_i^2}}
-\left[ 2\rho_i^2 + {\delta_i^2\beta_i^2\over{\delta_i^2 + \rho_i^2}} \right] \equiv \omega_i^2
-$$
+## Explanatory variables
 
-From Informational Dynamics, we have the following (Dave Braden):
+As a reminder, the purpose of my internship was to implement the multiple linear regression algorithm as a spatialization method. This means that I need to find an equation where the target variable can be modeled from one or more explanatory variables. The equation will have the form : $Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n$ where $Y$ is the response variable and $X_n$ your $n$ explanatory variables related to their estimated parameter $b_n$.
 
-After _n_ such encounters the posterior density for $\theta$ is
+These explanatory variables which have an influence on temperature are already known and some academic papers already have dealt with them (Zeuner 2007, Janssen 2011). 
 
-$$
-\pi(\theta|X_1< y_1,\dots,X_n<y_n) \varpropto \pi(\theta) \prod_{i=1}^n\int_{-\infty}^{y_i}
-   \exp\left(-{(x-\theta)^2\over{2\sigma^2}}\right)\ dx
-$$
+Two types of explanatory variables can be discriminated : static variables, i.e. variables not time-dependent but depending on the spatial position and dynamic variables, i.e. time-dependent and position-dependent variables.
 
-Another equation:
+### Static variables
 
-$$\det\left|\,\begin{matrix}%
-c_0&c_1\hfill&c_2\hfill&\ldots&c_n\hfill\cr
-c_1&c_2\hfill&c_3\hfill&\ldots&c_{n+1}\hfill\cr
-c_2&c_3\hfill&c_4\hfill&\ldots&c_{n+2}\hfill\cr
-\,\vdots\hfill&\,\vdots\hfill&
-  \,\vdots\hfill&&\,\vdots\hfill\cr
-c_n&c_{n+1}\hfill&c_{n+2}\hfill&\ldots&c_{2n}\hfill\cr
-\end{matrix}\right|>0$$
+#### Land cover
 
+All PAMESEB weather stations are localized in agricultural or herbaceous areas. That is a way to reduce errors about measures. However, the surrounding environment (100 meters around the station) of each station might be different and can have an impact on measures. For example, a station could have a different behaviour if a forest is near its area or if an artificial surface (road, construction) is near it. 
 
-Lapidus and Pindar, Numerical Solution of Partial Differential Equations in Science and
-Engineering.  Page 54
+CORINE land cover is an inventory updated every 6 years by **Copernicus**, the European Union's Earth Observation Programme. These data can also be found on the **Belgian geo-portal**. CORINE Land Cover has been already used to make a spatial interpolation of air pollution (Janssen _et al._ 2011).
 
-$$
-\int_t\left\{\sum_{j=1}^3 T_j \left({d\phi_j\over dt}+k\phi_j\right)-kT_e\right\}w_i(t)\ dt=0,
-   \qquad\quad i=1,2,3.
-$$
+CORINE Land Cover is divided in 47 different land covers. 26 of them are found in Wallonia. However, we made a clustering to group land covers that we judge to have the same kind of impact on temperature. Then, we made 5 classes :
 
-L\&P  Galerkin method weighting functions.  Page 55
+- __Agricultural areas__ : areas where crops can be tall
 
-$$
-\sum_{j=1}^3 T_j\int_0^1\left\{{d\phi_j\over dt} + k\phi_j\right\} \phi_i\ dt
-   = \int_{0}^1k\,T_e\phi_idt, \qquad i=1,2,3 $$
+- __Herbaceous vegetation__ : cleared areas like pastures and grasslands
 
-Another L\&P (p145)
+- __Artificial areas__ : roads, rails and constructions where anthropogenic material can impact temperature
 
-$$
-\int_{-1}^1\!\int_{-1}^1\!\int_{-1}^1 f\big(\xi,\eta,\zeta\big)
-   = \sum_{k=1}^n\sum_{j=1}^n\sum_{i=1}^n w_i w_j w_k f\big( \xi,\eta,\zeta\big).
-$$
+- __Forest__ : large areas providing shadow and cold
 
-Another L\&P (p126)
+- __Water bodies__ : areas like river, lake, wetlands and bogs. Finally, this class has been removed because of the fact that no stations are located near a water body
 
-$$
-\int_{A_e} (\,\cdot\,) dx dy = \int_{-1}^1\!\int_{-1}^1 (\,\cdot\,) \det[J] d\xi d\eta.
-$$
--->
+&nbsp;
 
-## Chemistry 101: Symbols
+R can handle different two types of spatial data : vector and raster. Vector model is based on points inside a CRS. Vector data can be points or lines or polygons. In R, `sp` and `sf` packages can handle this data type. The major difference between `sp` and `sf` is that `sf` objects can be treated as data frames in most operations and has better performances (Lovelace 2018). Raster model is based on a matrix representing equally spaced pixels and contains informations about the CRS, the extent and the origin. `raster` package handles this data type. These three packages can work together to convert data from a type to another one.
 
-Chemical formulas will look best if they are not italicized. Get around math mode's automatic italicizing in LaTeX by using the argument `$\mathrm{formula here}$`, with your formula inside the curly brackets.  (Notice the use of the backticks here which enclose text that acts as code.)
+CORINE land cover data downloaded on the geo-portal was a shapefile, i.e. vector data, with WGS84 CRS. This geographic CRS has coordinates expressed in degrees. Then, to read them in R, `sp` is necessary but a conversion to `sf` was prefered for clustering for the reasons given above.
 
-So, $\mathrm{Fe_2^{2+}Cr_2O_4}$ is written `$\mathrm{Fe_2^{2+}Cr_2O_4}$`.
+A conversion of CRS was also done from WGS84 to Belgian Lambert 2008. In contrast to WGS84, Lambert 2008 is a projected CRS expressed in meters. It facilitates our work to characterize the surrounding environment of the stations defining buffers around them. A projected CRS facilitates the definition of the radius of the buffer using meters instead of degrees.
 
-<!--
-The \noindent command below does what you'd expect:  it forces the current line/paragraph to not indent. This was done here to match the format of the LaTeX thesis PDF.
--->
+&nbsp;
 
-\noindent Exponent or Superscript: $\mathrm{O^-}$
+Thanks to these buffers, part of each class of land cover is computed and then stored in a table. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table \@ref(tab:clcperc) below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.
 
-\noindent Subscript: $\mathrm{CH_4}$
-
-To stack numbers or letters as in $\mathrm{Fe_2^{2+}}$, the subscript is defined first, and then the superscript is defined.
-
-\noindent Bullet: CuCl $\bullet$ $\mathrm{7H_{2}O}$
+```{r clcperc, echo=FALSE}
+knitr::kable(x = head(coverrate.grid), caption = "Distribution of land covers around physical stations", booktabs=T) %>%
+  row_spec(0, bold = TRUE)
+```
 
 
-\noindent Delta: $\Delta$
+#### Digital Terrain Model
 
-\noindent Reaction Arrows: $\longrightarrow$ or  $\xrightarrow{solution}$
+In the same way as land cover, the terrain characteristics could have an impact on temperature of the environment. These variables have been integrated in the models made by Zeuner _et al._ (2007) and the relevance has been demonstrated several times.
 
-\noindent Resonance Arrows: $\leftrightarrow$
+Elevation data have been recovered for Wallonia from **NASA's SRTM** providing a high-resolution (90 meters) topographic data. Then, slope, aspect and roughess of terrain have been calculated with spatial libraries implemented in R.
 
-\noindent Reversible Reaction Arrows: $\rightleftharpoons$
 
-### Typesetting reactions
+### Dynamic Variables
 
-You may wish to put your reaction in an equation environment, which means that LaTeX will place the reaction where it fits and will number the equations for you. 
+#### Solar irradiance
 
-\begin{equation}
-  \mathrm{C_6H_{12}O_6  + 6O_2} \longrightarrow \mathrm{6CO_2 + 6H_2O}
-  (\#eq:reaction)
-\end{equation}
+Some explanatory variables for temperature can be time-dependent. In this case, we can be interested in solar irradiance. Indeed, solar irradiance has an impact on weather changes (Dewitte _et al._ 2004).
 
-We can reference this combustion of glucose reaction via Equation \@ref(eq:reaction).
+&nbsp;
 
-### Other examples of reactions
+Data are recovered from **EUMETSAT**, the European Organisation for the Exploitation of Meteorological Satellites. They are produced every 30 minutes and expressed in W/m². These data are aggregated in hourly data and they are queried using the API of AGROMET.
 
-$\mathrm{NH_4Cl_{(s)}}$ $\rightleftharpoons$ $\mathrm{NH_{3(g)}+HCl_{(g)}}$
+There are 875 points distributed in Wallonia where records are available, this is not sufficient in our case where the objective is to provide predictions with a precision of 1 km². The handle of these spatial data with R packages was necessary to spatialize the records. To do that, the IDW spatial interpolation method was used.
 
-\noindent $\mathrm{MeCH_2Br + Mg}$ $\xrightarrow[below]{above}$ $\mathrm{MeCH_2\bullet Mg \bullet Br}$
+These data are available from 2015-11-11. As a consequence, models built before this date do not use solar irradiance as explanatory variable. However, solar irradiance is an interesting explanatory variable, that's why no model was built before this date for my internship.
 
-## Physics
+In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable. The measures from weather stations are used to build models from physical stations whereas the EUMETSAT measures will be used later for the spatialization on the spatial grid of Wallonia.
 
-Many of the symbols you will need can be found on the math page <http://web.reed.edu/cis/help/latex/math.html> and the Comprehensive LaTeX Symbol Guide (<http://mirror.utexas.edu/ctan/info/symbols/comprehensive/symbols-letter.pdf>).
+#### Temperature forecasts
 
-## Biology
+The AGROMET project is supported by the RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms.  It was planned to integrate these data as explanatory variables but at the time of my internship these were not yet available.
 
-You will probably find the resources at <http://www.lecb.ncifcrf.gov/~toms/latex.html> helpful, particularly the links to bsts for various journals. You may also be interested in TeXShade for nucleotide typesetting (<http://homepages.uni-tuebingen.de/beitz/txe.html>).  Be sure to read the proceeding chapter on graphics and tables.
+
+## Data preparation
+
+Once all the data are available, an important task is to organize them to perform modeling. This organisation needs to respond to a methodic approach :
+
+- help reduce computation time
+- respond to the structure imposed by the chosen modeling library
+
+Our choice turned to the use of the `mlr` package because it provides an interface for machine learning using a lot of statistical methods. The objective of data preparation is to make our data mlr-compliant because the package needs data with a specific structure. In particular, I needed to organize data to have one line for each station containing values for every explanatory variable. Moreover, this organisation must be done for every hour.
+
+The first step consists of grouping data. Static and dynamic variables are grouped in a data frame. Then, to reduce time computation and to prepare the integration of the data frame for the modeling, there is a way to nest data frames with the library purrr. In this way, it is possible to have one single row for each hour but every row contains data frames inside. The Figure \@ref(fig:nested) shows how it looks. This nested data frame is a efficient way to manipulate many sub-tables at once.
+
+```{r nested, echo=FALSE, fig.cap="Structure of a nested data frame", out.width="50%", fig.align='center'}
+include_graphics(path = "figure/purrr_nest.png")
+```
+
+In the case of the project, the nested data frame contains one row for each hour which has a data frame containing data from each station at this time. In the Table \@ref(tab:ndf), there is a preview of the data frame contained into each row.
+
+```{r ndf, echo=FALSE, message=FALSE}
+knitr::kable(head(data.n.sample), caption = "Example of nested data frame in a row corresponding to 2016-05-19 15:00:00") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  row_spec(0, bold = TRUE)
+```
+
+
+
 

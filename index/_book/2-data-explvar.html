@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Internship report</title>
+  <meta name="description" content="Internship report">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Internship report" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Internship report" />
+  
+  
+  
+
+<meta name="author" content="Loïc Davadan">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="1-presentation.html">
+<link rel="next" href="3-data-model.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"></a></li>
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-presentation.html"><a href="1-presentation.html"><i class="fa fa-check"></i><b>1</b> Presentation of the AGROMET project and the CRA-W</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-presentation.html"><a href="1-presentation.html#cra-w-and-farming-systems-territory-and-information-technologies-unit"><i class="fa fa-check"></i><b>1.1</b> CRA-W and Farming Systems, Territory and Information Technologies Unit</a></li>
+<li class="chapter" data-level="1.2" data-path="1-presentation.html"><a href="1-presentation.html#the-agromet-project"><i class="fa fa-check"></i><b>1.2</b> The AGROMET project</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-presentation.html"><a href="1-presentation.html#context"><i class="fa fa-check"></i><b>1.2.1</b> Context</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-presentation.html"><a href="1-presentation.html#objectives"><i class="fa fa-check"></i><b>1.2.2</b> Objectives</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-presentation.html"><a href="1-presentation.html#importance-of-the-internship-for-the-project"><i class="fa fa-check"></i><b>1.2.3</b> Importance of the internship for the project</a></li>
+<li class="chapter" data-level="1.2.4" data-path="1-presentation.html"><a href="1-presentation.html#preparing-the-working-environment"><i class="fa fa-check"></i><b>1.2.4</b> Preparing the working environment</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-data-explvar.html"><a href="2-data-explvar.html"><i class="fa fa-check"></i><b>2</b> Data acquisition and explanatory variables</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#interest-variables"><i class="fa fa-check"></i><b>2.1</b> Interest variables</a></li>
+<li class="chapter" data-level="2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#explanatory-variables"><i class="fa fa-check"></i><b>2.2</b> Explanatory variables</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-data-explvar.html"><a href="2-data-explvar.html#static-variables"><i class="fa fa-check"></i><b>2.2.1</b> Static variables</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-data-explvar.html"><a href="2-data-explvar.html#dynamic-variables"><i class="fa fa-check"></i><b>2.2.2</b> Dynamic Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-data-model.html"><a href="3-data-model.html"><i class="fa fa-check"></i><b>3</b> Data organisation and modeling</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-data-model.html"><a href="3-data-model.html#data-organisation"><i class="fa fa-check"></i><b>3.1</b> Data organisation</a></li>
+<li class="chapter" data-level="3.2" data-path="3-data-model.html"><a href="3-data-model.html#modeling"><i class="fa fa-check"></i><b>3.2</b> Modeling</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-data-model.html"><a href="3-data-model.html#principle-of-machine-learning"><i class="fa fa-check"></i><b>3.2.1</b> Principle of machine learning</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-approach-in-the-agromet-project"><i class="fa fa-check"></i><b>3.2.2</b> Machine learning approach in the AGROMET project</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-data-model.html"><a href="3-data-model.html#machine-learning-in-r"><i class="fa fa-check"></i><b>3.2.3</b> Machine Learning in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-results.html"><a href="4-results.html"><i class="fa fa-check"></i><b>4</b> Results and discussion</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-results.html"><a href="4-results.html#benchmark"><i class="fa fa-check"></i><b>4.1</b> Benchmark</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="4-results.html"><a href="4-results.html#methodology"><i class="fa fa-check"></i><b>4.1.1</b> Methodology</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4-results.html"><a href="4-results.html#comparison-of-methods"><i class="fa fa-check"></i><b>4.1.2</b> Comparison of methods</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4-results.html"><a href="4-results.html#vizualisation"><i class="fa fa-check"></i><b>4.1.3</b> Vizualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-results.html"><a href="4-results.html#discussion"><i class="fa fa-check"></i><b>4.2</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Annex</b></span></li>
+<li class="chapter" data-level="A" data-path="A-resources-on-agromet-and-my-work.html"><a href="A-resources-on-agromet-and-my-work.html"><i class="fa fa-check"></i><b>A</b> Resources on AGROMET and my work</a></li>
+<li class="chapter" data-level="B" data-path="B-annex-2.html"><a href="B-annex-2.html"><i class="fa fa-check"></i><b>B</b> Annex 2</a></li>
+<li class="chapter" data-level="C" data-path="C-additional-resources.html"><a href="C-additional-resources.html"><i class="fa fa-check"></i><b>C</b> Additional resources</a></li>
+<li class="chapter" data-level="D" data-path="D-details-of-my-work.html"><a href="D-details-of-my-work.html"><i class="fa fa-check"></i><b>D</b> Details of my work</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Internship report</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-explvar" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Data acquisition and explanatory variables</h1>
+<p>Variables have to be identified to build models. To do that, we need response variables, i.e. variables to predict, and explanatory variables, i.e. variables on which response variables depend.</p>
+<div id="interest-variables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Interest variables</h2>
+<p>The AGROMET project will provide information about weather parameters which are important for some crop diseases. These parameters are temperature, relative humidity, leaves wetness and rainfall. The last one is retrieved from a Dutch company. The others are measured by weather stations from PAMESEB network, data are stored on an API. This API is an intermediary software where we can make requests to get some data. Data extracted from the API need to be transformed to be more manipulable. Functions were wrote to transform these data. For example, convert measures from character to numeric.</p>
+</div>
+<div id="explanatory-variables" class="section level2">
+<h2><span class="header-section-number">2.2</span> Explanatory variables</h2>
+<p>A little reminder : I will use multiple linear regression. That means I want to find an equation where a response variable can be modeled from two or more variables. The equation will have the form : <span class="math inline">\(Y = b_0 + b_1.X_1 + b_2.X_2 + ... + b_n.X_n\)</span> where <span class="math inline">\(Y\)</span> is the response variable and <span class="math inline">\(X_n\)</span> your <span class="math inline">\(n\)</span> explanatory variables related to their estimated parameter <span class="math inline">\(b_n\)</span>.</p>
+<p>These explanatory variables have been identified from academic papers (Zeuner 2007, Janssen 2011). Two types of explanatory variables can be discriminate : static variables and dynamic variables.</p>
+<div id="static-variables" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Static variables</h3>
+<div id="land-cover" class="section level4">
+<h4><span class="header-section-number">2.2.1.1</span> Land cover</h4>
+<p>All PAMESEB weather stations are sited in agricultural or herbaceous areas. That is a way to reduce errors about measures. However, the environment of each station can be different and can have an impact on measures. For example, a station could have a different behaviour if a forest is near its area or if an artificial surface (road, construction) is near it.</p>
+<p>CORINE land cover is an inventory updated every 6 years by <strong>Copernicus</strong>, the European Union’s Earth Observation Programme. These data can also be found on the <strong>Belgian geo-portal</strong>. CORINE Land Cover has been already used to make a spatial interpolation of air pollution (Janssen <em>et al.</em> 2011).</p>
+<p>CORINE Land Cover is divided in 47 different land covers. 26 of them are in Wallonia. However, 26 land covers is too much to be integrated as explanatory variables. These land covers have been grouped in 5 classes we juged relevant :</p>
+<ul>
+<li><p><strong>Agricultural areas</strong> : areas where crops can be tall</p></li>
+<li><p><strong>Herbaceous vegetation</strong> : cleared areas like pastures and grasslands</p></li>
+<li><p><strong>Artificial areas</strong> : roads, rails and constructions where anthropogenic material can impact temperature</p></li>
+<li><p><strong>Forest</strong> : large areas providing shadow and cold</p></li>
+<li><p><strong>Water bodies</strong> : areas like river, lake, wetlands and bogs. Finally, this class has been removed because of the fact that no stations are located near a water body</p></li>
+</ul>
+<p>After a long data preparation with transformation of CRS from WGS84 to Belgian Lambert 2008 and conversion in different forms of Spatial objects (Vector and Raster), data were completely manageable.</p>
+<p>Finally, data are recovered at stations positions with buffers. These buffers have a radius of 100 meters for physical stations and 500 meters for virtual stations (because each station covers 1 km²). The Table <a href="2-data-explvar.html#tab:clcperc">2.1</a> below shows the structure of the data frame where each station identified by an ID has the percentage of cover for each class.</p>
+<table>
+<caption>
+<span id="tab:clcperc">Table 2.1: </span>Distribution of land covers around physical stations
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;font-weight: bold;">
+sid
+</th>
+<th style="text-align:right;font-weight: bold;">
+crops
+</th>
+<th style="text-align:right;font-weight: bold;">
+artificial
+</th>
+<th style="text-align:right;font-weight: bold;">
+forest
+</th>
+<th style="text-align:right;font-weight: bold;">
+herbaceous
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+63.85818
+</td>
+<td style="text-align:right;">
+4.265755
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+31.83038
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+64.11932
+</td>
+<td style="text-align:right;">
+35.834990
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+75.28137
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+24.67295
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+99.95431
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+69.91902
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+30.03530
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+89.50912
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
+<td style="text-align:right;">
+10.44519
+</td>
+<td style="text-align:right;">
+0.00000
+</td>
+</tr>
+</tbody>
+</table>
+<p>Buffers of 500 meters radius and grid cells of 1km² were compared but buffers were chosen because they have more relevance when they are compared to physical stations where only buffers were computed.</p>
+</div>
+<div id="digital-terrain-model" class="section level4">
+<h4><span class="header-section-number">2.2.1.2</span> Digital Terrain Model</h4>
+<p>In the same way as land cover, the terrain model could have an impact on temperature of the environment. These variables have been integrated in the models made by Zeuner <em>et al.</em> (2007) and the relevance has been demonstrated several times.</p>
+<p>Elevation data have been recovered for Wallonia from <strong>NASA’s SRTM</strong> providing a high-resolution (90 meters) topographic data. Then, slope, aspect and roughess of terrain have been calculated with spatial libraries from R. These data are very large and data processing is very long because resolution is high.</p>
+</div>
+</div>
+<div id="dynamic-variables" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Dynamic Variables</h3>
+<div id="solar-irradiance" class="section level4">
+<h4><span class="header-section-number">2.2.2.1</span> Solar irradiance</h4>
+<p>In the same way as temperature is a dynamic variable, explanatory variables can be dynamic. In the case of temperature, we can be interested in solar irradiance. Indeed, solar irradiance has an impact on climate changes (Dewitte <em>et al.</em> 2004).</p>
+<p>Data are recovered from <strong>EUMETSAT</strong>, the European Organisation for the Exploitation of Meteorological Satellites. They are produced every 30 minutes and expressed in W/m². These data are aggregated in hourly data and they are stored on a API of AGROMET.</p>
+<p>Data are available from 2015-11-11. As a consequence, we can not build models from data before this date.</p>
+<p>In parallel with that, PAMESEB stations also measure solar irradiance. But only 27 stations are useable.</p>
+</div>
+<div id="temperature-forecasts" class="section level4">
+<h4><span class="header-section-number">2.2.2.2</span> Temperature forecasts</h4>
+<p>The AGROMET project is supported by RMI, the Belgian equivalent of Météo France. As a partner, RMI will provide temperature forecasts based on their own algorithms. These data will be integrated as explanatory variables to build models.</p>
+<p>At the time of my internship, these data were not available.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="1-presentation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-data-model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+`r if(knitr:::is_latex_output()) '\\appendix'`
+
+`r if(!knitr:::is_latex_output()) '# (APPENDIX) Annex {-}'` 
+
+<!--
+If you feel it necessary to include an appendix, it goes here.
+-->
+
+# Resources on AGROMET and my work
+
+- European directive 2009/128/CE : [https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32009L0128](https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32009L0128)
+
+- PAMESEB network : [https://www.pameseb.be/](https://www.pameseb.be/)
+
+- Spatialization methodology available here : [https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg](https://pokyah.github.io/agrometeor-methodo-spatial/assets/uml_images/spatialization-methodology.svg)
+
+- All my codes are available on my Github account : [https://github.com/ldavadan](https://github.com/ldavadan)
+
+- My personal blog, made with Blogdown : [ldavadan.github.io](ldavadan.github.io)
+
+- Contribution to "Crop and Grassland conditions in early August" report : [http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018](http://www.cra.wallonie.be/fr/etat-des-cultures-et-des-prairies-en-ce-debut-du-mois-daout-2018)
+
+
+# Outputs with different methods
+
+Methods from left to right and top to bottom follow the order presented in Table \@ref(tab:explvar). Models built for 2018-03-07 14:00:00.
+
+```{r maps, echo=FALSE, fig.align='center', out.width="100%"}
+include_graphics(path = "figure/2018-03-07_14.png")
+```
+
+# Additional resources
+
+- Ubuntu GNOME : [https://ubuntugnome.org/](https://ubuntugnome.org/)
+
+- ANSIBLE : [https://www.ansible.com/](https://www.ansible.com/)
+
+- SSH : [https://www.ssh.com/](https://www.ssh.com/)
+
+- GitHub : [https://github.com/](https://github.com/)
+
+- API : [https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
+
+- R : [https://www.r-project.org/](https://www.r-project.org/)
+
+- Docker : [https://www.docker.com/what-docker](https://www.docker.com/what-docker)
+
+- Copernicus : [https://land.copernicus.eu/pan-european/corine-land-cover/view](https://land.copernicus.eu/pan-european/corine-land-cover/view)
+
+- Belgian Geoportal : [https://www.geo.be/#!/catalog/details/bcd19aa9-c320-4116-971b-6e4376137f13?l=en](https://www.geo.be/#!/catalog/details/bcd19aa9-c320-4116-971b-6e4376137f13?l=en)
+
+- NASA's SRTM : [https://lta.cr.usgs.gov/SRTM](https://lta.cr.usgs.gov/SRTM)
+
+- EUMETSAT : [https://landsaf.ipma.pt/en/products/longwave-shortwave-radiation/dssf/](https://landsaf.ipma.pt/en/products/longwave-shortwave-radiation/dssf/)
+
+- Machine Learning Mastery Blog : [https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/](https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/)
+
+- Machine Learning in R : [http://mlr-org.github.io/mlr/index.html](http://mlr-org.github.io/mlr/index.html)
+
+# Structure of the code using mlr package
+
+```{r exmlr, eval=FALSE, out.width="100%"}
+# define learners
+lrns.l <- list(makeFilterWrapper(learner = makeLearner(cl = "regr.lm", id = "lm.Long.Lat"), fw.method = "linear.correlation", fw.mandatory.feat = c("X", "Y"), fw.abs = 2),
+               makeFilterWrapper(learner = makeLearner(cl = "regr.lm", id = "lm.Long.Lat.Elev"), fw.method = "linear.correlation", fw.mandatory.feat = c("X", "Y", "altitude"), fw.abs = 3))
+
+# define resampling strategy
+resampling.l = makeResampleDesc(method = "LOO")
+
+#run benchmark
+benchmark <- benchmark(
+  learners = lrns.l[1],
+  tasks = data.stations.n.df$tasks, # 1 task = 1 hour
+  resamplings = resampling.l,
+  # additionnal parameters
+  keep.pred = FALSE, # boolean specifying if predictions have to be kept
+  show.info = TRUE, # boolean specifying if informations have to be shown when running
+  models = FALSE, # boolean specifying if models have to be kept
+  measures = list(rmse, mae, timetrain) # list of measures to do
+)
+```
+
